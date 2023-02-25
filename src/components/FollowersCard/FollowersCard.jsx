@@ -19,7 +19,7 @@ const FollowersCard = () => {
                         </div>
                     </div>
                     <button className='button fc-button'>
-                        Follow
+                        Accept
                     </button>
                 </div>
             )

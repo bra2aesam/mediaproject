@@ -1,9 +1,12 @@
 import React from 'react'
-import Groupcard from '../../components/Groupcard/Groupcard'
-import GroupLeft from '../../components/GroupLeft/GroupLeft'
-import GroupPostSide from '../../components/GroupPostSide/GroupPostSide'
-import GroupRight from '../../components/GroupRight/GroupRight'
+import GroupLeft from '../../components/GroupComp/GroupLeft/GroupLeft'
+import GroupPostCard from '../../components/GroupComp/GroupPostCard/GroupPostCard'
+import GroupPostSide from '../../components/GroupComp/GroupPostSide/GroupPostSide'
+import IconHome from '../../components/IconHome/IconHome'
 import PostSide from '../../components/PostSide/PostSide'
+import RightSide from '../../components/RightSide/RightSide'
+import TrendCard from '../../components/TrendCard/TrendCard'
+
 
 export default function Group() {
   return (
@@ -12,13 +15,14 @@ export default function Group() {
 
 
         <div className="Profile-center">
-        {/* <Groupcard/> */}
+          <GroupPostCard/>
         <GroupPostSide/>
-        <PostSide/>
+        
+        {/* <PostSide/> */}
 
         </div>
-
-        <GroupRight/>
+        
+        <RightSide/>
     </div>
 
 

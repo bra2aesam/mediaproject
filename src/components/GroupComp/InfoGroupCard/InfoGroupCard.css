@@ -1,4 +1,4 @@
-.InfoCard
+.InfoGroupCard
 {
     display: flex;
     flex-direction: column;
@@ -19,9 +19,18 @@
     cursor: pointer;
 }
 
-.logout-button{
-    width: 7rem;
+.logout-buttoni{
+    /* width: 7rem; */
     height: 2rem;
     margin-top: 6rem;
     align-self: flex-end;
+    background:#656565;
+
+}
+
+.Ginfo{
+    background:var(--buttonBg);
+    padding: 1rem;
+    border-radius: 1rem;
+    color: white;
 }

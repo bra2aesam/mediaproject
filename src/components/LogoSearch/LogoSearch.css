@@ -13,8 +13,8 @@
 }
 .Logo{
     /* color: linear-gradient(106.23deg, #25f9c4, #3594f9 100%); */
-color: #25f9c4;
-font-size: 20px;
+color: #ab25f9;
+
 }
 
 .Search>input{
@@ -27,7 +27,7 @@ font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(106.23deg, #25f9c4, #3594f9 100%);
+    background: linear-gradient(106.23deg, #ab25f9, #35cbf9 100%);
     border-radius: 5px;
     padding: 4px;
     color: white;
