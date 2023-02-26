@@ -29,8 +29,8 @@
 }
 
 .Ginfo{
-    background:var(--buttonBg);
+    /* background:var(--buttonBg); */
     padding: 1rem;
     border-radius: 1rem;
-    color: white;
+    /* color: white; */
 }

@@ -1,28 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MyGroup.css";
 import { UilPlusSquare } from "@iconscout/react-unicons";
 
 import { TrendData } from "../../Data/TrendData.js";
+import MyGroupModel from "../MyGroupModel/MyGroupModel";
 const MyGroup = () => {
+  const [modalOpened, setModalOpened] = useState(false)
   return (
     <div className="Trend">
-      <div className="TrendCard">
-        <h3 className="groupsheder">
-          My Groups <UilPlusSquare />
+      <div className="GTrendCard">
+        <h3  className="MyGroup">
+          My Groups <div>
+            <UilPlusSquare  onClick={() => setModalOpened(true)} />
+            <MyGroupModel
+            modalOpened={modalOpened}
+            setModalOpened={setModalOpened}
+          />
+          </div>
         </h3>
-        <hr />
+        {/* <hr /> */}
         {TrendData.map((trend, id) => {
           return (
-            <div key={id} className="trend">
+            <div key={id} className="MyGrouptrend">
               <div>
                 <img src={trend.img} alt="" className="trendImage" />
                 <div className="gname">
-                  <span>{trend.name}</span>
-                  <span>{trend.shares} member</span>
+                  <span  >{trend.name}</span>
+                  <span className="MygNUM">{trend.shares} member</span>
                 </div>
               </div>
               {/* <hr /> */}
-              <button className="button gc-button">Go</button>
+              <button className="button myc-button">Go</button>
             </div>
           );
         })}
