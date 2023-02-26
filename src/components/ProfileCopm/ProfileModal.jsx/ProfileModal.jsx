@@ -1,8 +1,45 @@
 import { Modal, useMantineTheme } from "@mantine/core";
+import { useState } from "react";
+import UserService from "../../../apis/UserService";
 
 function ProfileModal({ modalOpened, setModalOpened }) {
   const theme = useMantineTheme();
-
+  const [data, setData] = useState({
+    user_name:"",
+    phone:"",
+    email:"",
+    profileImg:"",
+    coverImg:"",
+  })
+  const handleChange = (e)=>{
+    const newData = { ...data }
+    newData[e.target.name] = e.target.value
+    setData(newData)
+    console.log(newData)
+  }
+  const handleImage = (e) =>{
+    const newData = { ...data }
+    newData[e.target.name] = e.target.files[0]
+    setData(newData)
+    console.log(newData)
+  }
+  const handelsubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData()
+    formData.append('user_name', data.user_name)
+    formData.append('phone', data.phone)
+    formData.append('email', data.email)
+    formData.append('profileImg', data.profileImg)
+    formData.append('coverImg', data.coverImg)
+    console.log(formData.get('user_name'))
+    console.log(formData.get('phone'))
+    console.log(formData.get('email'))
+    console.log(formData.get('profileImg'))
+    console.log(formData.get('coverImg'))
+    // UserService.createUser(formData).then(function(res){
+    //   console.log(res)
+    //   }) 
+  }
   return (
     <Modal
       overlayColor={
@@ -16,64 +53,49 @@ function ProfileModal({ modalOpened, setModalOpened }) {
       opened={modalOpened}
       onClose={() => setModalOpened(false)}
     >
-      <form className="infoForm">
+      <form onSubmit={handelsubmit} className="infoForm">
         <h3>Your info</h3>
 
         <div>
           <input
             type="text"
+            onChange={handleChange}
             className="infoInput"
-            name="FirstName"
-            placeholder="First Name"
+            value={data.user_name}
+            name="user_name"
+            placeholder="Full Name"
           />
 
           <input
             type="text"
+            onChange={handleChange}
             className="infoInput"
-            name="LastName"
-            placeholder="Last Name"
+            value={data.phone}
+            name="phone"
+            placeholder="Phone"
           />
         </div>
 
         <div>
-          <input
+           <input
             type="text"
+            onChange={handleChange}
             className="infoInput"
-            name="worksAT"
-            placeholder="Works at"
+            value={data.email}
+            name="email"
+            placeholder="Email"
           />
         </div>
 
-        <div>
-          <input
-            type="text"
-            className="infoInput"
-            name="livesIN"
-            placeholder="LIves in"
-          />
-
-          <input
-            type="text"
-            className="infoInput"
-            name="Country"
-            placeholder="Country"
-          />
-        </div>
-
-        <div>
-          <input
-            type="text"
-            className="infoInput"
-            placeholder="RelationShip Status"
-          />
-        </div>
-
+      
 
         <div>
             Profile Image 
-            <input type="file" name='profileImg'/>
+            <input type="file" name='profileImg'  onChange={handleImage}
+            />
             Cover Image
-            <input type="file" name="coverImg" />
+            <input type="file" name="coverImg"  onChange={handleImage}
+            />
         </div>
 
         <button className="button infoButton">Update</button>
