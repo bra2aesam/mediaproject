@@ -21,8 +21,8 @@
             extract($row);
             $e = array(
                 "id" => $id,
-                "first_name" => $first_name,
-                "last_name" => $last_name,
+                "user_name" => $user_name,
+                // "last_name" => $last_name,
                 "password" => $password,
                 "photo" => $photo,
                 "email" => $email

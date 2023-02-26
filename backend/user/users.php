@@ -9,8 +9,8 @@
 
         // col
         public $id;
-        public $first_name;
-        public $last_name;
+        public $user_name;
+        // public $last_name;
         public $email;
         public $password;
        
@@ -39,21 +39,20 @@
                 $sqlQuery = "INSERT INTO
                         ". $this->dbTable ."
                     SET
-                    first_name = :first_name, 
-                    last_name = :last_name, 
+                    user_name = :user_name, 
                     email = :email, 
                     password = :password";
                 $stmt = $this->conn->prepare($sqlQuery);
         
                 // sanitize
-                $this->first_name=htmlspecialchars(strip_tags($this->first_name));
-                $this->last_name=htmlspecialchars(strip_tags($this->last_name));
+                $this->user_name=htmlspecialchars(strip_tags($this->user_name));
+                // $this->last_name=htmlspecialchars(strip_tags($this->last_name));
                 $this->password=htmlspecialchars(strip_tags($this->password));
                 $this->email=htmlspecialchars(strip_tags($this->email));
                        
                 // bind data
-                $stmt->bindParam(":first_name", $this->first_name);
-                $stmt->bindParam(":last_name", $this->last_name);
+                $stmt->bindParam(":user_name", $this->user_name);
+                // $stmt->bindParam(":last_name", $this->last_name);
                 $stmt->bindParam(":password", $this->password);
                 $stmt->bindParam(":email", $this->email);
                
@@ -76,8 +75,7 @@
        public function getSingleUser(){
         $sqlQuery = "SELECT
                     id, 
-                    first_name, 
-                    last_name, 
+                    user_name, 
                     email
                   FROM
                     ". $this->dbTable ."
@@ -90,8 +88,8 @@
         $stmt->execute();
         $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
         
-        $this->first_name = $dataRow['first_name'];
-        $this->last_name = $dataRow['last_name'];
+        $this->user_name = $dataRow['user_name'];
+        // $this->last_name = $dataRow['last_name'];
         $this->email = $dataRow['email'];
       
     }      
@@ -102,22 +100,21 @@
             $sqlQuery = "UPDATE
                         ". $this->dbTable ."
                     SET
-                    first_name = :first_name, 
-                    last_name = :last_name, 
+                    user_name = :user_name, 
                     email = :email
                     WHERE 
                         id = :id";
         
             $stmt = $this->conn->prepare($sqlQuery);
         
-            $this->first_name=htmlspecialchars(strip_tags($this->first_name));
-            $this->last_name=htmlspecialchars(strip_tags($this->last_name));
+            $this->user_name=htmlspecialchars(strip_tags($this->user_name));
+            // $this->last_name=htmlspecialchars(strip_tags($this->last_name));
             $this->email=htmlspecialchars(strip_tags($this->email));
             $this->id=htmlspecialchars(strip_tags($this->id));
         
             // bind data
-            $stmt->bindParam(":first_name", $this->first_name);
-            $stmt->bindParam(":last_name", $this->last_name);
+            $stmt->bindParam(":user_name", $this->user_name);
+            // $stmt->bindParam(":last_name", $this->last_name);
             $stmt->bindParam(":email", $this->email);
             $stmt->bindParam(":id", $this->id);
         
@@ -162,7 +159,7 @@
                 echo "user not found";
             }
 
-            // $this->first_name = $dataRow['first_name'];
+            // $this->user_name = $dataRow['user_name'];
             // $this->last_name = $dataRow['last_name'];
             // $this->email = $dataRow['email'];
 
