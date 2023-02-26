@@ -20,7 +20,7 @@
        
     }
 
-    $post->id= 18;
+    $post->id= $_POST["id"];
     $post->body=$_POST["body"];
     $post->user_id=$_POST["user_id"];
     $post->group_id=$_POST["group_id"];

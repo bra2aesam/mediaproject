@@ -1,46 +1,54 @@
 import { Modal, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
+import PostService from "../../apis/PostService";
 // import GroupService from "../../../apis/GroupService";
 
 
-function PostModal({ modalOpened, setModalOpened }) {
+function PostModal({ modalOpened, setModalOpened,post }) {
   const theme = useMantineTheme();
+  console.log(post)
 
-  const [data, setData] = useState({
-    group_name:"",
-    group_img :"",
-    })
+  const [postData, setPostData] = useState({
+    myImage:"",
+    body:"",
+    user_id:1,
+    group_id:0,
+    id :post.id
+  });
+  const handleChange = (e)=>{
+    const newData = { ...postData }
+    newData[e.target.name] = e.target.value
+    setPostData(newData)
+    console.log(newData)
+  }
+  const handleImage = (event) => {
+    const newData = { ...postData }
+    newData[event.target.name] = event.target.files[0]
+    setPostData(newData)
+    console.log(newData)
+  
+  };
 
-
-    const handleChange = (e)=>{
-      const newData = { ...data }
-      newData[e.target.name] = e.target.value
-      setData(newData)
-      console.log(newData)
-    }
-
-    const handleImage = (e) =>{
-      const newData = { ...data }
-      newData[e.target.name] = e.target.files[0]
-      setData(newData)
-      console.log(newData)
-
-    }
-
-
-  const handelsubmit = (e) => {
+  
+   const handelsubmit = (e) => {
     e.preventDefault();
     const formData = new FormData()
-    formData.append('group_name', data.group_name)
-    formData.append('group_img', data.group_img)
+    formData.append('id', postData.id)
+    formData.append('post_img', postData.myImage)
+    formData.append('body', postData.body)
+    formData.append('user_id', postData.user_id)
+    formData.append('group_id', postData.group_id)
     
-    console.log(formData.get('group_name'))
-    console.log(formData.get('group_img'))
-    // GroupService.updateGroup(formData).then(function(res){
-    //   console.log(res)
-      // }
-      // ) 
+    console.log(formData.get('post_img'))
+    console.log(formData.get('body'))
+    console.log(formData.get('user_id'))
+    console.log(formData.get('group_id'))
+    PostService.updatePost(formData).then(function(res){
+      console.log(res)
+      }) 
+    console.log(postData)
     }
+
 
   return (
     <Modal
@@ -63,7 +71,7 @@ function PostModal({ modalOpened, setModalOpened }) {
             type="text"
             onChange={handleChange}
             className="infoInput"
-            name="group_name"
+            name="body"
             placeholder="Group Name"
           />
 
@@ -74,7 +82,7 @@ function PostModal({ modalOpened, setModalOpened }) {
         <div>
 
             Cover Image
-            <input type="file" name="group_img"  onChange={handleImage}/>
+            <input type="file" name="myImage"  onChange={handleImage}/>
         </div>
 
         <button type="submit" className="button infoButton">Update</button>
