@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const USER_API_URL = "http://localhost/mediasocial/backend/user";
+const USER_API_URL1 = "http://localhost/mediasocial/backend/groupcrud";
 
 class UserService {
 
@@ -22,7 +23,11 @@ class UserService {
     }
 
     updateUser(user){
-        return axios.put(`${USER_API_URL}/update.php`, user);
+        return axios.post(`${USER_API_URL}/update.php`, user);
+   
+    }
+    updateGroup(group){
+        return axios.post(`${USER_API_URL1}/update.php`, group);
     }
 
     // deleteUser(id){

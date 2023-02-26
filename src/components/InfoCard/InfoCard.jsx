@@ -4,7 +4,6 @@ import { UilPen } from "@iconscout/react-unicons";
 import ProfileModal from "../ProfileCopm/ProfileModal.jsx/ProfileModal";
 
 const InfoCard = ({user}) => {
-  // console.log(user)
   const [modalOpened, setModalOpened] = useState(false);
   return (
     <div className="InfoCard">

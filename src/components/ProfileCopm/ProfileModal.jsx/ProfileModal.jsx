@@ -36,9 +36,9 @@ function ProfileModal({ modalOpened, setModalOpened }) {
     console.log(formData.get('email'))
     console.log(formData.get('profileImg'))
     console.log(formData.get('coverImg'))
-    // UserService.createUser(formData).then(function(res){
-    //   console.log(res)
-    //   }) 
+    UserService.updateUser(formData).then(function(res){
+      console.log(res)
+      }) 
   }
   return (
     <Modal
@@ -77,7 +77,7 @@ function ProfileModal({ modalOpened, setModalOpened }) {
         </div>
 
         <div>
-           <input
+          <input
             type="text"
             onChange={handleChange}
             className="infoInput"
