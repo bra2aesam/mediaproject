@@ -5,10 +5,10 @@ import './Home.css'
 import HomePostSide from '../../components/HomeComp/HomePostSide/HomePostSide'
 import axios from 'axios'
 const Home = () => {
-  const [feedata, setFeedata] = useState({})
+  const [feedata, setFeedata] = useState(null)
   useEffect(()=>{
     axios.get(`http://localhost/mediasocial/backend/feed/index.php`).then(res =>{
-      console.log(res.data)
+      // console.log(res.data)
       setFeedata(res.data)
     })
   },[])
