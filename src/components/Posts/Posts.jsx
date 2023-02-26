@@ -2,11 +2,12 @@ import React from 'react'
 import './Posts.css'
 import { PostsData } from '../../Data/PostsData'
 import Post from '../Post/Post'
-const Posts = () => {
+const Posts = ({timelinePosts}) => {
+  console.log(timelinePosts)
   return (
     <div className="Posts">
-        {PostsData.map((post, id)=>{
-            return <Post key={id} data={post} id={id}/>
+        {timelinePosts && timelinePosts.map((post, id)=>{
+            return <Post key={id} post={post} img={PostsData[0].img}  id={id}/>
         })}
     </div>
   )

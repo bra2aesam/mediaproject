@@ -9,7 +9,8 @@ import MyGroup from "../MyGroup/MyGroup";
 import GroupForYou from "../GroupForYou/GroupForYou";
 import FollowersCard from "../FollowersCard/FollowersCard";
 
-const RightSide = () => {
+const RightSide = ({friendsRequest}) => {
+  // console.log(friendsRequest);
   const [modalOpened, setModalOpened] = useState(false);
   return (
     <div className="RightSide">
@@ -20,7 +21,7 @@ const RightSide = () => {
         <img src={Comment} alt="" />
       </div>
 
-      <FollowersCard />
+      <FollowersCard friendsRequest={friendsRequest}/>
       <GroupForYou />
 
       <button className="button r-button" onClick={() => setModalOpened(true)}>

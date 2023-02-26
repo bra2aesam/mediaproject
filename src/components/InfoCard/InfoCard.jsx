@@ -3,7 +3,8 @@ import "./InfoCard.css";
 import { UilPen } from "@iconscout/react-unicons";
 import ProfileModal from "../ProfileCopm/ProfileModal.jsx/ProfileModal";
 
-const InfoCard = () => {
+const InfoCard = ({user}) => {
+  // console.log(user)
   const [modalOpened, setModalOpened] = useState(false);
   return (
     <div className="InfoCard">
@@ -24,16 +25,16 @@ const InfoCard = () => {
 
       <div className="info">
         <span>
-          <b>Status </b>
+          <b>Phone : </b>
         </span>
-        <span>in Relationship</span>
+        <span>{user && user.phone}</span>
       </div>
 
       <div className="info">
         <span>
-          <b>Lives in </b>
+          <b>Email : </b>
         </span>
-        <span>Multan</span>
+        <span>{user && user.email}</span>
       </div>
 
       <div className="info">
