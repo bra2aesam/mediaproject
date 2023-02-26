@@ -24,7 +24,9 @@ hr {
     /* text-align: center; */
     background:var(--buttonBg);
     padding: 1rem;
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
     margin: -.5rem;
     color: white;
     display:flex;

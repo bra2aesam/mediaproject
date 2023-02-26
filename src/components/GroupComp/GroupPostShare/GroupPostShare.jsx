@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import ProfileImage from "../../../img/profileImg.jpg";
-import "./PostShare.css";
+import "./GroupPostShare.css";
 import { UilScenery } from "@iconscout/react-unicons";
 import { UilPlayCircle } from "@iconscout/react-unicons";
 import { UilLocationPoint } from "@iconscout/react-unicons";
@@ -8,7 +8,7 @@ import { UilSchedule } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
 
 
-const PostShare = () => {
+const GroupPostShare = () => {
   const [image, setImage] = useState(null);
   const imageRef = useRef();
 
@@ -60,4 +60,4 @@ const PostShare = () => {
   );
 };
 
-export default PostShare;
+export default GroupPostShare;

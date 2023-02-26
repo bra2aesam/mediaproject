@@ -3,7 +3,7 @@ import './FollowersCard.css'
 
 import { Followers } from '../../Data/FollowersData'
 const FollowersCard = ({friendsRequest}) => {
-    console.log(friendsRequest);
+    // console.log(friendsRequest);
   return (
     <div className="FollowersCard">
         <h3 className="myfriend">Friend Requests</h3>

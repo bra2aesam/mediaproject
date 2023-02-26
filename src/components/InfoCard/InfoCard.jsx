@@ -10,11 +10,8 @@ const InfoCard = ({user}) => {
       <div className="infoHead Ginfo">
         <h4>Your Info</h4>
         <div>
-          <UilPen
-            width="2rem"
-            height="1.2rem"
-            onClick={() => setModalOpened(true)}
-          />
+          <UilPen width="2rem"height="1.2rem"
+            onClick={() => setModalOpened(true)}/>
           <ProfileModal
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}

@@ -1,12 +1,12 @@
 import React from 'react'
 // import ".GroupPostSide.css"
-import Posts from '../Posts/Posts'
-import PostShare from '../PostShare/PostShare'
-const GroupPostSide = () => {
+import GroupPosts from '../GroupPosts/GroupPosts.jsx'
+import GroupPostShare from '../GroupPostShare/GroupPostShare'
+const GroupPostSide = ({group_post}) => {
   return (
    <div className="PostSide">
-       <PostShare/>
-       <Posts/>
+       <GroupPostShare/>
+       <GroupPosts group_post={group_post}/>
    </div>
   )
 }
