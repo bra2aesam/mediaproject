@@ -1,7 +1,7 @@
 import React from 'react'
 import './Posts.css'
 import { PostsData } from '../../Data/PostsData'
-import Post from '../Post/Post'
+import Post from '../HomePost/Post'
 
 const Posts = ({timelinePosts}) => {
   console.log(timelinePosts)

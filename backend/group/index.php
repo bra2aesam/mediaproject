@@ -28,9 +28,9 @@ $group_member = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $data = ['group_post'=> $group_post, 'group_member' => $group_member];
 
-echo "<pre>";
+// echo "<pre>";
 echo json_encode($data);
-echo "</pre>";
+// echo "</pre>";
 
 
 
