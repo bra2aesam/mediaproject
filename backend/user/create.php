@@ -13,13 +13,14 @@
 
     $user = new User($db);
     $data = json_decode(file_get_contents("php://input"));
-
-    $user->first_name = $data->firstName;
-    $user->last_name = $data->lastName;
+    
+    $user->user_name = $data->user_name;
+    // $user->last_name = $data->lastName;
     $user->password = $data->password;
     $user->email = $data->email;
     if($user->createUser()){
         echo json_encode("User created.");
+
     } else{
         echo json_encode("Failed to create user.");
     }
