@@ -24,8 +24,8 @@
   
     
 
-    if($group->updateGroup()){
-        echo json_encode("Group update.");
+    if($group->createGroup()){
+        echo json_encode("Group created.");
 
     } else{
         echo json_encode("Failed to create Group.");

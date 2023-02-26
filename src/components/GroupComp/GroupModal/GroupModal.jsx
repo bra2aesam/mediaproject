@@ -1,6 +1,7 @@
 import { Modal, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
-import UserService from "../../../apis/UserService";
+import GroupService from "../../../apis/GroupService";
+
 
 function GroupModal({ modalOpened, setModalOpened }) {
   const theme = useMantineTheme();
@@ -35,7 +36,7 @@ function GroupModal({ modalOpened, setModalOpened }) {
     
     console.log(formData.get('group_name'))
     console.log(formData.get('group_img'))
-    UserService.updateGroup(formData).then(function(res){
+    GroupService.updateGroup(formData).then(function(res){
       console.log(res)
       }) 
     }
