@@ -10,8 +10,10 @@
         // col
         public $id;
         public $user_name;
-        // public $last_name;
+        public $phone;
         public $email;
+        public $profile_img;
+        public $background_img;
         public $password;
        
       
@@ -101,21 +103,28 @@
                         ". $this->dbTable ."
                     SET
                     user_name = :user_name, 
-                    email = :email
+                    phone = :phone,
+                    email = :email,
+                    profile_img = :profile_img,
+                    background_img = :background_img
                     WHERE 
                         id = :id";
         
             $stmt = $this->conn->prepare($sqlQuery);
         
             $this->user_name=htmlspecialchars(strip_tags($this->user_name));
-            // $this->last_name=htmlspecialchars(strip_tags($this->last_name));
+            $this->phone=htmlspecialchars(strip_tags($this->phone));
             $this->email=htmlspecialchars(strip_tags($this->email));
+            $this->profile_img=htmlspecialchars(strip_tags($this->profile_img));
+            $this->background_img=htmlspecialchars(strip_tags($this->background_img));
             $this->id=htmlspecialchars(strip_tags($this->id));
         
             // bind data
             $stmt->bindParam(":user_name", $this->user_name);
-            // $stmt->bindParam(":last_name", $this->last_name);
+            $stmt->bindParam(":phone", $this->phone);
             $stmt->bindParam(":email", $this->email);
+            $stmt->bindParam(":profile_img", $this->profile_img);
+            $stmt->bindParam(":background_img", $this->background_img);
             $stmt->bindParam(":id", $this->id);
         
             if($stmt->execute()){
@@ -124,20 +133,20 @@
             return false;
         }
 
-        // DELETE User
-        // function deleteUser(){
-        //     $sqlQuery = "DELETE FROM " . $this->dbTable . " WHERE id = ?";
-        //     $stmt = $this->conn->prepare($sqlQuery);
+       // DELETE User
+        function deleteUser(){
+            $sqlQuery = "DELETE FROM " . $this->dbTable . " WHERE id = ?";
+            $stmt = $this->conn->prepare($sqlQuery);
         
-        //     $this->id=htmlspecialchars(strip_tags($this->id));
+            $this->id=htmlspecialchars(strip_tags($this->id));
         
-        //     $stmt->bindParam(1, $this->id);
+            $stmt->bindParam(1, $this->id);
         
-        //     if($stmt->execute()){
-        //         return true;
-        //     }
-        //     return false;
-        // }
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
+        }
 
     
         public function findUser (){
@@ -159,9 +168,7 @@
                 echo "user not found";
             }
 
-            // $this->user_name = $dataRow['user_name'];
-            // $this->last_name = $dataRow['last_name'];
-            // $this->email = $dataRow['email'];
+            
 
         }
     }      

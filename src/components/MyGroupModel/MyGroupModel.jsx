@@ -1,45 +1,45 @@
 import { Modal, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
-// import UserService from "../../../apis/UserService";
+import GroupService from "../../apis/GroupService";
 
 function MyGroupModel({ modalOpened, setModalOpened }) {
   const theme = useMantineTheme();
+
   const [data, setData] = useState({
-    user_name:"",
-    phone:"",
-    email:"",
-    profileImg:"",
-    coverImg:"",
-  })
-  const handleChange = (e)=>{
-    const newData = { ...data }
-    newData[e.target.name] = e.target.value
-    setData(newData)
-    console.log(newData)
-  }
-  const handleImage = (e) =>{
-    const newData = { ...data }
-    newData[e.target.name] = e.target.files[0]
-    setData(newData)
-    console.log(newData)
-  }
+    group_name:"",
+    group_img :"",
+    })
+
+
+    const handleChange = (e)=>{
+      const newData = { ...data }
+      newData[e.target.name] = e.target.value
+      setData(newData)
+      console.log(newData)
+    }
+
+    const handleImage = (e) =>{
+      const newData = { ...data }
+      newData[e.target.name] = e.target.files[0]
+      setData(newData)
+      console.log(newData)
+
+    }
+
+
   const handelsubmit = (e) => {
     e.preventDefault();
     const formData = new FormData()
-    formData.append('user_name', data.user_name)
-    formData.append('phone', data.phone)
-    formData.append('email', data.email)
-    formData.append('profileImg', data.profileImg)
-    formData.append('coverImg', data.coverImg)
-    console.log(formData.get('user_name'))
-    console.log(formData.get('phone'))
-    console.log(formData.get('email'))
-    console.log(formData.get('profileImg'))
-    console.log(formData.get('coverImg'))
-    // UserService.createUser(formData).then(function(res){
-    //   console.log(res)
-    //   }) 
-  }
+    formData.append('group_name', data.group_name)
+    formData.append('group_img', data.group_img)
+    
+    console.log(formData.get('group_name'))
+    console.log(formData.get('group_img'))
+    GroupService.createGroup(formData).then(function(res){
+      console.log(res)
+      }) 
+    }
+
   return (
     <Modal
       overlayColor={
@@ -54,51 +54,28 @@ function MyGroupModel({ modalOpened, setModalOpened }) {
       onClose={() => setModalOpened(false)}
     >
       <form onSubmit={handelsubmit} className="infoForm">
-        <h3>Your info</h3>
+        <h1>Group info</h1>
 
         <div>
           <input
             type="text"
             onChange={handleChange}
             className="infoInput"
-            value={data.user_name}
-            name="user_name"
-            placeholder="Full Name"
+            name="group_name"
+            placeholder="Group Name"
           />
 
-          <input
-            type="text"
-            onChange={handleChange}
-            className="infoInput"
-            value={data.phone}
-            name="phone"
-            placeholder="Phone"
-          />
         </div>
 
-        <div>
-           <input
-            type="text"
-            onChange={handleChange}
-            className="infoInput"
-            value={data.email}
-            name="email"
-            placeholder="Email"
-          />
-        </div>
-
-      
+        
 
         <div>
-            Profile Image 
-            <input type="file" name='profileImg'  onChange={handleImage}
-            />
+
             Cover Image
-            <input type="file" name="coverImg"  onChange={handleImage}
-            />
+            <input type="file" name="group_img"  onChange={handleImage}/>
         </div>
 
-        <button className="button infoButton">Update</button>
+        <button type="submit" className="button infoButton">Update</button>
       </form>
     </Modal>
   );
