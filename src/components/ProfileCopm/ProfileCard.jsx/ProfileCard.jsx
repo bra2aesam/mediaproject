@@ -4,7 +4,8 @@ import Cover from "../../../img/cover.jpg";
 import Profile from "../../../img/profileImg.jpg";
 import "./ProfileCard.css";
 
-const ProfileCard = () => {
+const ProfileCard = ({user, timelinePosts, friends}) => {
+  // console.log(user);
   const ProfilePage = true;
   return (
     <div className="ProfileCard">
@@ -14,7 +15,7 @@ const ProfileCard = () => {
     </div>
 
     <div className="ProfileName">
-      <span>Zendaya MJ</span>
+      <span>{user && user.user_name}</span>
       <span>Senior UI/UX Designer</span>
     </div>
 
@@ -22,7 +23,7 @@ const ProfileCard = () => {
       <hr />
       <div>
         <div className="follow">
-          <span>6,890</span>
+          <span>{friends && friends.length}</span>
           <span>My Friend</span>
         </div>
         <div className="vl"></div>
@@ -35,7 +36,7 @@ const ProfileCard = () => {
           <>
             <div className="vl"></div>
             <div className="follow">
-              <span>3</span>
+              <span>{timelinePosts && timelinePosts.length}</span>
               <span>Posts</span>
             </div>
           </>

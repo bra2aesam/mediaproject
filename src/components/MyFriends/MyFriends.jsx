@@ -1,24 +1,25 @@
 import React from "react";
-import "./MyGroup.css";
+import "./MyFriends.css";
 import { UilPlusSquare } from "@iconscout/react-unicons";
 
 import { TrendData } from "../../Data/TrendData.js";
-const MyGroup = () => {
+const MyFriends = ({friends}) => {
+  // console.log(friends)
   return (
     <div className="Trend">
       <div className="TrendCard">
         <h3 className="groupsheder">
-          My Groups <UilPlusSquare />
+        My Friends <UilPlusSquare />
         </h3>
         <hr />
-        {TrendData.map((trend, id) => {
+        {friends && friends.map((e, id) => {
           return (
             <div key={id} className="trend">
               <div>
-                <img src={trend.img} alt="" className="trendImage" />
+                <img src={TrendData[0].img} alt="" className="trendImage" />
                 <div className="gname">
-                  <span>{trend.name}</span>
-                  <span>{trend.shares} member</span>
+                  <span>{e.user_name}</span>
+                  <span>friends</span>
                 </div>
               </div>
               {/* <hr /> */}
@@ -32,4 +33,4 @@ const MyGroup = () => {
   );
 };
 
-export default MyGroup;
+export default MyFriends;

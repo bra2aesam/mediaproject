@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const USER_API_URL = "http://localhost/mediaproject/backend/user";
+const USER_API_URL = "http://localhost/mediasocial/backend/user";
 
 class UserService {
 
