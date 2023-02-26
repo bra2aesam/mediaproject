@@ -1,6 +1,6 @@
 import React from 'react'
-import FollowersCard from '../../FollowersCard/FollowersCard'
 import LogoSearch from '../../LogoSearch/LogoSearch'
+import MyGroup from '../../MyGroup/MyGroup'
 import ProfileCard from '../ProfileCard.jsx/ProfileCard'
 
 import "./ProfileSide.css"
@@ -9,7 +9,7 @@ const ProfileSide = () => {
     <div className="ProfileSide">
         <LogoSearch/>
         <ProfileCard/>
-        <FollowersCard/>
+        <MyGroup/>
     </div>
   )
 }

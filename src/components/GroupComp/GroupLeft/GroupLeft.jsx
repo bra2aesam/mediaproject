@@ -1,6 +1,6 @@
 import React from 'react'
-import FollowersCard from '../../FollowersCard/FollowersCard'
 import LogoSearch from '../../LogoSearch/LogoSearch'
+import MyGroup from '../../MyGroup/MyGroup'
 import InfoGroupCard from '../InfoGroupCard/InfoGroupCard'
 
 export default function GroupLeft() {
@@ -8,7 +8,7 @@ export default function GroupLeft() {
     <div className="ProfileSide">
     <LogoSearch/>
     <InfoGroupCard/>
-    <FollowersCard/>
+    <MyGroup/>
 </div>
   )
 }

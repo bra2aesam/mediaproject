@@ -5,7 +5,6 @@ import GroupPostSide from '../../components/GroupComp/GroupPostSide/GroupPostSid
 import IconHome from '../../components/IconHome/IconHome'
 import PostSide from '../../components/PostSide/PostSide'
 import RightSide from '../../components/RightSide/RightSide'
-import TrendCard from '../../components/TrendCard/TrendCard'
 
 
 export default function Group() {

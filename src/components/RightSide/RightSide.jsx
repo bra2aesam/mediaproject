@@ -4,8 +4,10 @@ import Home from "../../img/home.png";
 import Noti from "../../img/noti.png";
 import { UilSetting } from "@iconscout/react-unicons";
 import Comment from "../../img/comment.png";
-import TrendCard from "../TrendCard/TrendCard";
 import ShareModal from "../ShareModal/ShareModal";
+import MyGroup from "../MyGroup/MyGroup";
+import GroupForYou from "../GroupForYou/GroupForYou";
+import FollowersCard from "../FollowersCard/FollowersCard";
 
 const RightSide = () => {
   const [modalOpened, setModalOpened] = useState(false);
@@ -18,7 +20,8 @@ const RightSide = () => {
         <img src={Comment} alt="" />
       </div>
 
-      <TrendCard />
+      <FollowersCard />
+      <GroupForYou />
 
       <button className="button r-button" onClick={() => setModalOpened(true)}>
         Share

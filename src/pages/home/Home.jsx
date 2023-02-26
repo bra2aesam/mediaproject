@@ -1,5 +1,5 @@
 import React from 'react'
-import ProfileSide from   '../../components/ProfileCopm/profileSide/ProfileSide'
+import   ProfileSide from   '../../components/ProfileCopm/profileSide/ProfileSide'
 import PostSide from '../../components/PostSide/PostSide'
 import RightSide from '../../components/RightSide/RightSide'
 import './Home.css'

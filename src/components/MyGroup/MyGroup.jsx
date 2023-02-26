@@ -1,9 +1,9 @@
 import React from "react";
-import "./TrendCard.css";
+import "./MyGroup.css";
 import { UilPlusSquare } from "@iconscout/react-unicons";
 
 import { TrendData } from "../../Data/TrendData.js";
-const TrendCard = () => {
+const MyGroup = () => {
   return (
     <div className="Trend">
       <div className="TrendCard">
@@ -52,4 +52,4 @@ const TrendCard = () => {
   );
 };
 
-export default TrendCard;
+export default MyGroup;
