@@ -6,13 +6,31 @@ import { UilPlayCircle } from "@iconscout/react-unicons";
 import { UilLocationPoint } from "@iconscout/react-unicons";
 import { UilSchedule } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
+import PostService from "../../apis/PostService";
 
 
 const PostShare = () => {
   const [image, setImage] = useState(null);
   const imageRef = useRef();
 
+  const [postData, setPostData] = useState({
+    myImage:"",
+    body:"",
+    user_id:1,
+    group_id:0,
+  });
+  const handleChange = (e)=>{
+    const newData = { ...postData }
+    newData[e.target.name] = e.target.value
+    setPostData(newData)
+    console.log(newData)
+  }
+
   const onImageChange = (event) => {
+    const newData = { ...postData }
+    newData[event.target.name] = event.target.files[0]
+    setPostData(newData)
+    console.log(newData)
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
       setImage({
@@ -20,12 +38,29 @@ const PostShare = () => {
       });
     }
   };
+  const handelClick = () => {
+    const formData = new FormData()
+    formData.append('post_img', postData.myImage)
+    formData.append('body', postData.body)
+    formData.append('user_id', postData.user_id)
+    formData.append('group_id', postData.group_id)
+    
+    console.log(formData.get('post_img'))
+    console.log(formData.get('body'))
+    console.log(formData.get('user_id'))
+    console.log(formData.get('group_id'))
+    PostService.createPost(formData).then(function(res){
+      console.log(res)
+      }) 
+    console.log(postData)
+    }
+
   return (
     <div className="PostShare">
       <img src={ProfileImage} alt="" />
       <div>
         <div className="postOptions">
-        <input type="text" placeholder="What's happening" className="div"/>
+        <input type="text" name="body" onChange={handleChange} placeholder="What's happening" className="div"/>
           <span className="option" style={{ color: "var(--photo)" }}
           onClick={()=>imageRef.current.click()}
           >
@@ -33,7 +68,7 @@ const PostShare = () => {
             Photo
           </span>
 
-          <button className="button ps-button">Share</button>
+          <button className="button ps-button" onClick={handelClick}>Share</button>
           <div style={{ display: "none" }}>
             <input
               type="file"
