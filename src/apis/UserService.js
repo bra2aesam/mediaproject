@@ -17,7 +17,7 @@ class UserService {
             { params: { id: id } });
     }
     finduser(user){
-        return axios.post (`${USER_API_URL}/finduser.php`, user);
+        return axios.post(`${USER_API_URL}/finduser.php`, user);
 
     }
 

@@ -38,11 +38,11 @@ const InfoCard = ({user}) => {
       </div>
 
       <div className="info">
-        <span>
-          <b>Works at </b>
-        </span>
-        <span>Zainkeepscode inst</span>
-      </div>
+      <span>
+        <b>Works at </b>
+      </span>
+      <span>Zainkeepscode inst</span>
+    </div>
 
       <button className="button logout-button">Logout</button>
     </div>
