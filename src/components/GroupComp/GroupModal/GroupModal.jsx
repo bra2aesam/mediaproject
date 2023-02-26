@@ -1,7 +1,45 @@
 import { Modal, useMantineTheme } from "@mantine/core";
+import { useState } from "react";
+import GroupService from "../../../apis/GroupService";
+
 
 function GroupModal({ modalOpened, setModalOpened }) {
   const theme = useMantineTheme();
+
+  const [data, setData] = useState({
+    group_name:"",
+    group_img :"",
+    })
+
+
+    const handleChange = (e)=>{
+      const newData = { ...data }
+      newData[e.target.name] = e.target.value
+      setData(newData)
+      console.log(newData)
+    }
+
+    const handleImage = (e) =>{
+      const newData = { ...data }
+      newData[e.target.name] = e.target.files[0]
+      setData(newData)
+      console.log(newData)
+
+    }
+
+
+  const handelsubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData()
+    formData.append('group_name', data.group_name)
+    formData.append('group_img', data.group_img)
+    
+    console.log(formData.get('group_name'))
+    console.log(formData.get('group_img'))
+    GroupService.updateGroup(formData).then(function(res){
+      console.log(res)
+      }) 
+    }
 
   return (
     <Modal
@@ -16,35 +54,29 @@ function GroupModal({ modalOpened, setModalOpened }) {
       opened={modalOpened}
       onClose={() => setModalOpened(false)}
     >
-      <form className="infoForm">
+      <form onSubmit={handelsubmit} className="infoForm">
         <h1>Group info</h1>
 
         <div>
           <input
             type="text"
+            onChange={handleChange}
             className="infoInput"
-            name="GroupName"
+            name="group_name"
             placeholder="Group Name"
           />
 
         </div>
 
-        <div>
-          <input
-            type="text"
-            className="infoInput"
-            name="GroupDescription"
-            placeholder="Group Description"
-          />
-        </div>
+        
 
         <div>
 
             Cover Image
-            <input type="file" name="coverImg" />
+            <input type="file" name="group_img"  onChange={handleImage}/>
         </div>
 
-        <button className="button infoButton">Update</button>
+        <button type="submit" className="button infoButton">Update</button>
       </form>
     </Modal>
   );

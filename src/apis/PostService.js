@@ -29,10 +29,10 @@ class UserService {
     }
   
 
-    // deleteUser(id){
-    //     return axios.delete(`${USER_API_URL}/delete.php`, 
-    //                                 { params: { id: id } });
-    // }
+    deleteUser(id){
+        return axios.delete(`${USER_API_URL}/delete.php`, 
+                                    { params: { id: id } });
+    }
 }
 
 export default new UserService()
