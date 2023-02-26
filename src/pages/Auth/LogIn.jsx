@@ -1,14 +1,39 @@
 import React from "react";
 import "./Auth.css";
 import Logo from "../../img/logo.png";
+import UserService from '../../apis/UserService';
+import { NavLink, useNavigate } from "react-router-dom";
+
 
 function LogIn() {
+  const navigate = useNavigate();
+
+  
+
+  const handelsubmit = (e) => {
+    e.preventDefault();
+
+    const user = {
+      email:e.target.email.value,
+      password:e.target.password.value,
+    }
+    
+
+    UserService.finduser(JSON.stringify(user)).then(function(res){
+        if (res.data == "user not found"){
+          console.log(res.data)
+        }else {
+          navigate("/");
+        }
+      })}
+
     return (
+     
         <div className="Auth">
       <div className="a-left">
         <img src={Logo} alt="" />
         <div className="Webname">
-          <h1>ZKC Media</h1>
+          <h1>Notela</h1>
           <h6>Explore the ideas throughout the world</h6>
         </div>
       </div>
@@ -16,15 +41,15 @@ function LogIn() {
      
     
       <div className="a-right">
-        <form className="infoForm authForm">
+        <form onSubmit={handelsubmit} className="infoForm authForm">
           <h3>Log In</h3>
   
           <div>
             <input
               type="text"
-              placeholder="Username"
+              placeholder="email"
               className="infoInput"
-              name="username"
+              name="email"
             />
           </div>
   
@@ -39,13 +64,14 @@ function LogIn() {
   
           <div>
               <span style={{ fontSize: "12px" }}>
-                Don't have an account Sign up
+                Don't have an account <NavLink to="/signUp" >Sign up</NavLink>
               </span>
-            <button className="button infoButton">Login</button>
+            <button type="submit" className="button infoButton">Login</button>
           </div>
         </form>
       </div>
       </div>
+     
     );
   }
 
