@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./InfoCard.css";
 import { UilPen } from "@iconscout/react-unicons";
-import ProfileModal from "../ProfileModal.jsx/ProfileModal";
+import ProfileModal from "../ProfileCopm/ProfileModal.jsx/ProfileModal";
 
 const InfoCard = () => {
   const [modalOpened, setModalOpened] = useState(false);
   return (
     <div className="InfoCard">
-      <div className="infoHead">
+      <div className="infoHead Ginfo">
         <h4>Your Info</h4>
         <div>
           <UilPen

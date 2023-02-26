@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import "./InfoGroupCard.css";
 import { UilPen } from "@iconscout/react-unicons";
-import ProfileModal from "../ProfileModal.jsx/ProfileModal";
+import { UilSignout } from '@iconscout/react-unicons'
+import GroupModal from "../GroupModal/GroupModal";
 
 const InfoGroupCard = () => {
   const [modalOpened, setModalOpened] = useState(false);
   return (
-    <div className="InfoCard">
-      <div className="infoHead">
-        <h4>Your Info</h4>
+    <div className="InfoGroupCard">
+      <div className="infoHead Ginfo">
+        <h3>Group Info</h3>
         <div>
           <UilPen
             width="2rem"
             height="1.2rem"
             onClick={() => setModalOpened(true)}
           />
-          <ProfileModal
+          <GroupModal
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}
           />
@@ -24,26 +25,26 @@ const InfoGroupCard = () => {
 
       <div className="info">
         <span>
-          <b>Status </b>
+          <b>Group Name : </b>
         </span>
-        <span>in Relationship</span>
+        <span>Zendaya MJ</span>
       </div>
 
       <div className="info">
         <span>
-          <b>Lives in </b>
+          <b>Admin : </b>
         </span>
-        <span>Multan</span>
+        <span>Z. Endeya</span>
       </div>
 
       <div className="info">
         <span>
-          <b>Works at </b>
+          <b>Group Description : </b>
         </span>
-        <span>Zainkeepscode inst</span>
+        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, aliquam.</span>
       </div>
 
-      <button className="button logout-button">Logout</button>
+      <button className="button logout-buttoni"><UilSignout/>Leave Group</button>
     </div>
   );
 };

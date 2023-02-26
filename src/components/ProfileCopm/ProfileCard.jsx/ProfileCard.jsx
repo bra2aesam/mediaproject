@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Cover from "../../img/cover.jpg";
-import Profile from "../../img/profileImg.jpg";
+import Cover from "../../../img/cover.jpg";
+import Profile from "../../../img/profileImg.jpg";
 import "./ProfileCard.css";
 
 const ProfileCard = () => {
