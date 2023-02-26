@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Post.css'
 import Comment from '../../img/comment.png'
-import Share from '../../img/share.png'
 import Heart from '../../img/like.png'
 import NotLike from '../../img/notlike.png'
+import { UilEditAlt } from '@iconscout/react-unicons'
+import PostModal from '../PostModal/PostModal'
 
 
 const Post = ({post, img}) => {
+  const [modalOpened, setModalOpened] = useState(false);
+
   // console.log(post, img)
   return (
     <div className="Post">
       {/* add user image */}
       {/* add user user name */}
-      <span><b>{post.user_name}</b></span>
+      <span className='postedit'><b>{post.user_name}</b><UilEditAlt  className="moPo"
+            onClick={() => setModalOpened(true)}/>
+      <PostModal 
+            modalOpened={modalOpened}
+            setModalOpened={setModalOpened}
+          />
+      </span>
+      
             <span> {post.body}</span>
         <img src={img} alt="" />
 

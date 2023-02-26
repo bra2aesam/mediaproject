@@ -20,3 +20,14 @@
     align-items: flex-start;
     gap: 1.5rem;
 }
+
+.postedit{
+    display: flex;
+    justify-content: space-between;
+}
+
+.moPo{
+    cursor: pointer;
+    /* color: #3c1bc0; */
+
+}
