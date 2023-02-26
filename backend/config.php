@@ -1,7 +1,7 @@
 <?php 
     class DB {
         private $host = "localhost";
-        private $db = "react_project";
+        private $db = "social_media";
         private $username = "root";
         private $password = "";
 

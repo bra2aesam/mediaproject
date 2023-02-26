@@ -8,7 +8,7 @@ import {  NavLink, useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const [errorfname,setErrorsfname]=useState(false)
-  const [errorlname,setErrorslname]=useState(false)
+  // const [errorlname,setErrorslname]=useState(false)
   const [erroremail,setErrorsemail]=useState(false)
   const [errorpassword,setErrorspassword]=useState(false)
   const [errorconpassword,setErrorsconpassword]=useState(false)
@@ -36,18 +36,18 @@ export default function SignUp() {
     const passreg = "^.{8,}$";
     const emailreg = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$";
     console.log(value);
-    console.log(errorfname  , errorlname , erroremail , errorpassword , errorconpassword)
+    console.log(errorfname   , erroremail , errorpassword , errorconpassword)
 
     switch (name) {
-      case 'lastName':
-      if (! (value.match(namereg))){
-        seterrornamemsg ('Name must contain just letters !')
-        setErrorslname(false)}
-      else {setErrorslname(true);
-        seterrornamemsg ('')
-      }
-      break;
-      case 'firstName':
+      // case 'lastName':
+      // if (! (value.match(namereg))){
+      //   seterrornamemsg ('Name must contain just letters !')
+      //   setErrorslname(false)}
+      // else {setErrorslname(true);
+      //   seterrornamemsg ('')
+      // }
+      // break;
+      case 'user_name':
       if (! (value.match(namereg))){
         seterrornamemsg ('Name must contain just letters !')
         setErrorsfname(false)}
@@ -87,7 +87,7 @@ export default function SignUp() {
   const handlesubmit =  (e) =>{
     e.preventDefault();
     setAccept(true);
-    if (errorfname  && errorlname && erroremail && errorpassword && errorconpassword){
+    if (errorfname   && erroremail && errorpassword && errorconpassword){
 
     (UserService.createUser(JSON.stringify(data)).then(function(res){
       if(res.data == 'Your Email is Already Exist"Failed to create user."'){
@@ -119,7 +119,7 @@ export default function SignUp() {
             onChange={handlechange}
             placeholder="First Name"
             className="infoInput"
-            name="firstName"
+            name="user_name"
           />
           <input
             type="text"
@@ -161,7 +161,7 @@ export default function SignUp() {
             name="confirmPssword"
             placeholder="Confirm Password"
           />
-          {accept && <p style={{color:"red"}}>{errorconpasswordmsg}</p>}
+        
 
         </div>
 
