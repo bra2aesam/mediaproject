@@ -1,38 +1,38 @@
 import axios from 'axios';
 
-const USER_API_URL = "http://localhost/mediasocial/backend/user";
+const API_URL = "http://localhost/mediasocial/backend/post";
 
 
-class UserService {
+class PostService {
 
-    getUsers(){
-        return axios.get(`${USER_API_URL}/read.php`);
+    getPost(){
+        return axios.get(`${API_URL}/read.php`);
     }
 
-    createUser(user){
-        return axios.post(`${USER_API_URL}/create.php`, user);
+    createPost(post){
+        return axios.post(`${API_URL}/create.php`, post);
     }
   
 
-    getUserById(id){
-        return axios.get(`${USER_API_URL}/single_user.php`, 
+    getPostById(id){
+        return axios.get(`${API_URL}/single_user.php`, 
             { params: { id: id } });
     }
-    finduser(user){
-        return axios.post(`${USER_API_URL}/finduser.php`, user);
+    findPost(post){
+        return axios.post(`${API_URL}/finduser.php`, post);
 
     }
 
-    updateUser(user){
-        return axios.post(`${USER_API_URL}/update.php`, user);
+    updatePost(post){
+        return axios.post(`${API_URL}/update.php`, post);
    
     }
   
 
-    deleteUser(id){
-        return axios.delete(`${USER_API_URL}/delete.php`, 
+    deletePost(id){
+        return axios.delete(`${API_URL}/delete.php`, 
                                     { params: { id: id } });
     }
 }
 
-export default new UserService()
+export default new PostService()
