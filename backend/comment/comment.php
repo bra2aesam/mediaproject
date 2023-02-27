@@ -5,14 +5,14 @@
         private $conn;
 
         // table
-        private $dbTable = "posts";
+        private $dbTable = "comments";
 
         // col
         public $id;
-        public $post_img;
-        public $body;
-        public $user_id;
-        public $group_id;
+        public $user_id ;
+        public $post_id ;
+        public $comment_body;
+    
        
         
        
@@ -36,25 +36,25 @@
                 $sqlQuery = "INSERT INTO
                         ". $this->dbTable ."
                     SET
-                    post_img = :post_img, 
+                    post_id = :post_id, 
                     user_id = :user_id, 
-                    group_id = :group_id, 
-                    body = :body";
+                    comment_body = :comment_body"; 
+              
 
                 $stmt = $this->conn->prepare($sqlQuery);
         
                 // sanitize
-                $this->post_img=htmlspecialchars(strip_tags($this->post_img));
+                $this->post_id=htmlspecialchars(strip_tags($this->post_id));
                 $this->user_id=htmlspecialchars(strip_tags($this->user_id));
-                $this->group_id=htmlspecialchars(strip_tags($this->group_id));
-                $this->body=htmlspecialchars(strip_tags($this->body));
+                $this->comment_body=htmlspecialchars(strip_tags($this->comment_body));
+               
                 
                        
                 // bind data
-                $stmt->bindParam(":post_img", $this->post_img);
+                $stmt->bindParam(":post_id", $this->post_id);
                 $stmt->bindParam(":user_id", $this->user_id);
-                $stmt->bindParam(":group_id", $this->group_id);
-                $stmt->bindParam(":body", $this->body);
+                $stmt->bindParam(":comment_body", $this->comment_body);
+                
                
                 if($stmt->execute()){
                    return true;
@@ -92,39 +92,33 @@
     // }      
         
 
-       // UPDATE group
-        public function updatePost(){
-            $sqlQuery = "UPDATE
-                        ". $this->dbTable ."
-                    SET
-                    post_img = :post_img, 
-                    body = :body,
-                    group_id = :group_id,
-                    user_id = :user_id
+        // UPDATE group
+    //     public function updateGroup(){
+    //         $sqlQuery = "UPDATE
+    //                     ". $this->dbTable ."
+    //                 SET
+    //                 group_name = :group_name, 
+    //                 group_img = :group_img
                     
-                    WHERE 
-                        id = :id";
+    //                 WHERE 
+    //                     id = :id";
         
-            $stmt = $this->conn->prepare($sqlQuery);
+    //         $stmt = $this->conn->prepare($sqlQuery);
         
-            $this->post_img=htmlspecialchars(strip_tags($this->post_img));
-            $this->body=htmlspecialchars(strip_tags($this->body));
-            $this->group_id=htmlspecialchars(strip_tags($this->group_id));
-            $this->user_id=htmlspecialchars(strip_tags($this->user_id));
-            $this->id=htmlspecialchars(strip_tags($this->id));
+    //         $this->group_name=htmlspecialchars(strip_tags($this->group_name));
+    //         $this->group_img=htmlspecialchars(strip_tags($this->group_img));
+    //         $this->id=htmlspecialchars(strip_tags($this->id));
         
-            // bind data
-            $stmt->bindParam(":post_img", $this->post_img);
-            $stmt->bindParam(":body", $this->body);
-            $stmt->bindParam(":group_id", $this->group_id);
-            $stmt->bindParam(":user_id", $this->user_id);
-            $stmt->bindParam(":id", $this->id);
+    //         // bind data
+    //         $stmt->bindParam(":group_name", $this->group_name);
+    //         $stmt->bindParam(":group_img", $this->group_img);
+    //         $stmt->bindParam(":id", $this->id);
         
-            if($stmt->execute()){
-               return true;
-            }
-            return false;
-        }
+    //         if($stmt->execute()){
+    //            return true;
+    //         }
+    //         return false;
+    //     }
 
     //    // DELETE User
     //     function deleteUser(){
@@ -142,6 +136,27 @@
     //     }
 
     
-      
+        // public function findUser (){
+        //     $sqlQuery = "SELECT
+        //                 *
+        //                 FROM
+        //                 ". $this->dbTable ."
+        //                 WHERE email = :email AND password = :password LIMIT 0,1";
+
+        //     $stmt = $this->conn->prepare($sqlQuery);
+        //     $stmt->bindParam(":email", $this->email);
+        //     $stmt->bindParam(":password", $this->password);
+        //     $stmt->execute();
+        //     $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
+        //     return $dataRow;
+        //     if ($dataRow) {
+        //         echo (json_decode($dataRow));
+        //     }else {
+        //         echo "user not found";
+        //     }
+
+            
+
+        // }
     }      
 ?>

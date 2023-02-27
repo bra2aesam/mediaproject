@@ -18,6 +18,7 @@ const Post = ({post, img}) => {
       <span className='postedit'><b>{post.user_name}</b><UilEditAlt  className="moPo"
             onClick={() => setModalOpened(true)}/>
       <PostModal 
+            post={post}
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}
           />

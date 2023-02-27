@@ -11,7 +11,7 @@
     $database = new DB();
     $db = $database->getConnection();
 
-    $post = new post($db);
+    $post = new Post($db);
     if(count($_FILES) > 0) {
         if($_FILES["post_img"]){
             $post->post_img=$_FILES["post_img"]["name"];
@@ -20,16 +20,13 @@
        
     }
 
-    $post->id= $_POST["id"];
-    $post->body=$_POST["body"];
     $post->user_id=$_POST["user_id"];
+    $post->body=$_POST["body"];
     $post->group_id=$_POST["group_id"];
     
-    
-    
 
-    if($post->updatePost()){
-        echo json_encode("post update.");
+    if($post->createPost()){
+        echo json_encode("post created.");
 
     } else{
         echo json_encode("Failed to create post.");
