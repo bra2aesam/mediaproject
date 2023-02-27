@@ -82,7 +82,7 @@ function PostModal({ modalOpened, setModalOpened, post }) {
                     <img src={ProfileImage} alt="" />
                     <div />
                     <div className="viewsec">
-                      <b style={{fontSize:'20px'}}>{post.user_name}</b>
+                      <b style={{fontSize:'20px'}}>{c.user_name}</b>
                       <p>
                         {c.comment_body}
                       </p>

@@ -15,7 +15,7 @@ function App() {
           <Route path="/profile/:id" element={<Profile/>}/>
           <Route path="/logIn" element={<LogIn/>}/>
           <Route path="/signUp" element={<SignUp/>}/>
-          <Route path="/group" element={<Group/>}/>
+          <Route path="/group/:id" element={<Group/>}/>
       
        
         </Routes>
