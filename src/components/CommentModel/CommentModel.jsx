@@ -9,6 +9,7 @@ import "./CommentModel.css"
 function PostModal({ modalOpened, setModalOpened, post }) {
   // console.log(post)
   const theme = useMantineTheme();
+  const user = JSON.parse(localStorage.getItem("user"))
   const [comment, setComment] = useState([])
   // console.log(comment);
   const imageRef = useRef();
@@ -24,7 +25,7 @@ function PostModal({ modalOpened, setModalOpened, post }) {
       }) 
   },[])
   const [commentData, setcommentData] = useState({
-    user_id: 1,
+    user_id: user.id,
     comment_body: '',
     id: post.id,
   });

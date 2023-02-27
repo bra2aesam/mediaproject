@@ -2,7 +2,7 @@ import React from "react";
 import "./Auth.css";
 import Logo from "../../img/logo.png";
 import UserService from '../../apis/UserService';
-import { NavLink, useNavigate } from "react-router-dom";
+import { json, NavLink, useNavigate } from "react-router-dom";
 
 
 function LogIn() {
@@ -23,6 +23,8 @@ function LogIn() {
         if (res.data == "user not found"){
           console.log(res.data)
         }else {
+          // console.log(res.data)
+          localStorage.setItem("user", JSON.stringify(res.data))
           navigate("/");
         }
       })}

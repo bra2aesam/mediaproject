@@ -8,15 +8,21 @@ import ShareModal from "../ShareModal/ShareModal";
 import MyGroup from "../MyGroup/MyGroup";
 import GroupForYou from "../GroupForYou/GroupForYou";
 import FollowersCard from "../FollowersCard/FollowersCard";
+import { Link } from "react-router-dom";
 
 const RightSide = ({friendsRequest}) => {
   // console.log(friendsRequest);
   const [modalOpened, setModalOpened] = useState(false);
+  const user = JSON.parse(localStorage.getItem("user"))
   return (
     <div className="RightSide">
       <div className="navIcons">
-        <img src={Home} alt="" />
-        <UilSetting />
+      <Link to={'/'}>
+      <img src={Home} alt="" />
+      </Link>
+      <Link to={`/profile/${user.id}`}>
+      <UilSetting />
+      </Link>  
         <img src={Noti} alt="" />
         <img src={Comment} alt="" />
       </div>

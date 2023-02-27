@@ -12,7 +12,7 @@ function App() {
         <div className="blur" style={{top: '36%', left: '-8rem'}}></div>
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/profile/:id" element={<Profile/>}/>
           <Route path="/logIn" element={<LogIn/>}/>
           <Route path="/signUp" element={<SignUp/>}/>
           <Route path="/group" element={<Group/>}/>

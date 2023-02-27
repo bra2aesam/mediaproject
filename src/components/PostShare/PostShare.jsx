@@ -12,11 +12,13 @@ import PostService from "../../apis/PostService";
 const PostShare = () => {
   const [image, setImage] = useState(null);
   const imageRef = useRef();
+  const user = JSON.parse(localStorage.getItem("user"))
+  // console.log(user.id)
 
   const [postData, setPostData] = useState({
     myImage:"",
     body:"",
-    user_id:1,
+    user_id:user.id,
     group_id:0,
   });
   const handleChange = (e)=>{

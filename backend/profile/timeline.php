@@ -8,7 +8,10 @@
 include '../config.php';
 $objDb = new DB;
 $conn = $objDb->getConnection();
-$user_id = 1;
+$user = json_decode( file_get_contents('php://input') );
+// print_r(json_encode($user)) ;
+// exit;
+$user_id = $user->id;
 // user 
 $sql = "SELECT * FROM users WHERE id = :id";
 $stmt = $conn->prepare($sql);

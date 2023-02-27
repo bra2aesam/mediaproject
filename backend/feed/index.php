@@ -9,9 +9,12 @@ header("Access-Control-Allow-Headers: Content-Type,Access-Control-Allow-Headers,
 include '../config.php';
 $objDb = new DB;
 $conn = $objDb->getConnection();
-$user_id = 1;
+$user = json_decode( file_get_contents('php://input') );
+// print_r(json_encode($user)) ;
+// exit;
+$user_id = $user->id;
 // user posts timeline with out his group posts
-$sql = "SELECT * FROM posts WHERE user_id = :user_id AND group_id = 0";
+$sql = "SELECT posts.id, user_name, user_id, group_id, body FROM posts INNER JOIN users ON posts.user_id = users.id  WHERE user_id = :user_id AND group_id = 0";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();

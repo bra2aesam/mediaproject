@@ -7,11 +7,12 @@ import PostService from "../../apis/PostService";
 function PostModal({ modalOpened, setModalOpened,post }) {
   const theme = useMantineTheme();
   // console.log(post)
-
+  const user = JSON.parse(localStorage.getItem("user"))
+  // console.log(user.id)
   const [postData, setPostData] = useState({
     myImage:"",
     body:"",
-    user_id:1,
+    user_id:user.id,
     group_id:0,
     id :post.id
   });
@@ -64,7 +65,7 @@ function PostModal({ modalOpened, setModalOpened,post }) {
       onClose={() => setModalOpened(false)}
     >
       <form onSubmit={handelsubmit} className="infoForm">
-        <h1>Group info</h1>
+        <h1>Update Post</h1>
 
         <div>
           <input
@@ -72,7 +73,7 @@ function PostModal({ modalOpened, setModalOpened,post }) {
             onChange={handleChange}
             className="infoInput"
             name="body"
-            placeholder="Group Name"
+            placeholder="What's on your mind ?"
           />
 
         </div>
@@ -81,11 +82,12 @@ function PostModal({ modalOpened, setModalOpened,post }) {
 
         <div>
 
-            Cover Image
+            Change Image
             <input type="file" name="myImage"  onChange={handleImage}/>
         </div>
 
-        <button type="submit" className="button infoButton">Update</button>
+        <button type="submit" className="button infoButton" onClick={() => setModalOpened(false)}
+        >Update</button>
       </form>
     </Modal>
   );
