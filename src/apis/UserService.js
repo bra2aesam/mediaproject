@@ -9,10 +9,16 @@ class UserService {
         return axios.get(`${USER_API_URL}/read.php`);
     }
 
+    getUserData(user){
+        return axios.post(`http://localhost/mediasocial/backend/feed/index.php`, user);
+    }
+    getUserDataTimeline(user){
+        return axios.post(`http://localhost/mediasocial/backend/profile/timeline.php`, user);
+    }
+
     createUser(user){
         return axios.post(`${USER_API_URL}/create.php`, user);
     }
-  
 
     getUserById(id){
         return axios.get(`${USER_API_URL}/single_user.php`, 

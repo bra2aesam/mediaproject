@@ -4,13 +4,25 @@ import RightSide from '../../components/RightSide/RightSide'
 import './Home.css'
 import HomePostSide from '../../components/HomeComp/HomePostSide/HomePostSide'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import UserService from '../../apis/UserService'
 const Home = () => {
+  const navigat=useNavigate()
   const [feedata, setFeedata] = useState(null)
   useEffect(()=>{
-    axios.get(`http://localhost/mediasocial/backend/feed/index.php`).then(res =>{
-      // console.log(res.data)
-      setFeedata(res.data)
-    })
+    const user =localStorage.getItem("user")
+    if(user){
+      // // axios.get(`http://localhost/mediasocial/backend/feed/index.php`).then(res =>{
+      //   // console.log(res.data)
+      //   setFeedata(res.data)
+      // })
+      UserService.getUserData(user).then(res =>{
+          console.log(res.data)
+          setFeedata(res.data)
+        })
+    }else{
+      navigat("/login")
+    }
   },[])
 
   

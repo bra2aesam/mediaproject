@@ -1,26 +1,58 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './HomePost.css'
 import Comment from '../../../img/comment.png'
+// import Comment from '../../img/comment.png'
 import Heart from '../../../img/like.png'
 import NotLike from '../../../img/notlike.png'
+import { UilEditAlt } from '@iconscout/react-unicons'
+import PostModal from '../../PostModal/PostModal'
+import { UilCommentAltDots } from '@iconscout/react-unicons'
+import CommentModel from '../../CommentModel/CommentModel'
 
 
-const HomePost = ({post, img}) => {
+const Post = ({post, img}) => {
+  const user = JSON.parse(localStorage.getItem("user"))
+  // console.log(post.user_id===user.id )
+  const [modalOpened, setModalOpened] = useState(false);
+  const [comOpened, setComOpened] = useState(false);
+
   // console.log(post, img)
   return (
     <div className="Post">
       {/* add user image */}
       {/* add user user name */}
-      <span><b>{post.user_name}</b></span>
+      <span className='postedit'><b>{post.user_name}</b>
+      
+      {post.user_id===user.id && <UilEditAlt  className="moPo"
+        onClick={() => setModalOpened(true)}/>
+      }
+        <PostModal 
+            post={post}
+            modalOpened={modalOpened}
+            setModalOpened={setModalOpened}
+          />
+      
+      </span>
+      
             <span> {post.body}</span>
         <img src={img} alt="" />
-
 
         <div className="postReact">
             {/* <img src={data.liked?Heart: NotLike} alt="" /> */}
             <img src={Heart} alt="" />
             <img src={NotLike} alt="" />
-            <img src={Comment} alt="" />
+           
+
+            <span className='postedit'><UilCommentAltDots  className="moPo"
+            onClick={() => setComOpened(true)}/>
+      <CommentModel 
+            post={post}
+            modalOpened={comOpened}
+            setModalOpened={setComOpened}
+          />
+      </span>
+            {/* <ProfileComents /> */}
+            {/* <img src={Comment} alt="" /> */}
             {/* <img src={Share} alt="" /> */}
         </div>
 
@@ -33,4 +65,4 @@ const HomePost = ({post, img}) => {
   )
 }
 
-export default HomePost
+export default Post
