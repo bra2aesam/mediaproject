@@ -1,17 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './GroupPost.css'
 import Comment from '../../../img/comment.png'
 import Heart from '../../../img/like.png'
 import NotLike from '../../../img/notlike.png'
+import { UilEditAlt } from '@iconscout/react-unicons'
+import PostModal from '../../PostModal/PostModal'
+import { UilCommentAltDots } from '@iconscout/react-unicons'
+import GroupCommentModel from '../GroupCommentModel/GroupCommentModel'
+import GroupEditPostModal from '../GroupEditPostModal/GroupEditPostModal'
+
+
 
 
 const GroupPost = ({post , img}) => {
+  // const user = JSON.parse(localStorage.getItem("user"))
+  // console.log(post.user_id===user.id )
+  const [modalOpened, setModalOpened] = useState(false);
+  const [comOpened, setComOpened] = useState(false);
+
   // console.log(post , img);
   return (
     <div className="Post">
       {/* add user image */}
       {/* add user user name */}
-      <span><b>{post.user_name}</b></span>
+      <span className='postedit'><b>{post.user_name}</b>
+      
+      {<UilEditAlt  className="moPo"
+        onClick={() => setModalOpened(true)}/>
+      }
+        <GroupEditPostModal 
+            post={post}
+            modalOpened={modalOpened}
+            setModalOpened={setModalOpened}
+          />
+      </span>
+
+
+
+
+
             <span> {post.body}</span>
         <img src={img} alt="" />
 
@@ -20,7 +47,16 @@ const GroupPost = ({post , img}) => {
             {/* <img src={data.liked?Heart: NotLike} alt="" /> */}
             <img src={Heart} alt="" />
             <img src={NotLike} alt="" />
-            <img src={Comment} alt="" />
+
+            <span className='postedit'><UilCommentAltDots  className="moPo"
+            onClick={() => setComOpened(true)}/>
+      <GroupCommentModel
+            post={post}
+            modalOpened={comOpened}
+            setModalOpened={setComOpened}
+          />
+      </span>
+            {/* <img src={Comment} alt="" /> */}
             {/* <img src={Share} alt="" /> */}
         </div>
 

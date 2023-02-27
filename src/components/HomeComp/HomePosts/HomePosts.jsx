@@ -4,7 +4,7 @@ import { PostsData } from '../../../Data/PostsData'
 import HomePost from '../HomePost/HomePost'
 
 const HomePosts = ({feedata}) => {
-  console.log(feedata)
+  // console.log(feedata)
   return (
     <div className="Posts">
         {feedata && feedata.map((post, id)=>{

@@ -5,7 +5,7 @@ import Noti from "../../img/noti.png";
 import { UilSetting } from "@iconscout/react-unicons";
 import Comment from "../../img/comment.png";
 import ShareModal from "../ShareModal/ShareModal";
-import MyGroup from "../MyGroup/MyGroup";
+// import MyGroup from "../MyGroup/MyGroup";
 import GroupForYou from "../GroupForYou/GroupForYou";
 import FollowersCard from "../FollowersCard/FollowersCard";
 import { Link } from "react-router-dom";

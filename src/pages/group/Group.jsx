@@ -12,10 +12,10 @@ export default function Group() {
   const navigat=useNavigate()
   const [groupData, setgroupData] = useState({})
   useEffect(()=>{
-    // axios.get(`http://localhost/mediasocial/backend/group/index.php`).then(res =>{
-    //   console.log(res.data)
-    //   setgroupData(res.data)
-  // })
+    axios.get(`http://localhost/mediasocial/backend/group/index.php`).then(res =>{
+      console.log(res.data)
+      setgroupData(res.data)
+  })
       const user =localStorage.getItem("user")
       if(user){
         // // axios.get(`http://localhost/mediasocial/backend/feed/index.php`).then(res =>{
