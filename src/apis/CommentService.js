@@ -5,19 +5,22 @@ const API_URL = "http://localhost/mediasocial/backend/comment";
 
 class CommentService {
 
-    getComment(){
-        return axios.get(`${API_URL}/read.php`);
+    getComment(comment){
+        return axios.post(`${API_URL}/read.php`, comment);
     }
+    // getComment(){
+    //     return axios.get(`${API_URL}/read.php`);
+    // }
 
     createComment(comment){
-        return axios.comment(`${API_URL}/create.php`, comment);
+        return axios.post(`${API_URL}/create.php`, comment);
     }
   
 
   
 
     updateComment(comment){
-        return axios.comment(`${API_URL}/update.php`, comment);
+        return axios.post(`${API_URL}/update.php`, comment);
 
     }
   

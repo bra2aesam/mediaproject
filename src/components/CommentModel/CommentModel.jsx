@@ -1,52 +1,64 @@
 import { Modal, useMantineTheme } from "@mantine/core";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import CommentService from "../../apis/CommentService";
 import PostService from "../../apis/PostService";
 // import GroupService from "../../../apis/GroupService";
 import ProfileImage from "../../img/profileImg.jpg";
 import "./CommentModel.css"
 
 function PostModal({ modalOpened, setModalOpened, post }) {
+  // console.log(post)
   const theme = useMantineTheme();
-  console.log(post);
+  const [comment, setComment] = useState([])
+  // console.log(comment);
   const imageRef = useRef();
-
-  const [postData, setPostData] = useState({
-    myImage: "",
-    body: "",
+  useEffect(()=>{
+    const formData = new FormData();
+    formData.append("limit", 1);
+    formData.append("post_id", post.id);
+    // console.log(formData.get('limit'))
+    // console.log(formData.get('post_id'))
+    CommentService.getComment(formData).then(function(res){
+      // console.log(res)
+      setComment(res.data)
+      }) 
+  },[])
+  const [commentData, setcommentData] = useState({
     user_id: 1,
-    group_id: 0,
+    comment_body: '',
     id: post.id,
   });
   const handleChange = (e) => {
-    const newData = { ...postData };
+    const newData = { ...commentData };
     newData[e.target.name] = e.target.value;
-    setPostData(newData);
-    console.log(newData);
-  };
-  const handleImage = (event) => {
-    const newData = { ...postData };
-    newData[event.target.name] = event.target.files[0];
-    setPostData(newData);
+    setcommentData(newData);
     console.log(newData);
   };
 
   const handelsubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("id", postData.id);
-    formData.append("post_img", postData.myImage);
-    formData.append("body", postData.body);
-    formData.append("user_id", postData.user_id);
-    formData.append("group_id", postData.group_id);
+    formData.append("post_id", post.id);
+    formData.append("comment_body", commentData.comment_body);
+    formData.append("user_id", commentData.user_id);
 
-    console.log(formData.get("post_img"));
-    console.log(formData.get("body"));
+    console.log(formData.get("comment_body"));
     console.log(formData.get("user_id"));
-    console.log(formData.get("group_id"));
-    PostService.updatePost(formData).then(function (res) {
+    console.log(formData.get("post_id"));
+    CommentService.createComment(formData).then(function (res) {
       console.log(res);
+      const fData = new FormData();
+    fData.append("limit", 1);
+    fData.append("post_id", post.id);
+    // console.log(formData.get('limit'))
+    // console.log(formData.get('post_id'))
+    CommentService.getComment(fData).then(function(res){
+      // console.log(res)
+      setComment(res.data)
+      }) 
+    console.log(commentData);
     });
-    console.log(postData);
+    
   };
 
   return (
@@ -64,16 +76,18 @@ function PostModal({ modalOpened, setModalOpened, post }) {
     >
       <div className="showComments">
         <h1>Comments</h1>
-        <div className="PostShare">
-          <img src={ProfileImage} alt="" />
-          <div />
-          <div className="viewsec">
-            <b style={{fontSize:'20px'}}>{post.user_name}</b>
-            <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum vel, quo placeat nisi optio tenetur quod recusandae beatae, ratione perspiciatis cupiditate pariatur, rem voluptate laboriosam non totam delectus atque sapiente eos aspernatur? Voluptatem placeat debitis quasi fugiat? Soluta porro inventore corrupti voluptatem sapiente odit, quis illum fuga nam ullam nobis? 
-            </p>
-          </div>
-        </div>
+        {comment.map(c =>{
+          return <div key={c.id} className="PostShare">
+                    <img src={ProfileImage} alt="" />
+                    <div />
+                    <div className="viewsec">
+                      <b style={{fontSize:'20px'}}>{post.user_name}</b>
+                      <p>
+                        {c.comment_body}
+                      </p>
+                    </div>
+                  </div>
+        })}
       </div>
       <hr />
       <form onSubmit={handelsubmit} className="infoForm">
@@ -84,7 +98,7 @@ function PostModal({ modalOpened, setModalOpened, post }) {
             <div className="postOptions">
               <input
                 type="text"
-                name="body"
+                name="comment_body"
                 onChange={handleChange}
                 placeholder="Write a comment ...."
                 className="div"

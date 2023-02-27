@@ -25,8 +25,10 @@
 
         // GET group
         public function getComment(){
-            $sqlQuery = "SELECT * FROM " . $this->dbTable . " LIMIT " . $this->limit;
+            $sqlQuery = "SELECT * FROM " . $this->dbTable  . " WHERE post_id = :post_id" . " LIMIT " . $this->limit;
             $stmt = $this->conn->prepare($sqlQuery);
+            $stmt->bindParam(":post_id", $this->post_id);
+            
             $stmt->execute();
             return $stmt;
         }
