@@ -6,7 +6,7 @@ import PostService from "../../apis/PostService";
 
 function PostModal({ modalOpened, setModalOpened,post }) {
   const theme = useMantineTheme();
-  console.log(post)
+  // console.log(post)
 
   const [postData, setPostData] = useState({
     myImage:"",

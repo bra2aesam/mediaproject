@@ -18,7 +18,7 @@
     // $comment->comment_body="user random";
     $comment->user_id=$_POST["user_id"];
     $comment->post_id=$_POST["post_id"];
-    $comment->comment_body=$_POST["group_id"];
+    $comment->comment_body=$_POST["comment_body"];
     
 
 
