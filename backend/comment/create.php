@@ -6,29 +6,27 @@
     header("Access-Control-Allow-Headers: Content-Type,Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
     include_once '../config.php';
-    include_once './post.php';
+    include_once './comment.php';
 
     $database = new DB();
     $db = $database->getConnection();
 
-    $post = new Post($db);
-    if(count($_FILES) > 0) {
-        if($_FILES["post_img"]){
-            $post->post_img=$_FILES["post_img"]["name"];
-            move_uploaded_file($_FILES["post_img"]["tmp_name"], "../upload/" . $_FILES["post_img"]["name"]);
-        }
-       
-    }
+    $comment = new Comment($db);
 
-    $post->user_id=$_POST["user_id"];
-    $post->body=$_POST["body"];
-    $post->group_id=$_POST["group_id"];
+    // $comment->user_id=2;
+    // $comment->post_id=18;
+    // $comment->comment_body="user random";
+    $comment->user_id=$_POST["user_id"];
+    $comment->post_id=$_POST["post_id"];
+    $comment->comment_body=$_POST["group_id"];
     
 
-    if($post->createPost()){
-        echo json_encode("post created.");
+
+
+    if($comment->createComment()){
+        echo json_encode("comment created.");
 
     } else{
-        echo json_encode("Failed to create post.");
+        echo json_encode("Failed to create comment.");
     }
 ?>

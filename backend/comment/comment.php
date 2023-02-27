@@ -1,5 +1,5 @@
 <?php
-    class Post{
+    class Comment{
 
         // conn
         private $conn;
@@ -7,6 +7,7 @@
         // table
         private $dbTable = "comments";
 
+        public $limit;
         // col
         public $id;
         public $user_id ;
@@ -23,15 +24,15 @@
         }
 
         // GET group
-        public function getPost(){
-            $sqlQuery = "SELECT * FROM " . $this->dbTable;
+        public function getComment(){
+            $sqlQuery = "SELECT * FROM " . $this->dbTable . " LIMIT " . $this->limit;
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;
         }
 
-        //CREATE User
-        public function createPost(){
+        //CREATE comment
+        public function createComment(){
           
                 $sqlQuery = "INSERT INTO
                         ". $this->dbTable ."
@@ -68,57 +69,38 @@
             
         }
 
-       // GET User
-    //    public function getSingleUser(){
-    //     $sqlQuery = "SELECT
-    //                 id, 
-    //                 user_name, 
-    //                 email
-    //               FROM
-    //                 ". $this->dbTable ."
-    //             WHERE 
-    //                id = :id
-    //             LIMIT 0,1";
-
-    //     $stmt = $this->conn->prepare($sqlQuery);
-    //     $stmt->bindParam(":id", $this->id);
-    //     $stmt->execute();
-    //     $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-    //     $this->user_name = $dataRow['user_name'];
-    //     // $this->last_name = $dataRow['last_name'];
-    //     $this->email = $dataRow['email'];
-      
-    // }      
         
 
         // UPDATE group
-    //     public function updateGroup(){
-    //         $sqlQuery = "UPDATE
-    //                     ". $this->dbTable ."
-    //                 SET
-    //                 group_name = :group_name, 
-    //                 group_img = :group_img
+        public function updateComment(){
+            $sqlQuery = "UPDATE
+                        ". $this->dbTable ."
+                    SET
+                    user_id = :user_id, 
+                    post_id = :post_id,
+                    comment_body = :comment_body
                     
-    //                 WHERE 
-    //                     id = :id";
+                    WHERE 
+                        id = :id";
         
-    //         $stmt = $this->conn->prepare($sqlQuery);
+            $stmt = $this->conn->prepare($sqlQuery);
         
-    //         $this->group_name=htmlspecialchars(strip_tags($this->group_name));
-    //         $this->group_img=htmlspecialchars(strip_tags($this->group_img));
-    //         $this->id=htmlspecialchars(strip_tags($this->id));
+            $this->user_id=htmlspecialchars(strip_tags($this->user_id));
+            $this->post_id=htmlspecialchars(strip_tags($this->post_id));
+            $this->comment_body=htmlspecialchars(strip_tags($this->comment_body));
+            $this->id=htmlspecialchars(strip_tags($this->id));
         
-    //         // bind data
-    //         $stmt->bindParam(":group_name", $this->group_name);
-    //         $stmt->bindParam(":group_img", $this->group_img);
-    //         $stmt->bindParam(":id", $this->id);
+            // bind data
+            $stmt->bindParam(":user_id", $this->user_id);
+            $stmt->bindParam(":post_id", $this->post_id);
+            $stmt->bindParam(":comment_body", $this->comment_body);
+            $stmt->bindParam(":id", $this->id);
         
-    //         if($stmt->execute()){
-    //            return true;
-    //         }
-    //         return false;
-    //     }
+            if($stmt->execute()){
+               return true;
+            }
+            return false;
+        }
 
     //    // DELETE User
     //     function deleteUser(){
