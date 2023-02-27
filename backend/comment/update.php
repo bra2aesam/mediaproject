@@ -6,29 +6,28 @@
     header("Access-Control-Allow-Headers: Content-Type,Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
     include_once '../config.php';
-    include_once './groups.php';
+    include_once './comment.php';
 
     $database = new DB();
     $db = $database->getConnection();
 
-    $group = new Group($db);
-    if(count($_FILES) > 0) {
-        if($_FILES["group_img"]){
-            $group->group_img=$_FILES["group_img"]["name"];
-            move_uploaded_file($_FILES["group_img"]["tmp_name"], "../upload/" . $_FILES["group_img"]["name"]);
-        }
-       
-    }
+    $comment = new Comment($db);
 
-    $group->id= 4;
-    $group->group_name=$_POST["group_name"];
-    
+    // $comment->id=1;
+    // $comment->user_id=1;
+    // $comment->post_id=18;
+    // $comment->comment_body="i think that";
+
+    $comment->id=$_POST["id"];
+    $comment->user_id=$_POST["user_id"];
+    $comment->post_id=$_POST["post_id"];
+    $comment->comment_body=$_POST["group_id"];
     
 
-    if($group->updateGroup()){
-        echo json_encode("Group update.");
+    if($comment->updateComment()){
+        echo json_encode("comment updated.");
 
     } else{
-        echo json_encode("Failed to create Group.");
+        echo json_encode("Failed to update comment.");
     }
 ?>
