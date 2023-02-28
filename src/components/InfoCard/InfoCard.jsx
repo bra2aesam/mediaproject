@@ -5,11 +5,11 @@ import ProfileModal from "../ProfileCopm/ProfileModal.jsx/ProfileModal";
 import UserService from "../../apis/UserService";
 import { useParams } from "react-router-dom";
 
-const InfoCard = ({user, userStatus, isSent}) => {
+const InfoCard = ({user, userStatus, isSent, setAny}) => {
   const [modalOpened, setModalOpened] = useState(false);
   const {id} = useParams()
- console.log(isSent)
- console.log(userStatus)
+//  console.log(isSent)
+//  console.log(userStatus)
  
   const handleClick = ()=>{
     // if()
@@ -53,6 +53,7 @@ const InfoCard = ({user, userStatus, isSent}) => {
         </span>
         <span>{user && user.user_name}</span>
       </div>
+        <button onClick={()=>setAny({hello: "hello"})}>refreash</button>
 
       <div className="info">
         <span>

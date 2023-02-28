@@ -8,20 +8,23 @@ import ProfileLeft from '../../components/ProfileCopm/ProfileLeft/ProfileLeft'
 import RightSide from '../../components/RightSide/RightSide'
 import './Profile.css'
 const Profile = () => {
+  const [any, setAny] = useState(null)
+  console.log(any)
   const navigat=useNavigate()
   const [timelineData, setTimeLineData] = useState({})
   const [userStatus, setUserStatus] = useState('notFriend')
   const [isSent , setIsSent] = useState(false)
 
     const id = useParams()
-    console.log(id)
-    useEffect(()=>{
-      console.log(id)
-    },[id])
+    // console.log(id)
+    // useEffect(()=>{
+    //   console.log(id)
+    // },[id])
   useEffect(()=>{
     // axios.get(`http://localhost/mediasocial/backend/profile/timeline.php`).then(res =>{
     //   console.log(res.data)
     // })
+    console.log(any)
     const userLog = JSON.parse(localStorage.getItem("user"))
     if(userLog){ 
       UserService.getUserDataTimeline(id).then(res =>{
@@ -44,12 +47,12 @@ const Profile = () => {
     }else{
       navigat("/login")
     }
-  },[id])
-console.log(userStatus)
+  },[id,any])
+// console.log(userStatus)
   const {user, timelinePosts, friends, friendsRequest } = timelineData
   return (
     <div className="Profile">
-        <ProfileLeft user={user} friends={friends} userStatus={userStatus} isSent={isSent}  />
+        <ProfileLeft user={user} friends={friends} userStatus={userStatus} isSent={isSent} setAny={setAny} />
 
         <div className="Profile-center">
             <ProfileCard user={user} timelinePosts={timelinePosts} friends={friends} />

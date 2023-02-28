@@ -24,18 +24,18 @@ const FollowersCard = ({friendsRequest}) => {
         {friendsRequest && friendsRequest. map((e, id)=>{
             return(
 
-                <Link to={'/profile/'+e.id} key={id} className="follower">
+                <div to={'/profile/'+e.id} key={id} className="follower">
                     <div>
                         <img src={Followers[0].img} alt="" className='followerImage' />
-                        <div className="name">
+                        <Link className="name">
                             <span>{e.user_name}</span>
                             <span>@{e.user_name}</span>
-                        </div>
+                        </Link>
                     </div>
                     <button onClick={()=> handleAccept(e.id)} className='button fc-button'>
                         Accept
                     </button>
-                </Link>
+                </div>
             )
         })}
     </div>

@@ -15,7 +15,7 @@ const RightSide = ({friendsRequest, userStatus}) => {
   const {id} = useParams()
   const [modalOpened, setModalOpened] = useState(false);
   const user = JSON.parse(localStorage.getItem("user"))
-  console.log(id == user.id)
+  // console.log(id == user.id)
   return (
     <div className="RightSide">
       <div className="navIcons">
