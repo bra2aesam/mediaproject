@@ -40,6 +40,7 @@ function ProfileModal({ modalOpened, setModalOpened }) {
     UserService.updateUser(formData).then(function(res){
       console.log(res)
       setModalOpened(false)
+      localStorage.setItem('user', JSON.stringify(res.data))
       }) 
   }
   return (
