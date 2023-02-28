@@ -20,6 +20,7 @@ const InfoCard = ({user, userStatus, isSent, setAny}) => {
     // console.log(sendRequest)
     UserService.sendRequest(sendRequest).then(res =>{
       console.log(res.data)
+      setAny({sent: "sent"})
     })
   }
   const handleCancel = ()=>{
@@ -31,6 +32,7 @@ const InfoCard = ({user, userStatus, isSent, setAny}) => {
     // console.log(sendRequest)
     UserService.cancelRequest(sendRequest).then(res =>{
       console.log(res.data)
+      setAny({cancel: "cancel"})
     })
   }
   return (
@@ -53,7 +55,7 @@ const InfoCard = ({user, userStatus, isSent, setAny}) => {
         </span>
         <span>{user && user.user_name}</span>
       </div>
-        <button onClick={()=>setAny({hello: "hello"})}>refreash</button>
+        {/* <button onClick={()=>setAny({hello: "hello"})}>refreash</button> */}
 
       <div className="info">
         <span>

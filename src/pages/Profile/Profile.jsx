@@ -29,6 +29,7 @@ const Profile = () => {
     if(userLog){ 
       UserService.getUserDataTimeline(id).then(res =>{
         const requestSent = res.data.friendsRequest.find(e => e.id == JSON.parse(localStorage.getItem('user')).id)
+        // const requestSent = []
         setIsSent(requestSent)
 
           console.log(res.data)
@@ -49,10 +50,10 @@ const Profile = () => {
     }
   },[id,any])
 // console.log(userStatus)
-  const {user, timelinePosts, friends, friendsRequest } = timelineData
+  const {user, timelinePosts, friends, friendsRequest, yourGroup } = timelineData
   return (
     <div className="Profile">
-        <ProfileLeft user={user} friends={friends} userStatus={userStatus} isSent={isSent} setAny={setAny} />
+        <ProfileLeft user={user} friends={friends} userStatus={userStatus} isSent={isSent} setAny={setAny} yourGroup={yourGroup} />
 
         <div className="Profile-center">
             <ProfileCard user={user} timelinePosts={timelinePosts} friends={friends} />
