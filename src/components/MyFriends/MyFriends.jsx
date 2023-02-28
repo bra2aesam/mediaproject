@@ -3,6 +3,7 @@ import "./MyFriends.css";
 import { UilPlusSquare } from "@iconscout/react-unicons";
 
 import { TrendData } from "../../Data/TrendData.js";
+import { Link } from "react-router-dom";
 const MyFriends = ({friends}) => {
   // console.log(friends)
   return (
@@ -23,7 +24,7 @@ const MyFriends = ({friends}) => {
                 </div>
               </div>
               {/* <hr /> */}
-              <button className="button gc-button">Go</button>
+              <Link style={{textDecoration:'none'}} to={'/profile/'+ e.id} className="button gc-button">Go</Link>
             </div>
           );
         })}

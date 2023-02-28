@@ -3,6 +3,7 @@ import './FollowersCard.css'
 
 import { Followers } from '../../Data/FollowersData'
 import UserService from '../../apis/UserService'
+import { Link } from 'react-router-dom'
 const FollowersCard = ({friendsRequest}) => {
     // console.log(friendsRequest);
     const handleAccept = (id)=>{
@@ -23,7 +24,7 @@ const FollowersCard = ({friendsRequest}) => {
         {friendsRequest && friendsRequest. map((e, id)=>{
             return(
 
-                <div key={id} className="follower">
+                <Link to={'/profile/'+e.id} key={id} className="follower">
                     <div>
                         <img src={Followers[0].img} alt="" className='followerImage' />
                         <div className="name">
@@ -34,7 +35,7 @@ const FollowersCard = ({friendsRequest}) => {
                     <button onClick={()=> handleAccept(e.id)} className='button fc-button'>
                         Accept
                     </button>
-                </div>
+                </Link>
             )
         })}
     </div>
