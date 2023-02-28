@@ -4,6 +4,7 @@ import { UilPlusSquare } from "@iconscout/react-unicons";
 
 import { TrendData } from "../../Data/TrendData.js";
 import MyGroupModel from "../MyGroupModel/MyGroupModel";
+import { Link } from "react-router-dom";
 const MyGroup = ({yourGroup}) => {
   const [modalOpened, setModalOpened] = useState(false)
   return (
@@ -30,7 +31,7 @@ const MyGroup = ({yourGroup}) => {
                 </div>
               </div>
               {/* <hr /> */}
-              <button className="button myc-button">Go</button>
+              <Link style={{textDecoration: 'none'}} to={'/group/'+group.id} className="button myc-button">Go</Link>
             </div>
           );
         })}
