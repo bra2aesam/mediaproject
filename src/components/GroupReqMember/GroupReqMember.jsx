@@ -1,15 +1,18 @@
 import React from "react";
-import "./GroupForYou.css";
-import { UilPlusSquare } from "@iconscout/react-unicons";
+import "./GroupReqMember.css";
+// import { UilPlusSquare } from "@iconscout/react-unicons";
+// import { UilUserCheck } from '@iconscout/react-unicons'
+import { UilCheck } from '@iconscout/react-unicons'
+import { UilTimes } from '@iconscout/react-unicons'
 
 import { TrendData } from "../../Data/TrendData.js";
-const GroupForYou = () => {
+const GroupReqMember = () => {
   return (
     <div className="Trend">
-<br />
+        <br />
       {/* group for you */}
       <div className="forTrendCard">
-        <h3 className="gforheder">Group For You </h3>
+        <h3 className="gforheder">Requested Member</h3>
         {/* <hr /> */}
         {TrendData.map((trend, id) => {
           return (
@@ -22,7 +25,11 @@ const GroupForYou = () => {
                 </div>
               </div>
               {/* <hr /> */}
-              <button className="button myc-button">Join</button>
+              {/* <button className="button myc-button">
+                </button> */}
+
+                <div><UilCheck/><UilTimes/></div>
+                
             </div>
           );
         })}
@@ -31,4 +38,4 @@ const GroupForYou = () => {
   );
 };
 
-export default GroupForYou;
+export default GroupReqMember;

@@ -1,9 +1,18 @@
-.Trend{
+.fortrend{
     gap: 4rem;
 
 }
 
-.TrendCard{
+.forTrendCard{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: var(--cardColor);
+    padding: 1rem;
+    border-radius: .2rem;
+    padding-left: 1rem;
+}
+/* .TrendCard{
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -11,7 +20,7 @@
     padding: 1rem;
     border-radius: 1rem;
     padding-left: 1rem;
-}
+} */
 
 
 
@@ -20,27 +29,36 @@ hr {
     border: 1px solid var(--hrColor);
 }
 
-.groupsheder{
+.gforheder{
     /* text-align: center; */
-    background:var(--buttonBg);
-    padding: 1rem;
+    /* background:var(--buttonBg);
+    padding: 1rem; */
     /* border-radius: 1rem; */
-    border-top-right-radius: 1rem;
+    /* border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
     margin: -.5rem;
     color: white;
     display:flex;
+    justify-content: space-between; */
+ /* text-align: center; */
+    /* background:var(--buttonBg); */
+    padding: 1rem;
+    /* border-radius: 1rem; */
+    border-bottom: 1px solid;
+    cursor: pointer;
+    color: #3c1bc0;
+    margin: -.5rem;
+    display:flex;
     justify-content: space-between;
-
 }
-.trend{
+.fortrend{
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 1rem;
     /* background-color: var(--inputColor); */
 }
-.trend>div{
+.fortrend>div{
     display: flex;
     gap: 10px;
 }
@@ -63,16 +81,16 @@ hr {
     font-weight: bold;
 }
 
-.trend>span:nth-of-type(1)
+.fortrend>span:nth-of-type(1)
 {
     font-weight: bold;
 }
-.trend>span:nth-of-type(2)
+.fortrend>span:nth-of-type(2)
 {
     font-size: 13px;
 }
 
-.gc-button{
+/* .gc-button{
     height: 2rem;
     padding-left: .5rem;
     padding-right: .5rem;
@@ -80,13 +98,23 @@ hr {
     border-radius: 50%;
 
 
-}
+} */
 
-.jc-button{
+/* .jc-button{
     height: 2rem;
     padding-left: .5rem;
     padding-right: .5rem;
     margin-right: 4%;
     border-radius: 40%;
+} */
+.myc-button{
+    width: 4rem;
+    height: 2rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    margin-right: 2%;
+    border-radius: 1rem;
+
+
 }
 

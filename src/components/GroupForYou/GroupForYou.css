@@ -3,7 +3,16 @@
 
 }
 
-.TrendCard{
+.forTrendCard{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: var(--cardColor);
+    padding: 1rem;
+    border-radius: .2rem;
+    padding-left: 1rem;
+}
+/* .TrendCard{
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -11,7 +20,7 @@
     padding: 1rem;
     border-radius: 1rem;
     padding-left: 1rem;
-}
+} */
 
 
 
@@ -20,25 +29,34 @@ hr {
     border: 1px solid var(--hrColor);
 }
 
-.groupsheder{
+.gforheder{
     /* text-align: center; */
-    background:var(--buttonBg);
-    padding: 1rem;
+    /* background:var(--buttonBg);
+    padding: 1rem; */
     /* border-radius: 1rem; */
-    border-top-right-radius: 1rem;
+    /* border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
     margin: -.5rem;
     color: white;
     display:flex;
+    justify-content: space-between; */
+ /* text-align: center; */
+    /* background:var(--buttonBg); */
+    padding: 1rem;
+    /* border-radius: 1rem; */
+    border-bottom: 1px solid;
+    cursor: pointer;
+    color: #3c1bc0;
+    margin: -.5rem;
+    display:flex;
     justify-content: space-between;
-
 }
 .trend{
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 1rem;
-    background-color: var(--inputColor);
+    /* background-color: var(--inputColor); */
 }
 .trend>div{
     display: flex;

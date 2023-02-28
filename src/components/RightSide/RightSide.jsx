@@ -9,6 +9,7 @@ import ShareModal from "../ShareModal/ShareModal";
 import GroupForYou from "../GroupForYou/GroupForYou";
 import FollowersCard from "../FollowersCard/FollowersCard";
 import { Link, useParams } from "react-router-dom";
+import GroupReqMember from "../GroupReqMember/GroupReqMember";
 
 const RightSide = ({friendsRequest, userStatus, setAny}) => {
   // console.log(friendsRequest);
@@ -30,6 +31,7 @@ const RightSide = ({friendsRequest, userStatus, setAny}) => {
       </div>
 
      {userStatus === 'myProfile' && id == user.id && <FollowersCard friendsRequest={friendsRequest} setAny={setAny} />}
+      <GroupReqMember />
       <GroupForYou />
 
       <button className="button r-button" onClick={() => setModalOpened(true)}>

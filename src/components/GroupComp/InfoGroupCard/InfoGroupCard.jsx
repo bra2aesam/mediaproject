@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./InfoGroupCard.css";
 import { UilPen } from "@iconscout/react-unicons";
-import { UilSignout } from '@iconscout/react-unicons'
+// import { UilSignout } from '@iconscout/react-unicons'
 import GroupModal from "../GroupModal/GroupModal";
 
 const InfoGroupCard = ({group_info}) => {
@@ -44,7 +44,7 @@ const InfoGroupCard = ({group_info}) => {
         <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, aliquam.</span>
       </div> */}
 
-      <button className="button logout-buttoni"><UilSignout/>Leave Group</button>
+      <button className="button logout-buttoni">Join</button>
     </div>
   );
 };
