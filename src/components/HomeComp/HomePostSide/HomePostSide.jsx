@@ -2,12 +2,12 @@ import React from 'react'
 import HomePosts from '../HomePosts/HomePosts'
 import HomePostShare from '../HomePostShare/HomePostShare'
 import './HomePostSide.css'
-const HomePostSide = ({feedata}) => {
+const HomePostSide = ({feedata, setReRender}) => {
   // console.log(feedata)
   return (
    <div className="PostSide">
        <HomePostShare/>
-       <HomePosts feedata={feedata}/>
+       <HomePosts feedata={feedata} setReRender={setReRender}/>
    </div>
 
   )

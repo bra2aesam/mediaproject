@@ -9,6 +9,7 @@ import UserService from '../../apis/UserService'
 const Home = () => {
   const navigat=useNavigate()
   const [feedata, setFeedata] = useState(null)
+  const [reRender, setReRender] = useState(null)
   useEffect(()=>{
     const user =localStorage.getItem("user")
     if(user){
@@ -18,18 +19,19 @@ const Home = () => {
       // })
       UserService.getUserData(user).then(res =>{
           console.log(res.data)
-          setFeedata(res.data)
+          const sortedData = res.data.sort((a, b) => b.id - a.id)
+          setFeedata(sortedData)
         })
     }else{
       navigat("/login")
     }
-  },[])
+  },[reRender])
 
   
   return (
     <div className="Home">
         <ProfileSide/>
-        <HomePostSide feedata={feedata}/>
+        <HomePostSide feedata={feedata} setReRender={setReRender} />
         <RightSide/>
     </div>
   )

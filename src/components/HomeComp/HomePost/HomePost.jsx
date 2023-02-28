@@ -10,7 +10,7 @@ import { UilCommentAltDots } from '@iconscout/react-unicons'
 import CommentModel from '../../CommentModel/CommentModel'
 
 
-const Post = ({post, img}) => {
+const Post = ({post, img, setReRender}) => {
   const user = JSON.parse(localStorage.getItem("user"))
   // console.log(post.user_id===user.id )
   const [modalOpened, setModalOpened] = useState(false);
@@ -27,6 +27,7 @@ const Post = ({post, img}) => {
         onClick={() => setModalOpened(true)}/>
       }
         <PostModal 
+            setReRender={setReRender}
             post={post}
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}
