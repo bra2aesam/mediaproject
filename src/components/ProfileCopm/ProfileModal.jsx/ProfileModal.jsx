@@ -39,6 +39,7 @@ function ProfileModal({ modalOpened, setModalOpened }) {
     console.log(formData.get('coverImg'))
     UserService.updateUser(formData).then(function(res){
       console.log(res)
+      setModalOpened(false)
       }) 
   }
   return (
