@@ -78,7 +78,7 @@ function PostModal({ modalOpened, setModalOpened, post }) {
       <div className="showComments">
         <h1>Comments</h1>
         {comment.map(c =>{
-          return <div key={c.id} className="PostShare">
+          return <div key={c.comment_body} className="PostShare">
                     <img src={ProfileImage} alt="" />
                     <div />
                     <div className="viewsec">
