@@ -21,7 +21,7 @@
         move_uploaded_file($_FILES["coverImg"]["tmp_name"], "../upload/" . $_FILES["coverImg"]["name"]);
     }
 
-    $user->id= 10;
+    $user->id= $_POST["id"];
     $user->user_name=$_POST["user_name"];
     $user->phone=$_POST["phone"];
     $user->email=$_POST["email"];

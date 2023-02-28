@@ -26,6 +26,7 @@ function ProfileModal({ modalOpened, setModalOpened }) {
   const handelsubmit = (e) => {
     e.preventDefault();
     const formData = new FormData()
+    formData.append('id', JSON.parse(localStorage.getItem('user')).id)
     formData.append('user_name', data.user_name)
     formData.append('phone', data.phone)
     formData.append('email', data.email)
