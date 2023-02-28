@@ -11,7 +11,7 @@ import FollowersCard from "../FollowersCard/FollowersCard";
 import { Link, useParams } from "react-router-dom";
 import GroupReqMember from "../GroupReqMember/GroupReqMember";
 
-const RightSide = ({friendsRequest, userStatus, setAny}) => {
+const RightSide = ({friendsRequest, userStatus, setAny, group_member, member_request}) => {
   // console.log(friendsRequest);
   const {id} = useParams()
   const [modalOpened, setModalOpened] = useState(false);
@@ -30,9 +30,11 @@ const RightSide = ({friendsRequest, userStatus, setAny}) => {
         <img src={Comment} alt="" />
       </div>
 
-     {userStatus === 'myProfile' && id == user.id && <FollowersCard friendsRequest={friendsRequest} setAny={setAny} />}
+     {userStatus === 'myProfile' && id == user.id && <FollowersCard member_request={member_request} friendsRequest={friendsRequest} setAny={setAny} />}
+     
       <GroupReqMember />
-      <GroupForYou />
+      {/* it's for member not group */}
+      <GroupForYou group_member={group_member}  />
 
       <button className="button r-button" onClick={() => setModalOpened(true)}>
         Share

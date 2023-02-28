@@ -17,7 +17,7 @@ $stmt->bindParam(':group_id', $group_id);
 $stmt->execute();
 $group_post = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // group member
-$sql = "SELECT * FROM users INNER JOIN group_member ON users.id = group_member.user_id INNER JOIN groups ON group_member.group_id = groups.id WHERE groups.id =:group_id";
+$sql = "SELECT * FROM users INNER JOIN group_member ON users.id = group_member.user_id INNER JOIN groups ON group_member.group_id = groups.id WHERE groups.id =:group_id AND group_member.user_status > 0 AND group_member.user_status < 3";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':group_id', $group_id);
 $stmt->execute();
@@ -31,7 +31,14 @@ $stmt->bindParam(':group_id', $group_id);
 $stmt->execute();
 $group_info = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$data = ['group_post'=> $group_post, 'group_member' => $group_member, "group_info" => $group_info ];
+// member_request
+$sql = "SELECT group_member.id, `group_id`, `user_id`, user_name, profile_img, `user_status` FROM `group_member` INNER JOIN users ON users.id = group_member.user_id WHERE group_member.user_status = 0 AND group_member.group_id = :group_id;";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':group_id', $group_id);
+$stmt->execute();
+$member_request = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$data = ['group_post'=> $group_post, 'group_member' => $group_member, "group_info" => $group_info, 'member_request' => $member_request ];
 
 // echo "<pre>";
 echo json_encode($data);
