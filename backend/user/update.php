@@ -17,8 +17,10 @@
             $user->profile_img=$_FILES["profileImg"]["name"];
             move_uploaded_file($_FILES["profileImg"]["tmp_name"], "../upload/" . $_FILES["profileImg"]["name"]);
         }
-        $user->background_img=$_FILES["coverImg"]["name"];
-        move_uploaded_file($_FILES["coverImg"]["tmp_name"], "../upload/" . $_FILES["coverImg"]["name"]);
+        if($_FILES["coverImg"]){
+            $user->background_img=$_FILES["coverImg"]["name"];
+            move_uploaded_file($_FILES["coverImg"]["tmp_name"], "../upload/" . $_FILES["coverImg"]["name"]);
+        }
     }
 
     $user->id= $_POST["id"];
