@@ -10,7 +10,7 @@ $objDb = new DB;
 $conn = $objDb->getConnection();
 $group_id = 2;
 // group post
-$sql = "SELECT * FROM users INNER JOIN posts ON users.id = posts.user_id INNER JOIN groups ON posts.group_id = groups.id WHERE groups.id = :group_id;";
+$sql = "SELECT posts.id, posts.post_img, posts.user_id, posts.body, users.user_name FROM users INNER JOIN posts ON users.id = posts.user_id INNER JOIN groups ON posts.group_id = groups.id WHERE groups.id = :group_id;";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':group_id', $group_id);
 $stmt->execute();

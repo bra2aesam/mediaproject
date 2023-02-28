@@ -9,7 +9,7 @@ import { UilTimes } from "@iconscout/react-unicons";
 import PostService from "../../apis/PostService";
 
 
-const PostShare = () => {
+const PostShare = ({setAny}) => {
   const [image, setImage] = useState(null);
   const imageRef = useRef();
   const user = JSON.parse(localStorage.getItem("user"))
@@ -53,6 +53,7 @@ const PostShare = () => {
     console.log(formData.get('group_id'))
     PostService.createPost(formData).then(function(res){
       console.log(res)
+      setAny(true)
       }) 
     console.log(postData)
     }

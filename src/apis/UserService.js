@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const USER_API_URL = "http://localhost/mediasocial/backend/user";
+const USER_API_URL = "http://localhost/mediaproject/backend/user";
 
 
 class UserService {
@@ -10,10 +10,19 @@ class UserService {
     }
 
     getUserData(user){
-        return axios.post(`http://localhost/mediasocial/backend/feed/index.php`, user);
+        return axios.post(`http://localhost/mediaproject/backend/feed/index.php`, user);
+    }
+    sendRequest(sendRequest){
+        return axios.post(`http://localhost/mediaproject/backend/profile/sendRequest.php`, sendRequest);
+    }
+    acceptRequest(sendRequest){
+        return axios.post(`http://localhost/mediaproject/backend/profile/acceptRequest.php`, sendRequest);
+    }
+    cancelRequest(sendRequest){
+        return axios.post(`http://localhost/mediaproject/backend/profile/cancelRequest.php`, sendRequest);
     }
     getUserDataTimeline(user){
-        return axios.post(`http://localhost/mediasocial/backend/profile/timeline.php`, user);
+        return axios.post(`http://localhost/mediaproject/backend/profile/timeline.php`, user);
     }
 
     createUser(user){

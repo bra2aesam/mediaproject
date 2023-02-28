@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import UserService from '../../apis/UserService'
 import PostSide from '../../components/PostSide/PostSide'
 import ProfileCard from '../../components/ProfileCopm/ProfileCard.jsx/ProfileCard'
@@ -8,35 +8,59 @@ import ProfileLeft from '../../components/ProfileCopm/ProfileLeft/ProfileLeft'
 import RightSide from '../../components/RightSide/RightSide'
 import './Profile.css'
 const Profile = () => {
+  const [any, setAny] = useState(null)
+  console.log(any)
   const navigat=useNavigate()
   const [timelineData, setTimeLineData] = useState({})
-    
+  const [userStatus, setUserStatus] = useState('notFriend')
+  const [isSent , setIsSent] = useState(false)
+
+    const id = useParams()
+    // console.log(id)
+    // useEffect(()=>{
+    //   console.log(id)
+    // },[id])
   useEffect(()=>{
     // axios.get(`http://localhost/mediasocial/backend/profile/timeline.php`).then(res =>{
     //   console.log(res.data)
     // })
-    const user =localStorage.getItem("user")
-    if(user){ 
-      UserService.getUserDataTimeline(user).then(res =>{
+    console.log(any)
+    const userLog = JSON.parse(localStorage.getItem("user"))
+    if(userLog){ 
+      UserService.getUserDataTimeline(id).then(res =>{
+        const requestSent = res.data.friendsRequest.find(e => e.id == JSON.parse(localStorage.getItem('user')).id)
+        // const requestSent = []
+        setIsSent(requestSent)
+
           console.log(res.data)
+          if(!(res.data.user)){
+            navigat('/')
+          }
           setTimeLineData(res.data)
+          const friend = res.data.friends.find(e => e.id == userLog.id)
+          if(friend){
+            setUserStatus('friend')
+          }
+          if(id.id == userLog.id){
+            setUserStatus('myProfile')
+          }
         })
     }else{
       navigat("/login")
     }
-  },[])
-
-  const {user, timelinePosts, friends, friendsRequest } = timelineData
+  },[id,any])
+// console.log(userStatus)
+  const {user, timelinePosts, friends, friendsRequest, yourGroup } = timelineData
   return (
     <div className="Profile">
-        <ProfileLeft user={user} friends={friends} />
+        <ProfileLeft user={user} friends={friends} userStatus={userStatus} isSent={isSent} setAny={setAny} yourGroup={yourGroup} />
 
         <div className="Profile-center">
             <ProfileCard user={user} timelinePosts={timelinePosts} friends={friends} />
-            <PostSide timelinePosts={timelinePosts} />
+            <PostSide timelinePosts={timelinePosts} userStatus={userStatus} setAny={setAny} />
         </div>
 
-        <RightSide friendsRequest={friendsRequest}/>
+        <RightSide friendsRequest={friendsRequest} userStatus={userStatus} setAny={setAny}/>
     </div>
   )
 }

@@ -4,7 +4,8 @@ import { UilPlusSquare } from "@iconscout/react-unicons";
 
 import { TrendData } from "../../Data/TrendData.js";
 import MyGroupModel from "../MyGroupModel/MyGroupModel";
-const MyGroup = () => {
+import { Link } from "react-router-dom";
+const MyGroup = ({yourGroup}) => {
   const [modalOpened, setModalOpened] = useState(false)
   return (
     <div className="Trend">
@@ -19,18 +20,18 @@ const MyGroup = () => {
           </div>
         </h3>
         {/* <hr /> */}
-        {TrendData.map((trend, id) => {
+        {yourGroup && yourGroup.map((group, id) => {
           return (
             <div key={id} className="MyGrouptrend">
               <div>
-                <img src={trend.img} alt="" className="trendImage" />
+                <img src={TrendData[0].img} alt="" className="trendImage" />
                 <div className="gname">
-                  <span  >{trend.name}</span>
-                  <span className="MygNUM">{trend.shares} member</span>
+                  <span  >{group.group_name}</span>
+                  <span className="MygNUM"> member</span>
                 </div>
               </div>
               {/* <hr /> */}
-              <button className="button myc-button">Go</button>
+              <Link style={{textDecoration: 'none'}} to={'/group/'+group.id} className="button myc-button">Go</Link>
             </div>
           );
         })}
