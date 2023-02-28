@@ -8,9 +8,10 @@
 include '../config.php';
 $objDb = new DB;
 $conn = $objDb->getConnection();
-$group_id = 2;
+$group = json_decode(file_get_contents('php://input'));
+$group_id = $group->id;
 // group post
-$sql = "SELECT posts.id, posts.post_img, posts.user_id, posts.body, users.user_name FROM users INNER JOIN posts ON users.id = posts.user_id INNER JOIN groups ON posts.group_id = groups.id WHERE groups.id = :group_id;";
+$sql = "SELECT posts.id, posts.post_img, posts.user_id, posts.body, users.user_name FROM users INNER JOIN posts ON users.id = posts.user_id INNER JOIN groups ON posts.group_id = groups.id WHERE groups.id = :group_id ORDER BY id DESC;";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':group_id', $group_id);
 $stmt->execute();
@@ -24,9 +25,13 @@ $group_member = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // echo "<pre>";
 // print_r($group_member);
 // echo "</pre>";
+$sql = "SELECT `id`, `group_name`, `group_img` FROM `groups` WHERE id = :group_id";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':group_id', $group_id);
+$stmt->execute();
+$group_info = $stmt->fetch(PDO::FETCH_ASSOC);
 
-
-$data = ['group_post'=> $group_post, 'group_member' => $group_member];
+$data = ['group_post'=> $group_post, 'group_member' => $group_member, "group_info" => $group_info ];
 
 // echo "<pre>";
 echo json_encode($data);

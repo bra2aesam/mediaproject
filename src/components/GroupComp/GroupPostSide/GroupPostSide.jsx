@@ -2,11 +2,11 @@ import React from 'react'
 // import ".GroupPostSide.css"
 import GroupPosts from '../GroupPosts/GroupPosts.jsx'
 import GroupPostShare from '../GroupPostShare/GroupPostShare'
-const GroupPostSide = ({group_post}) => {
+const GroupPostSide = ({group_post, setGroupRender}) => {
   return (
    <div className="PostSide">
-       <GroupPostShare/>
-       <GroupPosts group_post={group_post}/>
+       <GroupPostShare setGroupRender={setGroupRender}/>
+       <GroupPosts group_post={group_post} setGroupRender={setGroupRender}/>
    </div>
   )
 }

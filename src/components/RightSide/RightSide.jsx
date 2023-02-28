@@ -22,7 +22,7 @@ const RightSide = ({friendsRequest, userStatus, setAny}) => {
       <Link to={'/'}>
       <img src={Home} alt="" />
       </Link>
-      <Link to={`/profile/${user.id}`}>
+      <Link to={user && `/profile/${user.id}`}>
       <UilSetting />
       </Link>  
         <img src={Noti} alt="" />

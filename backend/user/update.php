@@ -30,7 +30,7 @@
     
 
     if($user->updateUser()){
-        // echo json_encode("Failed to updated user.");
+        // cho json_encode("Failed to updated user.");
         print_r(json_encode(['id' => $user->id, 'email' => $user->email, 'user_name'=> $user->user_name, 'phone' => $user->phone, 'background_img' => $user->background_img, 'profile_img'=> $user->profile_img]));
     } else{
         echo json_encode("Failed to create user.");

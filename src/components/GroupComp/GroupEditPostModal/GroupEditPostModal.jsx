@@ -1,20 +1,22 @@
 import { Modal, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import PostService from "../../../apis/PostService";
 // import PostService from "../../apis/PostService";
 // import GroupService from "../../../apis/GroupService";
 
 
-function GroupEditPostModal({ modalOpened, setModalOpened,post }) {
+function GroupEditPostModal({ modalOpened, setModalOpened,post , setGroupRender}) {
   const theme = useMantineTheme();
   // console.log(post)
   const user = JSON.parse(localStorage.getItem("user"))
   // console.log(user.id)
+  const param = useParams()
   const [postData, setPostData] = useState({
     myImage:"",
     body:"",
-    user_id:user.id,
-    group_id:0,
+    user_id:user.id || null,
+    group_id:param.id,
     id :post.id
   });
   const handleChange = (e)=>{
@@ -47,6 +49,7 @@ function GroupEditPostModal({ modalOpened, setModalOpened,post }) {
     console.log(formData.get('group_id'))
     PostService.updatePost(formData).then(function(res){
       console.log(res)
+      setGroupRender({state: 'update'})
       }) 
     console.log(postData)
     }

@@ -4,7 +4,7 @@ import { UilPen } from "@iconscout/react-unicons";
 import { UilSignout } from '@iconscout/react-unicons'
 import GroupModal from "../GroupModal/GroupModal";
 
-const InfoGroupCard = () => {
+const InfoGroupCard = ({group_info}) => {
   const [modalOpened, setModalOpened] = useState(false);
   return (
     <div className="InfoGroupCard">
@@ -27,22 +27,22 @@ const InfoGroupCard = () => {
         <span>
           <b>Group Name : </b>
         </span>
-        <span>Zendaya MJ</span>
+        <span>{group_info && group_info.group_name}</span>
       </div>
 
       <div className="info">
         <span>
           <b>Admin : </b>
         </span>
-        <span>Z. Endeya</span>
+        <span>Mohammed</span>
       </div>
 
-      <div className="info">
+      {/* <div className="info">
         <span>
           <b>Group Description : </b>
         </span>
         <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, aliquam.</span>
-      </div>
+      </div> */}
 
       <button className="button logout-buttoni"><UilSignout/>Leave Group</button>
     </div>
