@@ -6,7 +6,7 @@ import PostService from "../../../apis/PostService";
 // import GroupService from "../../../apis/GroupService";
 
 
-function GroupEditPostModal({ modalOpened, setModalOpened,post }) {
+function GroupEditPostModal({ modalOpened, setModalOpened,post , setGroupRender}) {
   const theme = useMantineTheme();
   // console.log(post)
   const user = JSON.parse(localStorage.getItem("user"))
@@ -49,6 +49,7 @@ function GroupEditPostModal({ modalOpened, setModalOpened,post }) {
     console.log(formData.get('group_id'))
     PostService.updatePost(formData).then(function(res){
       console.log(res)
+      setGroupRender({state: 'update'})
       }) 
     console.log(postData)
     }

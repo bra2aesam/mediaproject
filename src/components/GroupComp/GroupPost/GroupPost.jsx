@@ -13,7 +13,7 @@ import CommentModel from '../../CommentModel/CommentModel'
 
 
 
-const GroupPost = ({post , img}) => {
+const GroupPost = ({post , img, setGroupRender}) => {
   // const user = JSON.parse(localStorage.getItem("user"))
   // console.log(post.user_id===user.id )
   console.log(post)
@@ -31,6 +31,7 @@ const GroupPost = ({post , img}) => {
         onClick={() => setModalOpened(true)}/>
       }
         <GroupEditPostModal 
+            setGroupRender={setGroupRender}
             post={post}
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}

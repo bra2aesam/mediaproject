@@ -6,7 +6,7 @@ const GroupPostSide = ({group_post, setGroupRender}) => {
   return (
    <div className="PostSide">
        <GroupPostShare setGroupRender={setGroupRender}/>
-       <GroupPosts group_post={group_post}/>
+       <GroupPosts group_post={group_post} setGroupRender={setGroupRender}/>
    </div>
   )
 }
