@@ -32,7 +32,7 @@ const InfoCard = ({user, userStatus, isSent, setAny}) => {
     // console.log(sendRequest)
     UserService.cancelRequest(sendRequest).then(res =>{
       console.log(res.data)
-      setAny({cancel: "cancel"})
+      setAny({sent: "cancle"})
     })
   }
   return (

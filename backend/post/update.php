@@ -17,7 +17,6 @@
             $post->post_img=$_FILES["post_img"]["name"];
             move_uploaded_file($_FILES["post_img"]["tmp_name"], "../upload/" . $_FILES["post_img"]["name"]);
         }
-       
     }
 
     $post->id= $_POST["id"];
