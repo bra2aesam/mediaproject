@@ -56,10 +56,10 @@ const Profile = () => {
 
         <div className="Profile-center">
             <ProfileCard user={user} timelinePosts={timelinePosts} friends={friends} />
-            <PostSide timelinePosts={timelinePosts} userStatus={userStatus} />
+            <PostSide timelinePosts={timelinePosts} userStatus={userStatus} setAny={setAny} />
         </div>
 
-        <RightSide friendsRequest={friendsRequest} userStatus={userStatus}/>
+        <RightSide friendsRequest={friendsRequest} userStatus={userStatus} setAny={setAny}/>
     </div>
   )
 }

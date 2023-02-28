@@ -4,7 +4,7 @@ import './FollowersCard.css'
 import { Followers } from '../../Data/FollowersData'
 import UserService from '../../apis/UserService'
 import { Link } from 'react-router-dom'
-const FollowersCard = ({friendsRequest}) => {
+const FollowersCard = ({friendsRequest, setAny}) => {
     // console.log(friendsRequest);
     const handleAccept = (id)=>{
         // console.log(id)
@@ -15,6 +15,7 @@ const FollowersCard = ({friendsRequest}) => {
           // console.log(sendRequest)
           UserService.acceptRequest(sendRequest).then(res =>{
             console.log(res.data)
+            setAny({lets: true})
           })
     }
   return (
