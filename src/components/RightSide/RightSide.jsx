@@ -10,7 +10,7 @@ import GroupForYou from "../GroupForYou/GroupForYou";
 import FollowersCard from "../FollowersCard/FollowersCard";
 import { Link } from "react-router-dom";
 
-const RightSide = ({friendsRequest}) => {
+const RightSide = ({friendsRequest, userStatus}) => {
   // console.log(friendsRequest);
   const [modalOpened, setModalOpened] = useState(false);
   const user = JSON.parse(localStorage.getItem("user"))
@@ -27,7 +27,7 @@ const RightSide = ({friendsRequest}) => {
         <img src={Comment} alt="" />
       </div>
 
-      <FollowersCard friendsRequest={friendsRequest}/>
+     {userStatus === 'myProfile' && <FollowersCard friendsRequest={friendsRequest}/>}
       <GroupForYou />
 
       <button className="button r-button" onClick={() => setModalOpened(true)}>

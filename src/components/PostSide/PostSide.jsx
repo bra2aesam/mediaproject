@@ -2,12 +2,12 @@ import React from 'react'
 import Posts from '../Posts/Posts'
 import PostShare from '../PostShare/PostShare'
 import './PostSide.css'
-const PostSide = ({timelinePosts}) => {
+const PostSide = ({timelinePosts, userStatus}) => {
   // console.log(timelinePosts)
   return (
    <div className="PostSide">
-       <PostShare/>
-       <Posts timelinePosts={timelinePosts}/>
+       {userStatus === 'myProfile' && <PostShare/>}
+       <Posts timelinePosts={timelinePosts} userStatus={userStatus}/>
    </div>
   )
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = "http://localhost/mediasocial/backend/comment";
+const API_URL = "http://localhost/mediaproject/backend/comment";
 
 
 class CommentService {

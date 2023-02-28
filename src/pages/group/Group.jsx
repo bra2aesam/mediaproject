@@ -12,7 +12,7 @@ export default function Group() {
   const navigat=useNavigate()
   const [groupData, setgroupData] = useState({})
   useEffect(()=>{
-    axios.get(`http://localhost/mediasocial/backend/group/index.php`).then(res =>{
+    axios.get(`http://localhost/mediaproject/backend/group/index.php`).then(res =>{
       console.log(res.data)
       setgroupData(res.data)
   })

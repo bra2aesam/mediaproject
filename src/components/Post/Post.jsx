@@ -9,7 +9,7 @@ import { UilCommentAltDots } from '@iconscout/react-unicons'
 import CommentModel from '../CommentModel/CommentModel'
 
 
-const Post = ({post, img}) => {
+const Post = ({post, img, userStatus}) => {
   const [modalOpened, setModalOpened] = useState(false);
   const [comOpened, setComOpened] = useState(false);
 
@@ -18,8 +18,11 @@ const Post = ({post, img}) => {
     <div className="Post">
       {/* add user image */}
       {/* add user user name */}
-      <span className='postedit'><b>{post.user_name}</b><UilEditAlt  className="moPo"
-            onClick={() => setModalOpened(true)}/>
+      <span className='postedit'>
+        <b>{post.user_name}</b>
+        {userStatus === 'myProfile' && <UilEditAlt  className="moPo"
+            onClick={() => setModalOpened(true)}
+        />}
       <PostModal 
             post={post}
             modalOpened={modalOpened}

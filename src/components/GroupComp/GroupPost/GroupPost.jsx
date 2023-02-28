@@ -8,6 +8,7 @@ import PostModal from '../../PostModal/PostModal'
 import { UilCommentAltDots } from '@iconscout/react-unicons'
 import GroupCommentModel from '../GroupCommentModel/GroupCommentModel'
 import GroupEditPostModal from '../GroupEditPostModal/GroupEditPostModal'
+import CommentModel from '../../CommentModel/CommentModel'
 
 
 
@@ -15,6 +16,7 @@ import GroupEditPostModal from '../GroupEditPostModal/GroupEditPostModal'
 const GroupPost = ({post , img}) => {
   // const user = JSON.parse(localStorage.getItem("user"))
   // console.log(post.user_id===user.id )
+  console.log(post)
   const [modalOpened, setModalOpened] = useState(false);
   const [comOpened, setComOpened] = useState(false);
 
@@ -50,7 +52,7 @@ const GroupPost = ({post , img}) => {
 
             <span className='postedit'><UilCommentAltDots  className="moPo"
             onClick={() => setComOpened(true)}/>
-      <GroupCommentModel
+      <CommentModel 
             post={post}
             modalOpened={comOpened}
             setModalOpened={setComOpened}
