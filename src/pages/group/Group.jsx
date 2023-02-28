@@ -5,6 +5,7 @@ import GroupService from '../../apis/GroupService'
 import GroupLeft from '../../components/GroupComp/GroupLeft/GroupLeft'
 import GroupPostCard from '../../components/GroupComp/GroupPostCard/GroupPostCard'
 import GroupPostSide from '../../components/GroupComp/GroupPostSide/GroupPostSide'
+import GruopRightSide from '../../components/GroupComp/GruopRightSide/GruopRightSide'
 import RightSide from '../../components/RightSide/RightSide'
 
 
@@ -56,7 +57,8 @@ export default function Group() {
 
         </div>
         
-        <RightSide group_member={group_member} member_request={member_request}/>
+        {/* <RightSide group_member={group_member} member_request={member_request}/> */}
+        <GruopRightSide group_member={group_member} member_request={member_request}/>
     </div>
 
 

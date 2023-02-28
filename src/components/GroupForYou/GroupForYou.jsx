@@ -9,7 +9,7 @@ const GroupForYou = ({group_member}) => {
 <br />
       {/* group for you */}
       <div className="forTrendCard">
-        <h3 className="gforheder">Group Member </h3>
+        <h3 className="gforheder">Group For You</h3>
         {/* <hr /> */}
         {group_member && group_member.map((m, id) => {
           return (
