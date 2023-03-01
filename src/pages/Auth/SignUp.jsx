@@ -4,6 +4,8 @@ import Logo from "../../img/logo.png";
 import { useState } from "react";
 import UserService from '../../apis/UserService';
 import {  NavLink, useNavigate } from "react-router-dom";
+import { UilIntercom } from "@iconscout/react-unicons";
+
 
 
 export default function SignUp() {
@@ -104,9 +106,9 @@ export default function SignUp() {
   return (
     <div className="Auth">
     <div className="a-left">
-    <img src={Logo} alt="" />
-    <div className="Webname">
-    <h1>ZKC Media</h1>
+    <UilIntercom className="loginn" />
+        <div className="Webname">
+          <h1>MediaTalk</h1>
     <h6>Explore the ideas throughout the world</h6>
     </div>
     </div>

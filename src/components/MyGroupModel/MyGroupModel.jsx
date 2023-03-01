@@ -54,7 +54,7 @@ function MyGroupModel({ modalOpened, setModalOpened }) {
       onClose={() => setModalOpened(false)}
     >
       <form onSubmit={handelsubmit} className="infoForm">
-        <h1>Group info</h1>
+        <h1>Create New Group</h1>
 
         <div>
           <input
@@ -75,7 +75,7 @@ function MyGroupModel({ modalOpened, setModalOpened }) {
             <input type="file" name="group_img"  onChange={handleImage}/>
         </div>
 
-        <button type="submit" className="button infoButton">Update</button>
+        <button type="submit" className="button infoButton">Create</button>
       </form>
     </Modal>
   );
