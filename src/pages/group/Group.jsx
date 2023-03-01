@@ -5,36 +5,43 @@ import GroupService from '../../apis/GroupService'
 import GroupLeft from '../../components/GroupComp/GroupLeft/GroupLeft'
 import GroupPostCard from '../../components/GroupComp/GroupPostCard/GroupPostCard'
 import GroupPostSide from '../../components/GroupComp/GroupPostSide/GroupPostSide'
+import GruopRightSide from '../../components/GroupComp/GruopRightSide/GruopRightSide'
 import RightSide from '../../components/RightSide/RightSide'
 
 
 export default function Group() {
   const navigat=useNavigate()
   const [groupData, setgroupData] = useState({})
+  const [userStatus, setUserStatus] = useState('notMember')
+  const [isSent , setIsSent] = useState(false)
+  // const [groupMember, setGroupMember] = useState([])
   const [groupRender, setGroupRender] = useState(null)
   const id = useParams()
   console.log(id)
   useEffect(()=>{
-  //   axios.get(`http://localhost/mediaproject/backend/group/index.php`).then(res =>{
-  //     console.log(res.data)
-  //     setgroupData(res.data)
-  // })
-      const user =localStorage.getItem("user")
-      if(user){
-        // // axios.get(`http://localhost/mediasocial/backend/feed/index.php`).then(res =>{
-        //   // console.log(res.data)
-        //   setFeedata(res.data)
-        // })
+    const userLog = JSON.parse(localStorage.getItem("user"))
+    if(userLog){ 
         GroupService.getSingleGroup(id).then(res =>{
-            console.log(res.data)
-            setgroupData(res.data)
-          })
-      }else{
-        navigat("/login")
-      }
+          console.log(res.data)
+          setgroupData(res.data)
+          if(!(res.data.group_info)){
+            navigat('/')
+          }
+          const isMember = res.data.group_member.find(e => e.id == userLog.id)
+          if(isMember){
+            setUserStatus('member')
+          }
+          // let it for admin
+          // if(id.id == userLog.id){
+          //   setUserStatus('myProfile')
+          // }
+        })
+    }else{
+      navigat("/login")
+    }
   },[groupRender])
 
-  const { group_post,  group_member, group_info } = groupData
+  const { group_post,  group_member, group_info, member_request } = groupData
 
   
   return (
@@ -50,7 +57,8 @@ export default function Group() {
 
         </div>
         
-        <RightSide/>
+        {/* <RightSide group_member={group_member} member_request={member_request}/> */}
+        <GruopRightSide group_member={group_member} member_request={member_request}/>
     </div>
 
 
