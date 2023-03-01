@@ -11,6 +11,9 @@
     padding: 1rem;
     border-radius: .2rem;
     padding-left: 1rem;
+  box-shadow: var(--box-shadow);
+  
+
 }
 
 .MygNUM{
@@ -79,26 +82,9 @@ hr {
     font-size: 13px;
 }
 
-.myc-button{
-    width: 4rem;
-    height: 2rem;
-    padding-left: .5rem;
-    padding-right: .5rem;
-    margin-right: 2%;
-    border-radius: 1rem;
 
-
-}
-
-.jc-button{
-    height: 2rem;
-    padding-left: .5rem;
-    padding-right: .5rem;
-    margin-right: 4%;
-    border-radius: 40%;
-}
 
 .MyGroup{
     cursor: pointer;
-    color: #3c1bc0;
+    /* color: #3c1bc0; */
 }

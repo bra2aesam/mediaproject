@@ -31,7 +31,7 @@ const MyGroup = ({yourGroup}) => {
                 </div>
               </div>
               {/* <hr /> */}
-              <Link style={{textDecoration: 'none'}} to={'/group/'+group.id} className="button myc-button">Go</Link>
+              <Link style={{textDecoration: 'none'}} to={'/group/'+group.id} className="button fc-button">Go</Link>
             </div>
           );
         })}

@@ -11,9 +11,30 @@ const GroupForYou = ({group_member}) => {
       <div className="forTrendCard">
         <h3 className="gforheder">Group For You</h3>
         {/* <hr /> */}
-        {group_member && group_member.map((m, id) => {
-          return (
-            <div key={m.user_id} className="trend">
+        {/* <h2>hello</h2> */}
+        {/* {group_member && group_member.map((m, id) => { */}
+          {/* return ( */}
+            <div className="trend">
+              <div>
+                <img src={TrendData[0].img} alt="" className="trendImage" />
+                <div className="gname">
+                  <span>group 2</span>
+                  <span>group</span>
+                </div>
+              </div>
+              <button className="button fc-button">Remove</button>
+            </div>
+          {/* ); */}
+        {/* })} */}
+      </div>
+    </div>
+  );
+};
+
+export default GroupForYou;
+
+
+{/* <div key={m.user_id} className="trend">
               <div>
                 <img src={TrendData[0].img} alt="" className="trendImage" />
                 <div className="gname">
@@ -22,22 +43,4 @@ const GroupForYou = ({group_member}) => {
                 </div>
               </div>
               <button className="button myc-button">Remove</button>
-            </div>
-            // <div key={id} className="trend">
-            //   <div>
-            //     <img src={trend.img} alt="" className="trendImage" />
-            //     <div className="gname">
-            //       <span>{trend.name}</span>
-            //       <span>{trend.shares} member</span>
-            //     </div>
-            //   </div>
-            //   <button className="button myc-button">Join</button>
-            // </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
-export default GroupForYou;
+            </div> */}

@@ -11,6 +11,10 @@ import FollowersCard from "../../FollowersCard/FollowersCard";
 import { Link, useParams } from "react-router-dom";
 import GroupReqMember from "../../GroupReqMember/GroupReqMember";
 import GroupMember from "../GroupMember/GroupMember";
+import { UilEstate } from '@iconscout/react-unicons'
+import { UilUser } from '@iconscout/react-unicons'
+import { UilUsersAlt } from '@iconscout/react-unicons'
+import { UilSignOutAlt } from '@iconscout/react-unicons'
 
 const GruopRightSide = ({friendsRequest, userStatus, setAny, group_member, member_request}) => {
   // console.log(friendsRequest);
@@ -21,14 +25,17 @@ const GruopRightSide = ({friendsRequest, userStatus, setAny, group_member, membe
   return (
     <div className="RightSide">
       <div className="navIcons">
+      
       <Link to={'/'}>
-      <img src={Home} alt="" />
+        <UilEstate className="navIconss" />
       </Link>
       <Link to={user && `/profile/${user.id}`}>
-      <UilSetting />
+      <UilUser className="navIconss" />
       </Link>  
-        <img src={Noti} alt="" />
-        <img src={Comment} alt="" />
+      <Link to={user && `/group/${user.id}`}>
+      <UilUsersAlt className="navIconss"/>
+      </Link>   
+      <Link><UilSignOutAlt className="navIconss"/></Link>
       </div>
 
      {userStatus === 'myProfile' && id == user.id && <FollowersCard  />}
@@ -37,9 +44,9 @@ const GruopRightSide = ({friendsRequest, userStatus, setAny, group_member, membe
       {/* it's for member not group */}
       <GroupMember group_member={group_member} />
 
-      <button className="button r-button" onClick={() => setModalOpened(true)}>
+      {/* <button className="button r-button" onClick={() => setModalOpened(true)}>
         Share
-      </button>
+      </button> */}
       <ShareModal modalOpened={modalOpened} setModalOpened={setModalOpened} />
     </div>
   );

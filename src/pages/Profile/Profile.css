@@ -1,12 +1,14 @@
-.Profile{
+/* .Profile{
     position: relative;
     display: grid;
-    grid-template-columns: 18rem auto 20rem;
+    grid-template-columns: 18rem auto 18rem;
     gap: 1rem;
-}
 
-.Profile-center{
+} */
+
+/* .Profile-center{
     display: flex;
     flex-direction: column;
     gap: 1rem;
-}
+    margin: 0;
+} */

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Cover from "../../../img/coverG.jpg";
 import Profile from "../../../img/profileImg.jpg";
 import "./GroupPostCard.css";
+// import "./Profile/Profile.css";
 
 const GroupPostCard = () => {
   const ProfilePage = true;

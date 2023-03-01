@@ -16,6 +16,7 @@
     /* color: linear-gradient(106.23deg, #25f9c4, #3594f9 100%); */
 color: #ab25f9;
 
+
 }
 
 .Search>input{
@@ -28,7 +29,10 @@ color: #ab25f9;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(106.23deg, #ab25f9, #35cbf9 100%);
+    /* background: linear-gradient(106.23deg, #ab25f9, #35cbf9 100%); */
+    background: linear-gradient(98.63deg, #f9a225 0%, #f95f35 100%);
+
+
     border-radius: 5px;
     padding: 4px;
     color: white;
@@ -39,8 +43,18 @@ color: #ab25f9;
 }
 
 .sitename{
+    padding: .3rem;
     padding-right: 1rem;
     padding-left: 1rem;
     font-size: 25px;
     font-weight: bolder;
+}
+
+.logoN{
+color: #ef741c ;
+  height: 4.5rem;
+  width: 2.2rem;
+  margin-bottom: -1rem;
+  margin-top: -1rem;
+  /* margin-left: ; */
 }

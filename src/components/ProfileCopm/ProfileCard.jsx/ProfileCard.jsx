@@ -22,7 +22,7 @@ const ProfileCard = ({user, timelinePosts, friends}) => {
     <div className="followStatus">
       <hr />
       <div>
-        <div className="follow">
+        {/* <div className="follow">
           <span>{friends && friends.length}</span>
           <span>My Friend</span>
         </div>
@@ -30,8 +30,8 @@ const ProfileCard = ({user, timelinePosts, friends}) => {
         <div className="follow">
           <span>1</span>
           <span>My Group</span>
-        </div>
-
+        </div> */}
+{/* 
         {ProfilePage && (
           <>
             <div className="vl"></div>
@@ -40,11 +40,11 @@ const ProfileCard = ({user, timelinePosts, friends}) => {
               <span>Posts</span>
             </div>
           </>
-        )}
+        )} */}
       </div>
-      <hr />
+      {/* <hr /> */}
     </div>
-    {ProfilePage ? "" : <span>My Profile</span>}
+    {/* {ProfilePage ? "" : <span>My Profile</span>} */}
   </div>
   );
 };

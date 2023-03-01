@@ -9,7 +9,7 @@
     gap: 1rem;
     background-color: var(--cardColor);
     padding: 1rem;
-    border-radius: 1rem;
+    border-radius: .3rem;
     padding-left: 1rem;
 }
 
@@ -22,14 +22,23 @@ hr {
 
 .groupsheder{
     /* text-align: center; */
-    background:var(--buttonBg);
-    padding: 1rem;
+    /* background:var(--buttonBg);
+    padding: 1rem; */
     /* border-radius: 1rem; */
-    border-top-right-radius: 1rem;
+    /* border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
     margin: -.5rem;
     color: white;
     display:flex;
+    justify-content: space-between; */
+     /* text-align: center; */
+    /* background: var(--buttonBg); */
+    padding: 1rem;
+    /* border-radius: 1rem; */
+    border-bottom: 1px solid;
+    margin: -.5rem;
+    /* color: white; */
+    display: flex;
     justify-content: space-between;
 
 }
@@ -72,7 +81,7 @@ hr {
     font-size: 13px;
 }
 
-.gc-button{
+/* .gc-button{
     height: 2rem;
     padding-left: .5rem;
     padding-right: .5rem;
@@ -80,13 +89,13 @@ hr {
     border-radius: 50%;
 
 
-}
+} */
 
-.jc-button{
+/* .jc-button{
     height: 2rem;
     padding-left: .5rem;
     padding-right: .5rem;
     margin-right: 4%;
     border-radius: 40%;
-}
+} */
 

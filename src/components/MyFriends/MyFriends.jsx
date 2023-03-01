@@ -12,7 +12,7 @@ const MyFriends = ({friends}) => {
         <h3 className="groupsheder">
         My Friends <UilPlusSquare />
         </h3>
-        <hr />
+        {/* <hr /> */}
         {friends && friends.map((e, id) => {
           return (
             <div key={id} className="trend">
@@ -24,7 +24,7 @@ const MyFriends = ({friends}) => {
                 </div>
               </div>
               {/* <hr /> */}
-              <Link style={{textDecoration:'none'}} to={'/profile/'+ e.id} className="button gc-button">Go</Link>
+              <Link style={{textDecoration:'none'}} to={'/profile/'+ e.id} className="button fc-button">Go</Link>
             </div>
           );
         })}

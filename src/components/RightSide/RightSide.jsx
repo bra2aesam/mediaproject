@@ -10,6 +10,10 @@ import FollowersCard from "../FollowersCard/FollowersCard";
 import { Link, useParams } from "react-router-dom";
 import GroupReqMember from "../GroupReqMember/GroupReqMember";
 import GroupForYou from '../GroupForYou/GroupForYou'
+import { UilEstate } from '@iconscout/react-unicons'
+import { UilUser } from '@iconscout/react-unicons'
+import { UilUsersAlt } from '@iconscout/react-unicons'
+import { UilSignOutAlt } from '@iconscout/react-unicons'
 
 const RightSide = ({friendsRequest, userStatus, setAny, group_member, member_request}) => {
   // console.log(friendsRequest);
@@ -21,13 +25,18 @@ const RightSide = ({friendsRequest, userStatus, setAny, group_member, member_req
     <div className="RightSide">
       <div className="navIcons">
       <Link to={'/'}>
-      <img src={Home} alt="" />
+        <UilEstate className="navIconss" />
       </Link>
       <Link to={user && `/profile/${user.id}`}>
-      <UilSetting />
+      <UilUser className="navIconss" />
       </Link>  
-        <img src={Noti} alt="" />
-        <img src={Comment} alt="" />
+      <Link to={user && `/group/${user.id}`}>
+      <UilUsersAlt className="navIconss"/>
+      </Link>  
+      <Link><UilSignOutAlt className="navIconss"/></Link>
+
+        {/* <img src={Noti} alt="" /> */}
+        {/* <img src={Comment} alt="" /> */}
       </div>
 
      {userStatus === 'myProfile' && id == user.id && <FollowersCard member_request={member_request} friendsRequest={friendsRequest} setAny={setAny} />}
@@ -36,9 +45,9 @@ const RightSide = ({friendsRequest, userStatus, setAny, group_member, member_req
       {/* it's for member not group */}
       <GroupForYou group_member={group_member}  />
       
-      <button className="button r-button" onClick={() => setModalOpened(true)}>
+      {/* <button className="button r-button" onClick={() => setModalOpened(true)}>
         Share
-      </button>
+      </button> */}
       <ShareModal modalOpened={modalOpened} setModalOpened={setModalOpened} />
     </div>
   );

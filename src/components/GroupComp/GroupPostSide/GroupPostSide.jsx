@@ -1,5 +1,5 @@
 import React from 'react'
-// import ".GroupPostSide.css"
+import "./GroupPostSide.css"
 import GroupPosts from '../GroupPosts/GroupPosts.jsx'
 import GroupPostShare from '../GroupPostShare/GroupPostShare'
 const GroupPostSide = ({group_post, setGroupRender}) => {
