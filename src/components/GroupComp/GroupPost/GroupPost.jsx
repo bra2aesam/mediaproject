@@ -34,8 +34,7 @@ const GroupPost = ({post , img, setGroupRender}) => {
             setGroupRender={setGroupRender}
             post={post}
             modalOpened={modalOpened}
-            setModalOpened={setModalOpened}
-          />
+            setModalOpened={setModalOpened}/>
       </span>
 
 
