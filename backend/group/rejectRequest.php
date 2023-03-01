@@ -15,7 +15,7 @@ $group_id = $sendRequest->group_id;
 $user_id = $sendRequest->user_id;
 // print_r(json_encode($sendRequest));
 if($group_id && $user_id){
-    $stmt = $conn->prepare("UPDATE `group_member` SET `user_status`='1' WHERE group_id = $group_id AND user_id = $user_id;");
+    $stmt = $conn->prepare("UPDATE `group_member` SET `user_status`='3' WHERE group_id = $group_id AND user_id = $user_id;");
     
     if($stmt->execute()){
         echo "you are a group member";

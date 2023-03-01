@@ -20,7 +20,7 @@
        
     }
 
-    $group->id= 4;
+    $group->id= $_POST['group_id'];
     $group->group_name=$_POST["group_name"];
     
     

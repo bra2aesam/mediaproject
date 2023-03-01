@@ -16,7 +16,7 @@ import CommentModel from '../../CommentModel/CommentModel'
 const GroupPost = ({post , img, setGroupRender}) => {
   // const user = JSON.parse(localStorage.getItem("user"))
   // console.log(post.user_id===user.id )
-  console.log(post)
+  // console.log(post)
   const [modalOpened, setModalOpened] = useState(false);
   const [comOpened, setComOpened] = useState(false);
 

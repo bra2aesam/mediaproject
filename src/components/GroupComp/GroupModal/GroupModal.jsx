@@ -1,11 +1,12 @@
 import { Modal, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import GroupService from "../../../apis/GroupService";
 
 
 function GroupModal({ modalOpened, setModalOpened }) {
   const theme = useMantineTheme();
-
+  const {id} = useParams()
   const [data, setData] = useState({
     group_name:"",
     group_img :"",
@@ -31,6 +32,7 @@ function GroupModal({ modalOpened, setModalOpened }) {
   const handelsubmit = (e) => {
     e.preventDefault();
     const formData = new FormData()
+    formData.append('group_id', id)
     formData.append('group_name', data.group_name)
     formData.append('group_img', data.group_img)
     

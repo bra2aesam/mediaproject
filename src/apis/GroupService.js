@@ -10,9 +10,17 @@ class GroupService {
     createGroup(group){
         return axios.post(`${USER_API_URL}/create.php`, group);
     }
-    
     updateGroup(group){
         return axios.post(`${USER_API_URL}/update.php`, group);
+    }
+    sendRequest(sendRequest){
+        return axios.post(`http://localhost/mediaproject/backend/group/sendRequest.php`, sendRequest);
+    }
+    acceptRequest(sendRequest){
+        return axios.post(`http://localhost/mediaproject/backend/group/acceptRequest.php`, sendRequest);
+    }
+    rejectRequest(sendRequest){
+        return axios.post(`http://localhost/mediaproject/backend/group/rejectRequest.php`, sendRequest);
     }
 
 }

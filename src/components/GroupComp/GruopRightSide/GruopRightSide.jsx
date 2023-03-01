@@ -21,7 +21,11 @@ const GruopRightSide = ({friendsRequest, userStatus, setAny, group_member, membe
   const {id} = useParams()
   const [modalOpened, setModalOpened] = useState(false);
   const user = JSON.parse(localStorage.getItem("user"))
-  // console.log(id == user.id)
+  // if(group_member){
+  //   const isAdmin = group_member.find(e => e.user_id == user.id && e.user_status == 2)
+  //   console.log(isAdmin)
+  // }
+  
   return (
     <div className="RightSide">
       <div className="navIcons">
@@ -40,9 +44,9 @@ const GruopRightSide = ({friendsRequest, userStatus, setAny, group_member, membe
 
      {userStatus === 'myProfile' && id == user.id && <FollowersCard  />}
      
-      <GroupReqMember  member_request={member_request}  />
+      {userStatus === 'admin' && <GroupReqMember  member_request={member_request}  />}
       {/* it's for member not group */}
-      <GroupMember group_member={group_member} />
+      <GroupMember group_member={group_member} userStatus={userStatus} />
 
       {/* <button className="button r-button" onClick={() => setModalOpened(true)}>
         Share

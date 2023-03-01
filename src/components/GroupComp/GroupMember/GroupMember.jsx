@@ -3,7 +3,23 @@ import "./GroupMember.css";
 import { UilPlusSquare } from "@iconscout/react-unicons";
 
 import { TrendData } from "../../../Data/TrendData.js";
-const GroupMember = ({group_member}) => {
+import GroupService from "../../../apis/GroupService";
+import { useParams } from "react-router-dom";
+const GroupMember = ({group_member, userStatus}) => {
+  const {id} = useParams()
+  // console.log(member_request)
+  const sendRequest = {
+    user_id: '',
+    group_id: id
+  }
+  const handelRemoveMember = (id)=>{
+    console.log('reject')
+    sendRequest['user_id'] = id
+    // console.log(sendRequest)
+      GroupService.rejectRequest(sendRequest).then(res =>{
+        console.log(res.data)
+      })
+  }
   return (
     <div className="Trend">
 <br />
@@ -21,7 +37,7 @@ const GroupMember = ({group_member}) => {
                   <span>{m.user_status == 1 ? 'member' : 'admin'} </span>
                 </div>
               </div>
-              <button className="button fc-button">Remove</button>
+              {(userStatus == 'admin' && m.user_status == 1) && <button onClick={()=> handelRemoveMember(m.user_id)} className="button fc-button">Remove</button>}
             </div>
             // <div key={id} className="trend">
             //   <div>

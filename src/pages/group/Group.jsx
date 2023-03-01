@@ -27,38 +27,44 @@ export default function Group() {
           if(!(res.data.group_info)){
             navigat('/')
           }
-          const isMember = res.data.group_member.find(e => e.id == userLog.id)
-          if(isMember){
-            setUserStatus('member')
+          const requestSent = res.data.member_request.find(e => e.user_id == JSON.parse(localStorage.getItem('user')).id)
+          console.log(requestSent)
+          if(requestSent){
+            setIsSent(true)
           }
-          // let it for admin
-          // if(id.id == userLog.id){
-          //   setUserStatus('myProfile')
-          // }
+          const isMember = res.data.group_member.find(e => e.user_id == userLog.id)
+          // console.log(isMember.user_status)
+          if(isMember && isMember.user_status == 2){
+            setUserStatus('admin')
+          }else if (isMember) {
+            setUserStatus('member')
+          } else {
+            setUserStatus('notMember')
+          }
         })
     }else{
       navigat("/login")
     }
   },[groupRender])
-
+console.log(userStatus)
   const { group_post,  group_member, group_info, member_request } = groupData
 
   
   return (
       <div className="Profile">
-      <GroupLeft group_info={group_info} />
+      <GroupLeft group_info={group_info} userStatus={userStatus} isSent={isSent} />
 
 
         <div className="Profile-center">
-          <GroupPostCard/>
-          <GroupPostSide group_post={group_post} setGroupRender={setGroupRender}/>
+          <GroupPostCard  />
+          <GroupPostSide group_post={group_post} setGroupRender={setGroupRender} userStatus={userStatus} />
         
         {/* <PostSide/> */}
 
         </div>
         
         {/* <RightSide group_member={group_member} member_request={member_request}/> */}
-        <GruopRightSide group_member={group_member} member_request={member_request}/>
+        <GruopRightSide group_member={group_member} member_request={member_request} userStatus={userStatus} />
     </div>
 
 

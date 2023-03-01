@@ -37,7 +37,7 @@ $friends = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // request friends
 // how to accept friends
 // UPDATE friends SET status='1' WHERE (friends.source_id = 5 AND friends.target_id = 1) OR (friends.source_id = 1 AND friends.target_id = 5);
-$sql = "SELECT * FROM users WHERE ( users.id IN (SELECT friends.source_id as friend FROM friends WHERE friends.target_id = :user_id AND friends.status = 0 UNION SELECT friends.target_id FROM friends WHERE friends.source_id = :user_id AND friends.status = 0) );";
+$sql = "SELECT * FROM users WHERE ( users.id IN (SELECT friends.source_id as friend FROM friends WHERE friends.target_id = :user_id AND friends.status = 0 ) );";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
