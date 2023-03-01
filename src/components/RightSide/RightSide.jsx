@@ -6,12 +6,12 @@ import { UilSetting } from "@iconscout/react-unicons";
 import Comment from "../../img/comment.png";
 import ShareModal from "../ShareModal/ShareModal";
 // import MyGroup from "../MyGroup/MyGroup";
-import GroupForYou from "../GroupForYou/GroupForYou";
 import FollowersCard from "../FollowersCard/FollowersCard";
 import { Link, useParams } from "react-router-dom";
 import GroupReqMember from "../GroupReqMember/GroupReqMember";
+import GroupForYou from '../GroupForYou/GroupForYou'
 
-const RightSide = ({friendsRequest, userStatus, setAny}) => {
+const RightSide = ({friendsRequest, userStatus, setAny, group_member, member_request}) => {
   // console.log(friendsRequest);
   const {id} = useParams()
   const [modalOpened, setModalOpened] = useState(false);
@@ -30,10 +30,12 @@ const RightSide = ({friendsRequest, userStatus, setAny}) => {
         <img src={Comment} alt="" />
       </div>
 
-     {userStatus === 'myProfile' && id == user.id && <FollowersCard friendsRequest={friendsRequest} setAny={setAny} />}
-      <GroupReqMember />
-      <GroupForYou />
-
+     {userStatus === 'myProfile' && id == user.id && <FollowersCard member_request={member_request} friendsRequest={friendsRequest} setAny={setAny} />}
+     
+      {/* <GroupReqMember /> */}
+      {/* it's for member not group */}
+      <GroupForYou group_member={group_member}  />
+      
       <button className="button r-button" onClick={() => setModalOpened(true)}>
         Share
       </button>

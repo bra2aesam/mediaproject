@@ -27,7 +27,8 @@ const GroupPost = ({post , img, setGroupRender}) => {
       {/* add user user name */}
       <span className='postedit'><b>{post.user_name}</b>
       
-      {JSON.parse(localStorage.getItem('user')).id == post.user_id && <UilEditAlt  className="moPo"
+      {JSON.parse(localStorage.getItem('user')).id == post.user_id && 
+      <UilEditAlt  className="moPo"
         onClick={() => setModalOpened(true)}/>
       }
         <GroupEditPostModal 
@@ -43,7 +44,7 @@ const GroupPost = ({post , img, setGroupRender}) => {
 
 
             <span> {post.body}</span>
-        <img src={img} alt="" />
+        <img src={`http://localhost/mediaproject/backend/upload/${post.post_img}`} alt="" />
 
 
         <div className="postReact">

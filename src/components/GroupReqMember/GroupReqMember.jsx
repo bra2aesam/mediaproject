@@ -6,7 +6,14 @@ import { UilCheck } from '@iconscout/react-unicons'
 import { UilTimes } from '@iconscout/react-unicons'
 
 import { TrendData } from "../../Data/TrendData.js";
-const GroupReqMember = () => {
+
+const handelAcceptReq = ()=>{
+  console.log('hello huda')
+}
+const handelReject = ()=>{
+  console.log('hello Woooorld')
+}
+const GroupReqMember = ({ member_request}) => {
   return (
     <div className="Trend">
         <br />
@@ -14,21 +21,22 @@ const GroupReqMember = () => {
       <div className="forTrendCard">
         <h3 className="gforheder">Requested Member</h3>
         {/* <hr /> */}
-        {TrendData.map((trend, id) => {
+        { member_request &&  member_request.map((req, id) => {
           return (
             <div key={id} className="trend">
               <div>
-                <img src={trend.img} alt="" className="trendImage" />
+                <img src={TrendData[0].img} alt="" className="trendImage" />
                 <div className="gname">
-                  <span>{trend.name}</span>
-                  <span>{trend.shares} member</span>
+                  <span>{req.user_name}</span>
+                  <span>{req.user_status == 0 && 'pending' } </span>
                 </div>
               </div>
               {/* <hr /> */}
               {/* <button className="button myc-button">
                 </button> */}
 
-                <div><UilCheck/><UilTimes/></div>
+                <div><button onClick={handelAcceptReq} style={{border:"none", background:"transparent", cursor:"pointer"}}>
+                  <UilCheck/></button> <button onClick={handelReject} style={{border:"none", background:"transparent", cursor:"pointer"}}><UilTimes/></button></div>
                 
             </div>
           );
