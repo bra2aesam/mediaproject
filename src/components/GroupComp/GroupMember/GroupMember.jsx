@@ -21,7 +21,7 @@ const GroupMember = ({group_member}) => {
                   <span>{m.user_status == 1 ? 'member' : 'admin'} </span>
                 </div>
               </div>
-              <button className="button myc-button">Remove</button>
+              <button className="button fc-button">Remove</button>
             </div>
             // <div key={id} className="trend">
             //   <div>

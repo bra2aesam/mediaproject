@@ -1,12 +1,13 @@
-.ProfileCard{
-    border-radius: 1.5rem;
+/* .ProfileCard{
+    border-radius: .3rem;
     display: flex;
     flex-direction: column;
     position: relative;
     gap: 1rem;
     overflow-x: clip;
     background: var(--cardColor);
-}
+    margin: 0 auto;
+} */
 
 .ProfileImages{
     position: relative;

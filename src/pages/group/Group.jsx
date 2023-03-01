@@ -7,7 +7,7 @@ import GroupPostCard from '../../components/GroupComp/GroupPostCard/GroupPostCar
 import GroupPostSide from '../../components/GroupComp/GroupPostSide/GroupPostSide'
 import GruopRightSide from '../../components/GroupComp/GruopRightSide/GruopRightSide'
 import RightSide from '../../components/RightSide/RightSide'
-
+import './Group.css'
 
 export default function Group() {
   const navigat=useNavigate()
@@ -51,7 +51,7 @@ export default function Group() {
 
         <div className="Profile-center">
           <GroupPostCard/>
-        <GroupPostSide group_post={group_post} setGroupRender={setGroupRender}/>
+          <GroupPostSide group_post={group_post} setGroupRender={setGroupRender}/>
         
         {/* <PostSide/> */}
 

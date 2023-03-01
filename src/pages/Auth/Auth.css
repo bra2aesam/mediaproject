@@ -3,7 +3,8 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    gap: 4rem;
+    /* gap: 4rem; */
+    gap: 10rem;
     position: relative;
   }
   
@@ -92,3 +93,19 @@
       align-items: center;
       justify-content: center;
   }
+  .logoN{
+    /* height: 4.5rem; */
+    /* width: 2.2rem; */
+    /* margin-bottom: -1rem; */
+    /* margin-top: -1rem; */
+    /* margin-left: ; */
+  }
+  
+  .loginn{
+      color: #ef741c ;
+      /* color: #ef741c ; */
+      /* background-image: var(--buttonBg); */
+      height: 10rem;
+      width: 8rem; 
+
+    }

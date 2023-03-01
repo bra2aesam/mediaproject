@@ -1,6 +1,7 @@
-.showComments{
-
-
+.showComments>h1{
+    text-align: center;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #d1d1d1;
 }
 
 .PostShare{
@@ -94,7 +95,7 @@
 .viewsec{
     display: flex;
     flex-direction: column;
-    background-color: #ccc !important;
+    background-color: #e8e8e8;
     padding: 15px;
     border-radius: .3rem;
     width: 75%;

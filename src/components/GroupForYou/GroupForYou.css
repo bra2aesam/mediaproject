@@ -46,7 +46,7 @@ hr {
     /* border-radius: 1rem; */
     border-bottom: 1px solid;
     cursor: pointer;
-    color: #3c1bc0;
+    /* color: #3c1bc0; */
     margin: -.5rem;
     display:flex;
     justify-content: space-between;
@@ -90,21 +90,5 @@ hr {
     font-size: 13px;
 }
 
-.gc-button{
-    height: 2rem;
-    padding-left: .5rem;
-    padding-right: .5rem;
-    margin-right: 4%;
-    border-radius: 50%;
 
-
-}
-
-.jc-button{
-    height: 2rem;
-    padding-left: .5rem;
-    padding-right: .5rem;
-    margin-right: 4%;
-    border-radius: 40%;
-}
 

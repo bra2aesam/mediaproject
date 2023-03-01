@@ -75,8 +75,9 @@ function GroupCommentModel({ modalOpened, setModalOpened, post }) {
       opened={modalOpened}
       onClose={() => setModalOpened(false)}
     >
-      <div className="showComments">
-        <h1>Comments</h1>
+      <div className="showComments" style={{margin:'0 auto', textAlign:'center'}}>
+        <h1 style={{margin:'0 auto', textAlign:'center'}} className="Comm">Comments</h1>
+        <hr />
         {comment.map(c =>{
           return <div key={c.id} className="PostShare">
                     <img src={ProfileImage} alt="" />

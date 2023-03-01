@@ -20,7 +20,7 @@ const FollowersCard = ({friendsRequest, setAny}) => {
     }
   return (
     <div className="FollowersCard">
-        <h3 className="myfriend">Friend Requests</h3>
+        <h3 className="myfriend fheder">Friend Requests</h3>
 
         {friendsRequest && friendsRequest. map((e, id)=>{
             return(

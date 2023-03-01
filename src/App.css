@@ -1,20 +1,31 @@
 :root {
   --yellow: #f5c32c;
-  --orange: #2593f9;
+  --orange: #f97d25;
   --black: #242d49;
   --gray: rgba(36, 45, 73, 0.65);
   --profileShadow: 0px 4px 17px 2px rgba(0, 0, 0, 0.25);
   --hrColor: #cfcdcd;
-  --cardColor: rgba(255, 255, 255, 0.64);
-  --buttonBg: linear-gradient(-70deg, #061c89, #061c89 , #061c89eb, #061c89 );
-  /* --buttonBg:#061c89; */
+  --cardColor: rgba(255, 255, 255, 0.945);
+  /* --buttonBg: linear-gradient(-70deg, #061c89, #061c89 , #061c89eb, #061c89 ); */
+  --buttonBg:#f79400;
+  --buttonBg: linear-gradient(98.63deg, #f9a225 0%, #f95f35 100%);
   --inputColor: rgba(40, 52, 62, 0.07);
   --photo: #4CB256;
   --video: #4A4EB7;
   --location: #EF5757;
   --shedule: #E1AE4A;
   --b-border-radius:1rem;
-  --box-shadow: 6px 6px 12px 0 rgba(0, 0, 0, 0.2), -6px -6px 12px 0 rgba(255, 255, 255, 0.5);
+  /* --box-shadow: 6px 0px 5px 2px  rgba(0, 0, 0, 0.155), -0px -2px 12px 0 rgba(255, 255, 255, 0.925); */
+  /* --box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.304) ; */
+  --box-shadow: -2px 2px 9px 1px rgba(0, 0, 0, 0.2) ;
+  /* --box-shadow:rgba(0, 0, 0, 0.24) 10px 5px 8px 2px; ; */
+  /* --border: 1px solid #ede9e9; */
+
+}
+*{
+
+  outline: none; border:none;
+   text-decoration: none;
 }
 
 .App{
@@ -29,7 +40,7 @@
   width: 22rem;
   height: 14rem;
   border-radius: 50%;
-  background: #b5ddf1;
+  background: #b5d8f1;
   filter: blur(72px)
 }
 
@@ -49,8 +60,136 @@
   color: var(--orange);
   background: transparent;
   border: 2px solid var(--orange);
+  
 }
 
 ::-webkit-scrollbar{
   display: none;
+}
+
+.Profile{
+  position: relative;
+    display: grid;
+    grid-template-columns: 18rem auto 18rem;
+    gap: 1rem;
+}
+.Profile-center{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+} 
+
+.PostSide {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100vh;
+  overflow: auto;
+  
+  margin: 0 auto;
+}
+
+.ProfileSide {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: auto;
+
+  
+}
+
+.ProfileCard{
+  border-radius: .3rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 1rem;
+  overflow-x: clip;
+  background: var(--cardColor);
+  /* margin: 0 auto; */
+  box-shadow: var(--box-shadow);
+}
+
+.Post {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: var(--cardColor);
+  border-radius: .3rem;
+  box-shadow: var(--box-shadow);
+
+  gap: 1rem
+}
+
+.forTrendCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: var(--cardColor);
+  padding: 1rem;
+  border-radius: .2rem;
+  padding-left: 1rem;
+  box-shadow: var(--box-shadow);
+}
+
+
+
+.MyGroup {
+    cursor: pointer;
+    /* color: #3c1bc0; */
+}
+.MyGroup {
+    /* text-align: center; */
+    /* background: var(--buttonBg); */
+    padding: 1rem;
+    /* border-radius: 1rem; */
+    border-bottom: 1px solid;
+    margin: -.5rem;
+    /* color: white; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.InfoCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-color: var(--cardColor);
+  padding: 1rem;
+  border-radius: .3rem;
+  width: 90%;
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+}
+
+.groupsheder {
+  /* text-align: center; */
+  /* border-radius: 1rem; */
+  /* text-align: center; */
+  /* background: var(--buttonBg); */
+  padding: 1rem;
+  /* border-radius: 1rem; */
+  border-bottom: 1px solid;
+  margin: -.5rem;
+  /* color: white; */
+  display: flex;
+  justify-content: space-between;
+}
+
+Link{
+  text-decoration: none;
+}
+
+.navIconss{
+  color: #ef741c ;
+  height: 4.5rem;
+  width: 2.2rem;
+  margin-bottom: -1rem;
+  margin-top: -1rem;
+   
+}
+hr{
+  width: 100%;
+  border: 1px solid var(--hrColor);
 }

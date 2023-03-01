@@ -46,7 +46,7 @@ hr {
     /* border-radius: 1rem; */
     border-bottom: 1px solid;
     cursor: pointer;
-    color: #3c1bc0;
+    /* color: #3c1bc0; */
     margin: -.5rem;
     display:flex;
     justify-content: space-between;

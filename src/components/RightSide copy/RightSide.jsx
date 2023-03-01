@@ -26,8 +26,8 @@ const RightSide = ({friendsRequest, userStatus, setAny, group_member, member_req
       <Link to={user && `/profile/${user.id}`}>
       <UilSetting />
       </Link>  
-        <img src={Noti} alt="" />
-        <img src={Comment} alt="" />
+        {/* <img src={Noti} alt="" /> */}
+        {/* <img src={Comment} alt="" /> */}
       </div>
 
      {userStatus === 'myProfile' && id == user.id && <FollowersCard member_request={member_request} friendsRequest={friendsRequest} setAny={setAny} />}

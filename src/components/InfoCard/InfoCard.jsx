@@ -37,8 +37,8 @@ const InfoCard = ({user, userStatus, isSent, setAny}) => {
   }
   return (
     <div className="InfoCard">
-      <div className="infoHead Ginfo">
-        <h4>Your Info</h4>
+      <div className="infoHead">
+        <h3 >Your Info</h3>
         <div>
           {userStatus === 'myProfile' && <UilPen width="2rem"height="1.2rem"
             onClick={() => setModalOpened(true)}/>}
@@ -72,6 +72,7 @@ const InfoCard = ({user, userStatus, isSent, setAny}) => {
     </div>
    {isSent === undefined && userStatus == 'notFriend' && <button onClick={handleClick} style={{width: '100%', height: '40px', fontSize:"1.2rem"}} className="button logout-button">send request</button>}
       {isSent !== undefined && userStatus !== 'myProfile' && userStatus !== 'friend' && <button onClick={handleCancel} style={{width: '100%', height: '40px', fontSize:"1.2rem"}} className="button logout-button"> cancel request</button>}
+      
     </div>
   );
 };
