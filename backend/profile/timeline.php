@@ -43,13 +43,21 @@ $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
 $friendsRequest = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// your group
 $sql = "SELECT group_member.id, group_id, user_id, user_status, group_name, group_img FROM group_member INNER JOIN groups ON groups.id = group_member.group_id WHERE user_id = :user_id;";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
 $yourGroup = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$data = ['user'=> $user, 'timelinePosts' => $timelinePosts, 'friends' => $friends, 'friendsRequest' => $friendsRequest, 'yourGroup' => $yourGroup ];
+// group for you
+$sql = "SELECT * FROM `groups` WHERE (groups.id NOT IN (SELECT group_id as mygroup FROM `group_member` WHERE group_member.user_id = :user_id)) AND groups.id <> 0;";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':user_id', $user_id);
+$stmt->execute();
+$groupForYou = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$data = ['user'=> $user, 'timelinePosts' => $timelinePosts, 'friends' => $friends, 'friendsRequest' => $friendsRequest, 'yourGroup' => $yourGroup, 'groupForYou' => $groupForYou ];
 // echo "<pre>";
 // print_r($friends);
 // echo "</pre>";

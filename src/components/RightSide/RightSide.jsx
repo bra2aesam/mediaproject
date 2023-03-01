@@ -15,7 +15,7 @@ import { UilUser } from '@iconscout/react-unicons'
 import { UilUsersAlt } from '@iconscout/react-unicons'
 import { UilSignOutAlt } from '@iconscout/react-unicons'
 
-const RightSide = ({friendsRequest, userStatus, setAny, group_member, member_request}) => {
+const RightSide = ({friendsRequest, userStatus, setAny, group_member, member_request, groupForYou}) => {
   // console.log(friendsRequest);
   const {id} = useParams()
   const [modalOpened, setModalOpened] = useState(false);
@@ -43,7 +43,7 @@ const RightSide = ({friendsRequest, userStatus, setAny, group_member, member_req
      
       {/* <GroupReqMember /> */}
       {/* it's for member not group */}
-      <GroupForYou group_member={group_member}  />
+      <GroupForYou group_member={group_member} groupForYou={groupForYou}  />
       
       {/* <button className="button r-button" onClick={() => setModalOpened(true)}>
         Share

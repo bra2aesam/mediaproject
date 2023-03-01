@@ -27,11 +27,14 @@ const MyGroup = ({yourGroup}) => {
                 <img src={TrendData[0].img} alt="" className="trendImage" />
                 <div className="gname">
                   <span  >{group.group_name}</span>
-                  <span className="MygNUM"> member</span>
+                  {group.user_status == 0 && <span className="MygNUM">  sent request</span>}
+                  {group.user_status == 1 && <span className="MygNUM">  member</span>}
+                  {group.user_status == 2 && <span className="MygNUM">  admin</span>}
+                  
                 </div>
               </div>
               {/* <hr /> */}
-              <Link style={{textDecoration: 'none'}} to={'/group/'+group.id} className="button fc-button">Go</Link>
+              <Link style={{textDecoration: 'none'}} to={'/group/'+group.group_id} className="button fc-button">Go</Link>
             </div>
           );
         })}

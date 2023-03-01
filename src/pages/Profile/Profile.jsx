@@ -9,7 +9,7 @@ import RightSide from '../../components/RightSide/RightSide'
 import './Profile.css'
 const Profile = () => {
   const [any, setAny] = useState(null)
-  console.log(any)
+  // console.log(any)
   const navigat=useNavigate()
   const [timelineData, setTimeLineData] = useState({})
   const [userStatus, setUserStatus] = useState('notFriend')
@@ -28,7 +28,7 @@ const Profile = () => {
     const userLog = JSON.parse(localStorage.getItem("user"))
     if(userLog){ 
       UserService.getUserDataTimeline(id).then(res =>{
-        const requestSent = res.data.friendsRequest.find(e => e.id == JSON.parse(localStorage.getItem('user')).id)
+        const requestSent = res.data.friendsRequest?.find(e => e.id == JSON.parse(localStorage.getItem('user')).id) 
         // const requestSent = []
         setIsSent(requestSent)
 
@@ -50,7 +50,7 @@ const Profile = () => {
     }
   },[id,any])
 // console.log(userStatus)
-  const {user, timelinePosts, friends, friendsRequest, yourGroup } = timelineData
+  const {user, timelinePosts, friends, friendsRequest, yourGroup, groupForYou } = timelineData
   return (
     <div className="Profile">
         <ProfileLeft user={user} friends={friends} userStatus={userStatus} isSent={isSent} setAny={setAny} yourGroup={yourGroup} />
@@ -60,7 +60,7 @@ const Profile = () => {
             <PostSide timelinePosts={timelinePosts} userStatus={userStatus} setAny={setAny} />
         </div>
 
-        <RightSide friendsRequest={friendsRequest} userStatus={userStatus} setAny={setAny}/>
+        <RightSide friendsRequest={friendsRequest} userStatus={userStatus} setAny={setAny} groupForYou={groupForYou}/>
     </div>
   )
 }

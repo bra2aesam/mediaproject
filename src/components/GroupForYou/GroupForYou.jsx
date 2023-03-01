@@ -3,29 +3,32 @@ import "./GroupForYou.css";
 import { UilPlusSquare } from "@iconscout/react-unicons";
 
 import { TrendData } from "../../Data/TrendData.js";
-const GroupForYou = ({group_member}) => {
+import { Link } from "react-router-dom";
+const GroupForYou = ({group_member, groupForYou}) => {
+  // console.log(group_member)
+  console.log(groupForYou)
   return (
     <div className="Trend">
 <br />
       {/* group for you */}
       <div className="forTrendCard">
-        <h3 className="gforheder">Group For You</h3>
+        <h3 className="gforheder">suggestion Groups</h3>
         {/* <hr /> */}
         {/* <h2>hello</h2> */}
-        {/* {group_member && group_member.map((m, id) => { */}
-          {/* return ( */}
-            <div className="trend">
+        {groupForYou && groupForYou.map((m, id) => {
+           return ( 
+            <div key={id} className="trend">
               <div>
                 <img src={TrendData[0].img} alt="" className="trendImage" />
                 <div className="gname">
-                  <span>group 2</span>
-                  <span>group</span>
+                  <span> {m.group_name} </span>
+                  <span>suggstion</span>
                 </div>
               </div>
-              <button className="button fc-button">Remove</button>
+              <Link to={'/group/'+m.id} className="button fc-button">Go</Link>
             </div>
-          {/* ); */}
-        {/* })} */}
+           ); 
+        })} 
       </div>
     </div>
   );
