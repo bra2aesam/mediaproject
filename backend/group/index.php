@@ -22,9 +22,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bindParam(':group_id', $group_id);
 $stmt->execute();
 $group_member = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// echo "<pre>";
-// print_r($group_member);
-// echo "</pre>";
+// group info
 $sql = "SELECT `id`, `group_name`, `group_img` FROM `groups` WHERE id = :group_id";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':group_id', $group_id);
