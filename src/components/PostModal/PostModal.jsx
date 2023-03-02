@@ -5,7 +5,7 @@ import PostService from "../../apis/PostService";
 // import GroupService from "../../../apis/GroupService";
 
 
-function PostModal({ modalOpened, setModalOpened,post, setReRender }) {
+function PostModal({ modalOpened, setModalOpened,post, setReRender, setAny }) {
   const theme = useMantineTheme();
   const location = useLocation()
 
@@ -53,11 +53,8 @@ function PostModal({ modalOpened, setModalOpened,post, setReRender }) {
       if(location.pathname == '/'){
         console.log('home')
         setReRender({state: 'update'})
-      }
-      else if (location.pathname == 'group') {
-        // setGroupRender({state: 'create group'})
       } else {
-        console.log('profile')
+        setAny({state:true})
       }
       }) 
     console.log(postData)

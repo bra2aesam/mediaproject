@@ -10,7 +10,7 @@ import CommentModel from '../CommentModel/CommentModel'
 import UserService from '../../apis/UserService'
 
 
-const Post = ({post, img, userStatus}) => {
+const Post = ({post, img, userStatus, setAny}) => {
   const [modalOpened, setModalOpened] = useState(false);
   const [comOpened, setComOpened] = useState(false);
   const handelLike = (id)=>{
@@ -21,6 +21,7 @@ const Post = ({post, img, userStatus}) => {
     }
     UserService.hitLike(sendRequest).then(res =>{
       console.log(res)
+      setAny({state:true})
     })
   }
   const handelDislike = (id)=>{
@@ -31,6 +32,7 @@ const Post = ({post, img, userStatus}) => {
     }
     UserService.hitDislike(sendRequest).then(res =>{
       console.log(res)
+      setAny({state:true})
     })
   }
   // console.log(post, img)
@@ -47,6 +49,7 @@ const Post = ({post, img, userStatus}) => {
             post={post}
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}
+            setAny={setAny}
           />
       </span>
       

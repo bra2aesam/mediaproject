@@ -13,7 +13,7 @@ import { useLocation } from "react-router-dom";
 const PostShare = ({setAny, setGroupRender}) => {
   const [image, setImage] = useState(null);
   const location = useLocation()
-
+  console.log(location.pathname.split('/')[1] == 'profile')
   const imageRef = useRef();
   const user = JSON.parse(localStorage.getItem("user"))
   // console.log(user.id)
@@ -57,17 +57,13 @@ const PostShare = ({setAny, setGroupRender}) => {
     PostService.createPost(formData).then(function(res){
       console.log(res)
       // setAny(true)
-      setGroupRender({state: 'create'})
-      if(location.pathname == '/'){
+      // setGroupRender({state: 'create'})
+      if(location.pathname.split('/')[1] == 'profile'){
         console.log('home')
-        // setAny(true)
-      }
-      else if (location.pathname == 'group') {
-        // setReRender({state: 'dislike'})
-        setGroupRender({state: 'create group'})
-      } else {
         setAny(true)
-        console.log('profile')
+        // setAny(true)
+      }else {
+        setGroupRender({state: 'create group'})
       }
       }) 
     console.log(postData)
