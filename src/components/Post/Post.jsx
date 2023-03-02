@@ -12,7 +12,11 @@ import CommentModel from '../CommentModel/CommentModel'
 const Post = ({post, img, userStatus}) => {
   const [modalOpened, setModalOpened] = useState(false);
   const [comOpened, setComOpened] = useState(false);
-
+  
+  const handelLike = (id)=>{
+    console.log(id)
+    console.log(post)
+  }
   // console.log(post, img)
   return (
     <div className="Post">
@@ -35,8 +39,9 @@ const Post = ({post, img, userStatus}) => {
 
         <div className="postReact">
             {/* <img src={data.liked?Heart: NotLike} alt="" /> */}
-            <img src={Heart} alt="" />
-            <img src={NotLike} alt="" />
+            <img src={post.status == 1  ?Heart: NotLike} alt="" />
+            {/* <img src={Heart} alt="" /> */}
+            {/* <img onClick={()=> handelLike(post.id)} src={NotLike} alt="" /> */}
            
 
             <span className='postedit'><UilCommentAltDots  className="moPo"

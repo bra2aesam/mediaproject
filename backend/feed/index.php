@@ -14,7 +14,8 @@ $user = json_decode( file_get_contents('php://input') );
 // exit;
 $user_id = $user->id;
 // user posts timeline with out his group posts
-$sql = "SELECT posts.id, user_name, user_id, group_id, body FROM posts INNER JOIN users ON posts.user_id = users.id  WHERE user_id = :user_id AND group_id = 0";
+// $sql = "SELECT posts.id, user_name, user_id, group_id, body FROM posts INNER JOIN users ON posts.user_id = users.id  WHERE user_id = :user_id AND group_id = 0";
+$sql = "SELECT posts.id, user_name, posts.user_id, group_id, body, users.profile_img, likes.status FROM posts INNER JOIN users ON posts.user_id = users.id LEFT JOIN likes ON likes.post_id = posts.id WHERE posts.user_id = :user_id AND group_id = 0;";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();

@@ -17,6 +17,10 @@ const Post = ({post, img, setReRender}) => {
   const [comOpened, setComOpened] = useState(false);
 
   // console.log(post, img)
+  const handelLike = (id)=>{
+    console.log(id)
+    console.log(post)
+  }
   return (
     <div className="Post">
       {/* add user image */}
@@ -40,8 +44,9 @@ const Post = ({post, img, setReRender}) => {
 
         <div className="postReact">
             {/* <img src={data.liked?Heart: NotLike} alt="" /> */}
-            <img src={Heart} alt="" />
-            <img src={NotLike} alt="" />
+            <img src={post.status == 1  ?Heart: NotLike} alt="" />
+            {/* <img src={Heart} alt="" /> */}
+            {/* <img onClick={()=> handelLike(post.id)} src={NotLike} alt="" /> */}
            
 
             <span className='postedit'><UilCommentAltDots  className="moPo"
