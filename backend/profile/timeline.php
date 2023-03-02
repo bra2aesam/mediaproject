@@ -20,7 +20,7 @@ $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 // user posts timeline with out his group posts
 // $sql = "SELECT posts.body, posts.id, posts.user_id, users.user_name FROM posts INNER JOIN users ON posts.user_id = users.id WHERE user_id = :user_id AND group_id = 0 ORDER BY posts.id DESC";
-$sql = "SELECT posts.id, user_name, posts.user_id, group_id, body, users.profile_img, likes.status FROM posts INNER JOIN users ON posts.user_id = users.id LEFT JOIN likes ON likes.post_id = posts.id WHERE posts.user_id = :user_id AND group_id = 0 ORDER BY posts.id DESC;";
+$sql = "SELECT posts.id, user_name, posts.user_id, group_id, body, users.profile_img,posts.post_img , likes.status FROM posts INNER JOIN users ON posts.user_id = users.id LEFT JOIN likes ON likes.post_id = posts.id WHERE posts.user_id = :user_id AND group_id = 0 ORDER BY posts.id DESC;";
 
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':user_id', $user_id);

@@ -65,7 +65,7 @@ const InfoGroupCard = ({group_info , userStatus, isSent, setGroupRender}) => {
         <span>
           <b>Admin : </b>
         </span>
-        <span>Mohammed</span>
+        <span>Zohde</span>
       </div>
 
       {/* <div className="info">

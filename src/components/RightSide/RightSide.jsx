@@ -33,7 +33,7 @@ const RightSide = ({friendsRequest, userStatus, setAny, group_member, member_req
       <Link to={user && `/group/${user.id}`}>
       <UilUsersAlt className="navIconss"/>
       </Link>  
-      <Link><UilSignOutAlt className="navIconss"/></Link>
+      <Link to={'/login'}><UilSignOutAlt className="navIconss" /></Link>
 
         {/* <img src={Noti} alt="" /> */}
         {/* <img src={Comment} alt="" /> */}

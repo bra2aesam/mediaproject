@@ -8,7 +8,7 @@ const Posts = ({timelinePosts, userStatus, setAny}) => {
   return (
     <div className="Posts">
         {timelinePosts && timelinePosts.map((post, id)=>{
-            return <Post key={id} post={post} img={PostsData[0].img}  id={id} userStatus={userStatus} setAny={setAny} />
+            return <Post key={id} post={post} img={post.post_img}  id={id} userStatus={userStatus} setAny={setAny} />
         })}
     </div>
   )

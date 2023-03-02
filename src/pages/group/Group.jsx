@@ -64,7 +64,7 @@ console.log(groupRender)
 
 
         <div className="Profile-center">
-          <GroupPostCard  />
+          <GroupPostCard group_info={group_info} />
           <GroupPostSide group_post={group_post} setGroupRender={setGroupRender} userStatus={userStatus} />
         
         {/* <PostSide/> */}

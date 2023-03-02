@@ -15,7 +15,7 @@ const PostShare = ({setGroupRender}) => {
   const imageRef = useRef();
   const param = useParams()
   const user = JSON.parse(localStorage.getItem("user"))
-  // console.log(user.id)
+  console.log(JSON.parse(localStorage.getItem('user')).profile_img )
 
   const [postData, setPostData] = useState({
     myImage:"",
@@ -63,7 +63,7 @@ const PostShare = ({setGroupRender}) => {
 
   return (
     <div className="PostShare">
-      <img src={ProfileImage} alt="" />
+      <img src={'http://localhost/mediaproject/backend/upload/'+JSON.parse(localStorage.getItem('user')).profile_img} alt="" />
       <div>
         <div className="postOptions">
         <input type="text" name="body" onChange={handleChange} placeholder="What's happening" className="div"/>

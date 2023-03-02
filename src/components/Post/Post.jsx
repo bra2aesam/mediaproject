@@ -11,6 +11,7 @@ import UserService from '../../apis/UserService'
 
 
 const Post = ({post, img, userStatus, setAny}) => {
+  console.log(post, img)
   const [modalOpened, setModalOpened] = useState(false);
   const [comOpened, setComOpened] = useState(false);
   const handelLike = (id)=>{
@@ -54,7 +55,7 @@ const Post = ({post, img, userStatus, setAny}) => {
       </span>
       
             <span> {post.body}</span>
-        <img src={img} alt="" />
+        <img src={'http://localhost/mediaproject/backend/upload/'+post.post_img} alt="" />
 
         <div className="postReact">
             {/* <img src={data.liked?Heart: NotLike} alt="" /> */}
