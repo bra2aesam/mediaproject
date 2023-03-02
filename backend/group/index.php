@@ -36,6 +36,8 @@ $stmt->bindParam(':group_id', $group_id);
 $stmt->execute();
 $member_request = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+
+
 $data = ['group_post'=> $group_post, 'group_member' => $group_member, "group_info" => $group_info, 'member_request' => $member_request ];
 
 // echo "<pre>";

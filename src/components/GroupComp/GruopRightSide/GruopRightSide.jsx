@@ -16,7 +16,7 @@ import { UilUser } from '@iconscout/react-unicons'
 import { UilUsersAlt } from '@iconscout/react-unicons'
 import { UilSignOutAlt } from '@iconscout/react-unicons'
 
-const GruopRightSide = ({friendsRequest, userStatus, setAny, group_member, member_request}) => {
+const GruopRightSide = ({friendsRequest, userStatus, setAny, group_member, member_request, groupForYou}) => {
   // console.log(friendsRequest);
   const {id} = useParams()
   const [modalOpened, setModalOpened] = useState(false);

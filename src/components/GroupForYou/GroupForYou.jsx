@@ -6,7 +6,7 @@ import { TrendData } from "../../Data/TrendData.js";
 import { Link } from "react-router-dom";
 const GroupForYou = ({group_member, groupForYou}) => {
   // console.log(group_member)
-  console.log(groupForYou)
+  // console.log(groupForYou)
   return (
     <div className="Trend">
 <br />

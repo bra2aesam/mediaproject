@@ -8,7 +8,9 @@ class UserService {
     getUsers(){
         return axios.get(`${USER_API_URL}/read.php`);
     }
-
+    suggGroup(user){
+        return axios.post(`http://localhost/mediaproject/backend/group/suggGroup.php`, user);
+    }
     getUserData(user){
         return axios.post(`http://localhost/mediaproject/backend/feed/index.php`, user);
     }
@@ -35,7 +37,6 @@ class UserService {
     }
     finduser(user){
         return axios.post(`${USER_API_URL}/finduser.php`, user);
-
     }
 
     updateUser(user){
