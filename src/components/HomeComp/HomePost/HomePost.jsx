@@ -69,7 +69,7 @@ const Post = ({post, img, setReRender}) => {
       </span>
       
             <span> {post.body}</span>
-        <img src={img} alt="" />
+        {post && <img src={'http://localhost/mediaproject/backend/upload/'+post.post_img} alt="" />}
 
         <div className="postReact">
             {/* <img src={data.liked?Heart: NotLike} alt="" /> */}
