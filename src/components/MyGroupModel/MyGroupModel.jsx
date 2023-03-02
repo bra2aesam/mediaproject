@@ -1,11 +1,14 @@
 import { Modal, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 // import { json } from "react-router-dom";
 import GroupService from "../../apis/GroupService";
 
 function MyGroupModel({ modalOpened, setModalOpened, setGroupRender }) {
   const theme = useMantineTheme();
-
+  const location = useLocation()
+  console.log(location.pathname.split('/'))
+  const {id} = useParams()
   const [data, setData] = useState({
     group_name:"",
     group_img :"",
@@ -40,7 +43,12 @@ function MyGroupModel({ modalOpened, setModalOpened, setGroupRender }) {
     console.log(formData.get('user_id'))
     GroupService.createGroup(formData).then(function(res){
       console.log(res)
-      setGroupRender({state: 'create group'})
+      if(location.pathname[1] == 'group'){
+        console.log('home')
+        setGroupRender({state: 'create group'})
+      }else {
+        console.log('profile')
+      }
       setModalOpened(false)
       }) 
     }

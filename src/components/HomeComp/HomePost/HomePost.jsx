@@ -9,9 +9,12 @@ import PostModal from '../../PostModal/PostModal'
 import { UilCommentAltDots } from '@iconscout/react-unicons'
 import CommentModel from '../../CommentModel/CommentModel'
 import UserService from '../../../apis/UserService'
+import { useLocation } from 'react-router-dom'
 
 
 const Post = ({post, img, setReRender}) => {
+  const location = useLocation()
+  console.log(location.pathname.split('/'))
   const user = JSON.parse(localStorage.getItem("user"))
   // console.log(post.user_id===user.id )
   const [modalOpened, setModalOpened] = useState(false);
@@ -25,6 +28,7 @@ const Post = ({post, img, setReRender}) => {
     }
     UserService.hitLike(sendRequest).then(res =>{
       console.log(res)
+      setReRender({state: 'like'})
     })
   }
   const handelDislike = (id)=>{
@@ -35,6 +39,15 @@ const Post = ({post, img, setReRender}) => {
     }
     UserService.hitDislike(sendRequest).then(res =>{
       console.log(res)
+      if(location.pathname == '/'){
+        console.log('home')
+        setReRender({state: 'dislike'})
+      }
+      else if (location.pathname == 'group') {
+        // setGroupRender({state: 'create group'})
+      } else {
+        console.log('profile')
+      }
     })
   }
   return (

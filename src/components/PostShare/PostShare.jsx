@@ -7,10 +7,13 @@ import { UilLocationPoint } from "@iconscout/react-unicons";
 import { UilSchedule } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
 import PostService from "../../apis/PostService";
+import { useLocation } from "react-router-dom";
 
 
 const PostShare = ({setAny, setGroupRender}) => {
   const [image, setImage] = useState(null);
+  const location = useLocation()
+
   const imageRef = useRef();
   const user = JSON.parse(localStorage.getItem("user"))
   // console.log(user.id)
@@ -53,8 +56,19 @@ const PostShare = ({setAny, setGroupRender}) => {
     console.log(formData.get('group_id'))
     PostService.createPost(formData).then(function(res){
       console.log(res)
-      setAny(true)
+      // setAny(true)
       setGroupRender({state: 'create'})
+      if(location.pathname == '/'){
+        console.log('home')
+        // setAny(true)
+      }
+      else if (location.pathname == 'group') {
+        // setReRender({state: 'dislike'})
+        setGroupRender({state: 'create group'})
+      } else {
+        setAny(true)
+        console.log('profile')
+      }
       }) 
     console.log(postData)
     }

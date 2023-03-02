@@ -2,7 +2,7 @@ import { Modal, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
 import UserService from "../../../apis/UserService";
 
-function ProfileModal({ modalOpened, setModalOpened }) {
+function ProfileModal({ modalOpened, setModalOpened , setAny}) {
   const theme = useMantineTheme();
   const [data, setData] = useState({
     user_name:"",
@@ -39,6 +39,7 @@ function ProfileModal({ modalOpened, setModalOpened }) {
     console.log(formData.get('coverImg'))
     UserService.updateUser(formData).then(function(res){
       console.log(res)
+      setAny(true)
       setModalOpened(false)
       localStorage.setItem('user', JSON.stringify(res.data))
       }) 
