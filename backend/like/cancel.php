@@ -14,7 +14,7 @@ $post_id = $sendRequest->post_id;
 $user_id = $sendRequest->user_id;
 // print_r(json_encode($sendRequest));
 if($post_id && $user_id){
-    $stmt = $conn->prepare("UPDATE friends SET status = 0 WHERE post_id = $post_id AND user_id = $user_id");
+    $stmt = $conn->prepare("UPDATE likes SET status = 0 WHERE post_id = $post_id AND user_id = $user_id");
     
     if($stmt->execute()){
         echo "you dislike this post";

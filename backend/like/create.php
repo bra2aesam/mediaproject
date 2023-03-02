@@ -13,13 +13,16 @@ $sendRequest = json_decode( file_get_contents('php://input') );
 // extract($sendRequest);
 $post_id = $sendRequest->post_id;
 $user_id = $sendRequest->user_id;
-// print_r(json_encode($sendRequest));
-if($post_id && $user_id){
-    $stmt = $conn->prepare("INSERT INTO SET post_id = $post_id, user_id = $user_id, status = 1");
-    
-    if($stmt->execute()){
-        echo "you liked this post";
+// "SELECT id, user_id, post_id, status FROM likes WHERE user_id = 1 AND post_id = $post_id;"
+$stmt = $conn->prepare("SELECT id, user_id, post_id, status FROM likes WHERE user_id = $user_id AND post_id = $post_id;");
+$stmt->execute();
+$record = $stmt->fetch(PDO::FETCH_ASSOC);
+    if($record){
+        $stmt = $conn->prepare("UPDATE likes SET status = 1 WHERE post_id = $post_id AND user_id = $user_id");  
+        $stmt->execute();
+            echo "you dislike this post";
     }else{
-        echo "something wen't wrong";
+        $stmt = $conn->prepare("INSERT INTO likes SET post_id = $post_id, user_id = $user_id, status = 1");
+        $stmt->execute();
+            echo "you liked this post";
     }
-}

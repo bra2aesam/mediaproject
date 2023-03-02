@@ -20,8 +20,24 @@ const GroupPost = ({post , img, setGroupRender}) => {
   const [modalOpened, setModalOpened] = useState(false);
   const [comOpened, setComOpened] = useState(false);
   const handelLike = (id)=>{
-    console.log(id)
     console.log(post)
+    const sendRequest = {
+      post_id: id,
+      user_id: JSON.parse(localStorage.getItem('user')).id
+    }
+    UserService.hitLike(sendRequest).then(res =>{
+      console.log(res)
+    })
+  }
+  const handelDislike = (id)=>{
+    console.log(post)
+    const sendRequest = {
+      post_id: id,
+      user_id: JSON.parse(localStorage.getItem('user')).id
+    }
+    UserService.hitDislike(sendRequest).then(res =>{
+      console.log(res)
+    })
   }
   // console.log(post , img);
   return (
@@ -51,7 +67,7 @@ const GroupPost = ({post , img, setGroupRender}) => {
 
         <div className="postReact">
             {/* <img src={post.status?Heart: NotLike} alt="" /> */}
-            {post.status == 1 && <img src={Heart} alt="" />}
+            {post.status == 1 && <img onClick={()=> handelDislike(post.id)} src={Heart} alt="" />}
             {post.status != 1 && <img onClick={()=> handelLike(post.id)} src={NotLike} alt="" />}
 
             <span className='postedit'><UilCommentAltDots  className="moPo"

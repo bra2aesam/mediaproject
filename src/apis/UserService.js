@@ -23,10 +23,16 @@ class UserService {
     cancelRequest(sendRequest){
         return axios.post(`http://localhost/mediaproject/backend/profile/cancelRequest.php`, sendRequest);
     }
+    hitLike(sendRequest){
+        return axios.post(`http://localhost/mediaproject/backend/like/create.php`, sendRequest);
+    }
+    hitDislike(sendRequest){
+        return axios.post(`http://localhost/mediaproject/backend/like/cancel.php`, sendRequest);
+    }
     getUserDataTimeline(user){
         return axios.post(`http://localhost/mediaproject/backend/profile/timeline.php`, user);
     }
-
+    
     createUser(user){
         return axios.post(`${USER_API_URL}/create.php`, user);
     }
