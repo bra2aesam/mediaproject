@@ -11,7 +11,8 @@ $conn = $objDb->getConnection();
 $group = json_decode(file_get_contents('php://input'));
 $group_id = $group->id;
 // group post
-$sql = "SELECT posts.id, posts.post_img, posts.user_id, posts.body, users.user_name FROM users INNER JOIN posts ON users.id = posts.user_id INNER JOIN groups ON posts.group_id = groups.id WHERE groups.id = :group_id ORDER BY id DESC;";
+// $sql = "SELECT posts.id, posts.post_img, posts.user_id, posts.body, users.user_name FROM users INNER JOIN posts ON users.id = posts.user_id INNER JOIN groups ON posts.group_id = groups.id WHERE groups.id = :group_id ORDER BY id DESC;";
+$sql = "SELECT posts.id, posts.post_img, posts.user_id, posts.body, users.user_name, users.profile_img, likes.status FROM posts INNER JOIN users ON users.id = posts.user_id INNER JOIN groups ON posts.group_id = groups.id LEFT JOIN likes ON posts.id = likes.post_id WHERE groups.id = :group_id ORDER BY id DESC;";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':group_id', $group_id);
 $stmt->execute();

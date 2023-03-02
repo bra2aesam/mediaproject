@@ -39,9 +39,9 @@ const Post = ({post, img, userStatus}) => {
 
         <div className="postReact">
             {/* <img src={data.liked?Heart: NotLike} alt="" /> */}
-            <img src={post.status == 1  ?Heart: NotLike} alt="" />
-            {/* <img src={Heart} alt="" /> */}
-            {/* <img onClick={()=> handelLike(post.id)} src={NotLike} alt="" /> */}
+            {/* <img src={post.status == 1  ?Heart: NotLike} alt="" /> */}
+            {post.status == 1 && <img src={Heart} alt="" />}
+            {post.status != 1 && <img onClick={()=> handelLike(post.id)} src={NotLike} alt="" />}
            
 
             <span className='postedit'><UilCommentAltDots  className="moPo"
