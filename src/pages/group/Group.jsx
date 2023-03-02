@@ -51,7 +51,7 @@ export default function Group() {
     }else{
       navigat("/login")
     }
-  },[groupRender])
+  },[groupRender,id])
 console.log(userStatus)
   const { group_post,  group_member, group_info, member_request } = groupData
   const { yourGroup,  groupForYou,  } = permentData

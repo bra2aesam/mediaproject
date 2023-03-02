@@ -1,5 +1,6 @@
 import { Modal, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
+// import { json } from "react-router-dom";
 import GroupService from "../../apis/GroupService";
 
 function MyGroupModel({ modalOpened, setModalOpened }) {
@@ -32,9 +33,11 @@ function MyGroupModel({ modalOpened, setModalOpened }) {
     const formData = new FormData()
     formData.append('group_name', data.group_name)
     formData.append('group_img', data.group_img)
+    formData.append('user_id', JSON.parse(localStorage.getItem('user')).id)
     
     console.log(formData.get('group_name'))
     console.log(formData.get('group_img'))
+    console.log(formData.get('user_id'))
     GroupService.createGroup(formData).then(function(res){
       console.log(res)
       }) 
