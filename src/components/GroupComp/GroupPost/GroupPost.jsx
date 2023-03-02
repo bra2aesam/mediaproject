@@ -28,6 +28,7 @@ const GroupPost = ({post , img, setGroupRender}) => {
     }
     UserService.hitLike(sendRequest).then(res =>{
       console.log(res)
+      setGroupRender({state: 'u like'})
     })
   }
   const handelDislike = (id)=>{
@@ -38,6 +39,7 @@ const GroupPost = ({post , img, setGroupRender}) => {
     }
     UserService.hitDislike(sendRequest).then(res =>{
       console.log(res)
+      setGroupRender({state: 'u dislike'})
     })
   }
   // console.log(post , img);
