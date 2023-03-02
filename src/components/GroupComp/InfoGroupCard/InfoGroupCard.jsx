@@ -4,10 +4,11 @@ import { UilPen } from "@iconscout/react-unicons";
 // import { UilSignout } from '@iconscout/react-unicons'
 import GroupModal from "../GroupModal/GroupModal";
 import GroupService from "../../../apis/GroupService";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const InfoGroupCard = ({group_info , userStatus, isSent}) => {
+const InfoGroupCard = ({group_info , userStatus, isSent, setGroupRender}) => {
   const [modalOpened, setModalOpened] = useState(false);
+  const navigate = useNavigate()
   const {id} = useParams()
   const sendRequest = {
     user_id: JSON.parse(localStorage.getItem('user')).id,
@@ -16,6 +17,8 @@ const InfoGroupCard = ({group_info , userStatus, isSent}) => {
   const leaveGroupReq = ()=>{
       GroupService.rejectRequest(sendRequest).then(res =>{
         console.log(res.data)
+        setGroupRender({state: 'leave'})
+        navigate('/')
       })
   }
   const handelGroupReq = ()=>{
@@ -26,6 +29,7 @@ const InfoGroupCard = ({group_info , userStatus, isSent}) => {
     // console.log(sendRequest)
     GroupService.sendRequest(sendRequest).then(res =>{
       console.log(res.data)
+      setGroupRender({state: 'send req'})
     })
   }
 //  console.log(isSent)
@@ -45,6 +49,7 @@ const InfoGroupCard = ({group_info , userStatus, isSent}) => {
           <GroupModal
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}
+            setGroupRender={setGroupRender}
           />
         </div>
       </div>

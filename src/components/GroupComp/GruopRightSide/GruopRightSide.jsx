@@ -16,7 +16,7 @@ import { UilUser } from '@iconscout/react-unicons'
 import { UilUsersAlt } from '@iconscout/react-unicons'
 import { UilSignOutAlt } from '@iconscout/react-unicons'
 
-const GruopRightSide = ({friendsRequest, userStatus, setAny, group_member, member_request, groupForYou}) => {
+const GruopRightSide = ({friendsRequest, userStatus, setAny, group_member, member_request, groupForYou, setGroupRender}) => {
   // console.log(friendsRequest);
   const {id} = useParams()
   const [modalOpened, setModalOpened] = useState(false);
@@ -44,9 +44,9 @@ const GruopRightSide = ({friendsRequest, userStatus, setAny, group_member, membe
 
      {userStatus === 'myProfile' && id == user.id && <FollowersCard  />}
      
-      {userStatus === 'admin' && <GroupReqMember  member_request={member_request}  />}
+      {userStatus === 'admin' && <GroupReqMember  member_request={member_request} setGroupRender={setGroupRender}  />}
       {/* it's for member not group */}
-      <GroupMember group_member={group_member} userStatus={userStatus} />
+      <GroupMember group_member={group_member} userStatus={userStatus} setGroupRender={setGroupRender} />
 
       {/* <button className="button r-button" onClick={() => setModalOpened(true)}>
         Share

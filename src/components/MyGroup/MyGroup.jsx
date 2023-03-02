@@ -5,7 +5,7 @@ import { UilPlusSquare } from "@iconscout/react-unicons";
 import { TrendData } from "../../Data/TrendData.js";
 import MyGroupModel from "../MyGroupModel/MyGroupModel";
 import { Link } from "react-router-dom";
-const MyGroup = ({yourGroup}) => {
+const MyGroup = ({yourGroup, setGroupRender}) => {
   const [modalOpened, setModalOpened] = useState(false)
   return (
     <div className="Trend">
@@ -14,6 +14,7 @@ const MyGroup = ({yourGroup}) => {
           My Groups <div>
             <UilPlusSquare  onClick={() => setModalOpened(true)} />
             <MyGroupModel
+            setGroupRender={setGroupRender}
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}
           />

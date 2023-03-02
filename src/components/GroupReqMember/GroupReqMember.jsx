@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import GroupService from "../../apis/GroupService";
 
 
-const GroupReqMember = ({ member_request}) => {
+const GroupReqMember = ({ member_request, setGroupRender}) => {
   const {id} = useParams()
   // console.log(member_request)
   const sendRequest = {
@@ -23,7 +23,9 @@ const GroupReqMember = ({ member_request}) => {
     // console.log(sendRequest)
       GroupService.rejectRequest(sendRequest).then(res =>{
         console.log(res.data)
+        setGroupRender({state: 'req rejceted'})
       })
+
   }
   const handelAcceptReq = (id)=>{
     // console.log(id)
@@ -33,6 +35,7 @@ const GroupReqMember = ({ member_request}) => {
       console.log(sendRequest)
       GroupService.acceptRequest(sendRequest).then(res =>{
         console.log(res.data)
+        setGroupRender({state: 'req approve'})
       })
   }
   return (

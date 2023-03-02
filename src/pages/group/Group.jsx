@@ -53,13 +53,14 @@ export default function Group() {
     }
   },[groupRender,id])
 console.log(userStatus)
+console.log(groupRender)
   const { group_post,  group_member, group_info, member_request } = groupData
   const { yourGroup,  groupForYou,  } = permentData
 
   
   return (
       <div className="Profile">
-      <GroupLeft group_info={group_info} userStatus={userStatus} isSent={isSent} yourGroup={yourGroup} />
+      <GroupLeft group_info={group_info} userStatus={userStatus} isSent={isSent} yourGroup={yourGroup} setGroupRender={setGroupRender} />
 
 
         <div className="Profile-center">
@@ -71,7 +72,7 @@ console.log(userStatus)
         </div>
         
         {/* <RightSide group_member={group_member} member_request={member_request}/> */}
-        <GruopRightSide group_member={group_member} member_request={member_request} userStatus={userStatus} groupForYou={groupForYou} />
+        <GruopRightSide setGroupRender={setGroupRender} group_member={group_member} member_request={member_request} userStatus={userStatus} groupForYou={groupForYou} />
     </div>
 
 

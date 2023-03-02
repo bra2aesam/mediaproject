@@ -5,7 +5,7 @@ import { UilPlusSquare } from "@iconscout/react-unicons";
 import { TrendData } from "../../../Data/TrendData.js";
 import GroupService from "../../../apis/GroupService";
 import { useParams } from "react-router-dom";
-const GroupMember = ({group_member, userStatus}) => {
+const GroupMember = ({group_member, userStatus, setGroupRender}) => {
   const {id} = useParams()
   // console.log(member_request)
   const sendRequest = {
@@ -18,6 +18,7 @@ const GroupMember = ({group_member, userStatus}) => {
     // console.log(sendRequest)
       GroupService.rejectRequest(sendRequest).then(res =>{
         console.log(res.data)
+        setGroupRender({state: 'remove member'})
       })
   }
   return (

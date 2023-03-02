@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import GroupService from "../../../apis/GroupService";
 
 
-function GroupModal({ modalOpened, setModalOpened }) {
+function GroupModal({ modalOpened, setModalOpened, setGroupRender }) {
   const theme = useMantineTheme();
   const {id} = useParams()
   const [data, setData] = useState({
@@ -40,6 +40,8 @@ function GroupModal({ modalOpened, setModalOpened }) {
     console.log(formData.get('group_img'))
     GroupService.updateGroup(formData).then(function(res){
       console.log(res)
+      setGroupRender({state: 'change info'})
+      setModalOpened(false)
       }) 
     }
 

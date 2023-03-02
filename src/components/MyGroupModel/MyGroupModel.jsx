@@ -3,7 +3,7 @@ import { useState } from "react";
 // import { json } from "react-router-dom";
 import GroupService from "../../apis/GroupService";
 
-function MyGroupModel({ modalOpened, setModalOpened }) {
+function MyGroupModel({ modalOpened, setModalOpened, setGroupRender }) {
   const theme = useMantineTheme();
 
   const [data, setData] = useState({
@@ -40,6 +40,8 @@ function MyGroupModel({ modalOpened, setModalOpened }) {
     console.log(formData.get('user_id'))
     GroupService.createGroup(formData).then(function(res){
       console.log(res)
+      setGroupRender({state: 'create group'})
+      setModalOpened(false)
       }) 
     }
 
