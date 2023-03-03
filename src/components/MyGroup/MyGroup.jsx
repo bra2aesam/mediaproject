@@ -5,7 +5,7 @@ import { UilPlusSquare } from "@iconscout/react-unicons";
 import { TrendData } from "../../Data/TrendData.js";
 import MyGroupModel from "../MyGroupModel/MyGroupModel";
 import { Link } from "react-router-dom";
-const MyGroup = ({yourGroup, setGroupRender}) => {
+const MyGroup = ({yourGroup, setGroupRender, setReRender, setAny}) => {
   const [modalOpened, setModalOpened] = useState(false)
   return (
     <div className="Trend">
@@ -15,8 +15,10 @@ const MyGroup = ({yourGroup, setGroupRender}) => {
             <UilPlusSquare  onClick={() => setModalOpened(true)} />
             <MyGroupModel
             setGroupRender={setGroupRender}
+            setReRender={setReRender}
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}
+            setAny={setAny}
           />
           </div>
         </h3>
@@ -25,7 +27,7 @@ const MyGroup = ({yourGroup, setGroupRender}) => {
           return (
             <div key={id} className="MyGrouptrend">
               <div>
-                <img src={TrendData[0].img} alt="" className="trendImage" />
+                <img src={group.group_img ? 'http://localhost/mediaproject/backend/upload/'+group.group_img : TrendData[0].img} alt="" className="trendImage" />
                 <div className="gname">
                   <span  >{group.group_name}</span>
                   {group.user_status == 0 && <span className="MygNUM">  sent request</span>}

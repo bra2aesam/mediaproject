@@ -21,14 +21,25 @@ const InfoGroupCard = ({group_info , userStatus, isSent, setGroupRender}) => {
         navigate('/')
       })
   }
-  const handelGroupReq = ()=>{
-    // const sendRequest = {
-    //   user_id: JSON.parse(localStorage.getItem('user')).id,
-    //   group_id: id
-    // }
-    // console.log(sendRequest)
+  const handelGroup = ()=>{
+    console.log('hello')
     GroupService.sendRequest(sendRequest).then(res =>{
-      console.log(res.data)
+      console.log(res)
+      console.log('hello')
+      // setGroupRender({state: 'send req'})
+    })
+  }
+  const handelGroupReq = ()=>{
+    const sendRequest = {
+      user_id: JSON.parse(localStorage.getItem('user')).id,
+      group_id: id
+    }
+    console.log(sendRequest)
+    console.log('hello')
+    GroupService.sendRequest(sendRequest).then(res =>{
+      console.log(res)
+      console.log('hello')
+
       setGroupRender({state: 'send req'})
     })
   }
@@ -75,6 +86,7 @@ const InfoGroupCard = ({group_info , userStatus, isSent, setGroupRender}) => {
         <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, aliquam.</span>
       </div> */}
 
+      {/* {(userStatus == 'notMember' && !isSent) && <button className="button logout-button" onClick={handelGroup}>test</button>} */}
       {(userStatus == 'notMember' && !isSent) && <button className="button logout-button" onClick={handelGroupReq}>Join</button>}
       {userStatus == 'member' && <button className="button logout-button" onClick={leaveGroupReq}>Leave</button>}
       {isSent && <button className="button logout-button" onClick={leaveGroupReq}>Cancel Requset</button>}

@@ -6,7 +6,7 @@ import "./GroupPostCard.css";
 // import "./Profile/Profile.css";
 
 const GroupPostCard = ({group_info}) => {
-  console.log(group_info)
+  // console.log(group_info)
   const ProfilePage = true;
   return (
     <div className="ProfileCard">

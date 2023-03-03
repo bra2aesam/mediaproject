@@ -27,4 +27,4 @@ $groupForYou = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $data = ['yourGroup' => $yourGroup, 'groupForYou' => $groupForYou ];
 
-echo json_encode($data);
+echo json_encode($data); ?>

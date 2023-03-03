@@ -14,7 +14,12 @@ $user_id = $sendRequest->user_id;
 $group_id = $sendRequest->group_id;
 // print_r(json_encode($sendRequest));
 $stmt = $conn->prepare("SELECT * FROM `group_member` WHERE group_member.user_id = $user_id AND group_id = $group_id;");
-if($stmt->execute()){
+$stmt->execute();
+$yourGroup = $stmt->fetch(PDO::FETCH_ASSOC);
+// print_r($yourGroup);
+// exit;
+if($yourGroup){
+    // echo 'hello ';
     $stmt = $conn->prepare("UPDATE `group_member` SET `user_status`='0' WHERE group_id = $group_id AND user_id = $user_id;");
     
     if($stmt->execute()){
@@ -33,3 +38,4 @@ if($stmt->execute()){
     }
     // echo "something wen't wrong";
 }
+?>

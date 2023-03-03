@@ -12,7 +12,7 @@ const ProfileLeft = ({user, friends, userStatus, isSent, setAny, yourGroup}) => 
        <LogoSearch/>
        <InfoCard user={user} userStatus={userStatus} isSent={isSent} setAny={setAny} />
        <MyFriends friends={friends} />
-       <MyGroup yourGroup={yourGroup}/>
+       <MyGroup yourGroup={yourGroup} setAny={setAny}/>
    </div>
   )
 }

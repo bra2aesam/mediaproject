@@ -38,7 +38,7 @@ const Post = ({post, img, userStatus, setAny}) => {
   }
   // console.log(post, img)
   return (
-    <div className="Post">
+    <div className="Post" style={{width: '800px'}}>
       {/* add user image */}
       {/* add user user name */}
       <span className='postedit'>

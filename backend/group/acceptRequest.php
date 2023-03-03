@@ -1,4 +1,3 @@
-
 <?php 
  header("Access-Control-Allow-Origin:*");
  header("Content-Type: application/json;");
@@ -23,4 +22,5 @@ if($group_id && $user_id){
         echo "something wen't wrong";
     }
 }
+?>
 

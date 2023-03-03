@@ -30,7 +30,6 @@ function PostModal({ modalOpened, setModalOpened,post, setReRender, setAny }) {
     newData[event.target.name] = event.target.files[0]
     setPostData(newData)
     console.log(newData)
-  
   };
 
   

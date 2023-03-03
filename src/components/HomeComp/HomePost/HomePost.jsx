@@ -14,7 +14,7 @@ import { useLocation } from 'react-router-dom'
 
 const Post = ({post, img, setReRender}) => {
   const location = useLocation()
-  console.log(location.pathname.split('/'))
+  // console.log(location.pathname.split('/'))
   const user = JSON.parse(localStorage.getItem("user"))
   // console.log(post.user_id===user.id )
   const [modalOpened, setModalOpened] = useState(false);

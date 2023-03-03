@@ -5,12 +5,12 @@ import Naviside from '../../Naviside'
 import ProfileCard from '../ProfileCard.jsx/ProfileCard'
 
 import "./ProfileSide.css"
-const ProfileSide = ({yourGroup}) => {
+const ProfileSide = ({yourGroup, setReRender}) => {
   return (
     <div className="ProfileSide">
         <LogoSearch/>
         <ProfileCard/>
-        <MyGroup  yourGroup={yourGroup}/>
+        <MyGroup  yourGroup={yourGroup} setReRender={setReRender}/>
     </div>
   )
 }

@@ -4,10 +4,10 @@ import { useLocation, useParams } from "react-router-dom";
 // import { json } from "react-router-dom";
 import GroupService from "../../apis/GroupService";
 
-function MyGroupModel({ modalOpened, setModalOpened, setGroupRender }) {
+function MyGroupModel({ modalOpened, setModalOpened, setGroupRender, setReRender, setAny }) {
   const theme = useMantineTheme();
   const location = useLocation()
-  console.log(location.pathname.split('/'))
+  console.log(location.pathname.split('/')[1] == 'group')
   const {id} = useParams()
   const [data, setData] = useState({
     group_name:"",
@@ -43,11 +43,13 @@ function MyGroupModel({ modalOpened, setModalOpened, setGroupRender }) {
     console.log(formData.get('user_id'))
     GroupService.createGroup(formData).then(function(res){
       console.log(res)
-      if(location.pathname[1] == 'group'){
+      if(location.pathname.split('/')[1] == 'group'){
         console.log('home')
         setGroupRender({state: 'create group'})
+      }else if (location.pathname.split('/')[1] == 'profile') {
+        setAny({state: 'create group form profile'})
       }else {
-        console.log('profile')
+        setReRender({state: 'create home'})
       }
       setModalOpened(false)
       }) 

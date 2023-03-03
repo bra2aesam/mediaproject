@@ -37,7 +37,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-        <ProfileSide  yourGroup={yourGroup}/>
+        <ProfileSide  yourGroup={yourGroup} setReRender={setReRender}/>
         <HomePostSide feedata={feedata} setReRender={setReRender} />
         <RightSide groupForYou={groupForYou}/>
     </div>
