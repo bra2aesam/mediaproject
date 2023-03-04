@@ -38,8 +38,8 @@ const GruopRightSide = ({friendsRequest, userStatus, setAny, group_member, membe
       </Link>  
       <Link to={user && `/group/${user.id}`}>
       <UilUsersAlt className="navIconss"/>
-      </Link>   
-      <Link><UilSignOutAlt className="navIconss"/></Link>
+      </Link>  
+      <Link to={'/login'}><UilSignOutAlt className="navIconss" /></Link>
       </div>
 
      {userStatus === 'myProfile' && id == user.id && <FollowersCard  />}
