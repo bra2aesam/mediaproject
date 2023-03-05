@@ -7,15 +7,38 @@ import { UilEditAlt } from '@iconscout/react-unicons'
 import PostModal from '../PostModal/PostModal'
 import { UilCommentAltDots } from '@iconscout/react-unicons'
 import CommentModel from '../CommentModel/CommentModel'
+import UserService from '../../apis/UserService'
 
 
-const Post = ({post, img, userStatus}) => {
+const Post = ({post, img, userStatus, setAny}) => {
+  console.log(post, img)
   const [modalOpened, setModalOpened] = useState(false);
   const [comOpened, setComOpened] = useState(false);
-
+  const handelLike = (id)=>{
+    console.log(post)
+    const sendRequest = {
+      post_id: id,
+      user_id: JSON.parse(localStorage.getItem('user')).id
+    }
+    UserService.hitLike(sendRequest).then(res =>{
+      console.log(res)
+      setAny({state:true})
+    })
+  }
+  const handelDislike = (id)=>{
+    console.log(post)
+    const sendRequest = {
+      post_id: id,
+      user_id: JSON.parse(localStorage.getItem('user')).id
+    }
+    UserService.hitDislike(sendRequest).then(res =>{
+      console.log(res)
+      setAny({state:true})
+    })
+  }
   // console.log(post, img)
   return (
-    <div className="Post">
+    <div className="Post" style={{width: '800px'}}>
       {/* add user image */}
       {/* add user user name */}
       <span className='postedit'>
@@ -27,16 +50,18 @@ const Post = ({post, img, userStatus}) => {
             post={post}
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}
+            setAny={setAny}
           />
       </span>
       
             <span> {post.body}</span>
-        <img src={img} alt="" />
+        <img src={'http://localhost/mediaproject/backend/upload/'+post.post_img} alt="" />
 
         <div className="postReact">
             {/* <img src={data.liked?Heart: NotLike} alt="" /> */}
-            <img src={Heart} alt="" />
-            <img src={NotLike} alt="" />
+            {/* <img src={post.status == 1  ?Heart: NotLike} alt="" /> */}
+            {post.status == 1 && <img onClick={()=> handelDislike(post.id)} src={Heart} alt="" />}
+            {post.status != 1 && <img onClick={()=> handelLike(post.id)} src={NotLike} alt="" />}
            
 
             <span className='postedit'><UilCommentAltDots  className="moPo"

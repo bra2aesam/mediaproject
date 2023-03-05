@@ -9,6 +9,7 @@ import { UilCommentAltDots } from '@iconscout/react-unicons'
 import GroupCommentModel from '../GroupCommentModel/GroupCommentModel'
 import GroupEditPostModal from '../GroupEditPostModal/GroupEditPostModal'
 import CommentModel from '../../CommentModel/CommentModel'
+import UserService from '../../../apis/UserService'
 
 
 
@@ -16,10 +17,31 @@ import CommentModel from '../../CommentModel/CommentModel'
 const GroupPost = ({post , img, setGroupRender}) => {
   // const user = JSON.parse(localStorage.getItem("user"))
   // console.log(post.user_id===user.id )
-  console.log(post)
+  // console.log(post)
   const [modalOpened, setModalOpened] = useState(false);
   const [comOpened, setComOpened] = useState(false);
-
+  const handelLike = (id)=>{
+    console.log(post)
+    const sendRequest = {
+      post_id: id,
+      user_id: JSON.parse(localStorage.getItem('user')).id
+    }
+    UserService.hitLike(sendRequest).then(res =>{
+      console.log(res)
+      setGroupRender({state: 'u like'})
+    })
+  }
+  const handelDislike = (id)=>{
+    console.log(post)
+    const sendRequest = {
+      post_id: id,
+      user_id: JSON.parse(localStorage.getItem('user')).id
+    }
+    UserService.hitDislike(sendRequest).then(res =>{
+      console.log(res)
+      setGroupRender({state: 'u dislike'})
+    })
+  }
   // console.log(post , img);
   return (
     <div className="Post">
@@ -47,9 +69,9 @@ const GroupPost = ({post , img, setGroupRender}) => {
 
 
         <div className="postReact">
-            {/* <img src={data.liked?Heart: NotLike} alt="" /> */}
-            <img src={Heart} alt="" />
-            <img src={NotLike} alt="" />
+            {/* <img src={post.status?Heart: NotLike} alt="" /> */}
+            {post.status == 1 && <img onClick={()=> handelDislike(post.id)} src={Heart} alt="" />}
+            {post.status != 1 && <img onClick={()=> handelLike(post.id)} src={NotLike} alt="" />}
 
             <span className='postedit'><UilCommentAltDots  className="moPo"
             onClick={() => setComOpened(true)}/>

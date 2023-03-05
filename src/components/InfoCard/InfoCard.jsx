@@ -45,6 +45,7 @@ const InfoCard = ({user, userStatus, isSent, setAny}) => {
           <ProfileModal
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}
+            setAny={setAny}
           />
         </div>
       </div>

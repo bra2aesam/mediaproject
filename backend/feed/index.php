@@ -14,7 +14,8 @@ $user = json_decode( file_get_contents('php://input') );
 // exit;
 $user_id = $user->id;
 // user posts timeline with out his group posts
-$sql = "SELECT posts.id, user_name, user_id, group_id, body FROM posts INNER JOIN users ON posts.user_id = users.id  WHERE user_id = :user_id AND group_id = 0";
+// $sql = "SELECT posts.id, user_name, user_id, group_id, body FROM posts INNER JOIN users ON posts.user_id = users.id  WHERE user_id = :user_id AND group_id = 0";
+$sql = "SELECT posts.id, user_name, posts.user_id, group_id, body, users.profile_img, posts.post_img, likes.status FROM posts INNER JOIN users ON posts.user_id = users.id LEFT JOIN likes ON likes.post_id = posts.id WHERE posts.user_id = :user_id AND group_id = 0;";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
@@ -25,14 +26,16 @@ $timelinePosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // $sql = "SELECT posts.id, user_name, user_id, group_id, body, group_name FROM users INNER JOIN posts ON posts.user_id = users.id INNER JOIN groups ON groups.id = posts.group_id WHERE ( users.id IN (SELECT friends.source_id as friend FROM friends WHERE friends.target_id = :user_id AND friends.status = 1 UNION SELECT friends.target_id FROM friends WHERE friends.source_id = :user_id AND friends.status = 1) ) AND ( posts.group_id NOT IN (SELECT group_id FROM group_member WHERE group_member.user_id = :user_id AND group_member.group_id <> 0) );";
 
 // user posts
-$sql = "SELECT posts.id, user_name, user_id, group_id, body FROM users INNER JOIN posts ON posts.user_id = users.id WHERE ( users.id IN (SELECT friends.source_id as friend FROM friends WHERE friends.target_id = :user_id AND friends.status = 1 UNION SELECT friends.target_id FROM friends WHERE friends.source_id = :user_id AND friends.status = 1) ) AND posts.group_id = 0;";
+// $sql = "SELECT posts.id, user_name, user_id, group_id, body FROM users INNER JOIN posts ON posts.user_id = users.id WHERE ( users.id IN (SELECT friends.source_id as friend FROM friends WHERE friends.target_id = :user_id AND friends.status = 1 UNION SELECT friends.target_id FROM friends WHERE friends.source_id = :user_id AND friends.status = 1) ) AND posts.group_id = 0;";
+$sql = "SELECT posts.id, user_name, posts.user_id, group_id, body, users.profile_img, posts.post_img, likes.status FROM users INNER JOIN posts ON posts.user_id = users.id LEFT JOIN likes ON posts.id = likes.post_id WHERE ( users.id IN (SELECT friends.source_id as friend FROM friends WHERE friends.target_id = :user_id AND friends.status = 1 UNION SELECT friends.target_id FROM friends WHERE friends.source_id = :user_id AND friends.status = 1) ) AND posts.group_id = 0;";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
 $friendPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 //  group posts
-$sql = "SELECT posts.id, user_name, user_id, group_id, body, group_name FROM posts INNER JOIN users ON users.id = posts.user_id INNER JOIN groups ON groups.id = posts.group_id WHERE ( posts.group_id IN (SELECT group_id FROM group_member WHERE group_member.user_id = :user_id AND group_member.group_id <> 0 AND group_member.user_status > 0) );";
+// $sql = "SELECT posts.id, user_name, user_id, group_id, body, group_name FROM posts INNER JOIN users ON users.id = posts.user_id INNER JOIN groups ON groups.id = posts.group_id WHERE ( posts.group_id IN (SELECT group_id FROM group_member WHERE group_member.user_id = :user_id AND group_member.group_id <> 0 AND group_member.user_status > 0) );";
+$sql = "SELECT posts.id, user_name, posts.user_id, group_id, body, group_name, users.profile_img, posts.post_img, likes.status FROM posts INNER JOIN users ON users.id = posts.user_id INNER JOIN groups ON groups.id = posts.group_id LEFT JOIN likes ON posts.id = likes.post_id WHERE ( posts.group_id IN (SELECT group_id FROM group_member WHERE group_member.user_id = :user_id AND group_member.group_id <> 0 AND group_member.user_status > 0) );";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();

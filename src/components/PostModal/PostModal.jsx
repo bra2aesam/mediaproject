@@ -1,11 +1,14 @@
 import { Modal, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import PostService from "../../apis/PostService";
 // import GroupService from "../../../apis/GroupService";
 
 
-function PostModal({ modalOpened, setModalOpened,post, setReRender }) {
+function PostModal({ modalOpened, setModalOpened,post, setReRender, setAny }) {
   const theme = useMantineTheme();
+  const location = useLocation()
+
   // console.log(post)
   const user = JSON.parse(localStorage.getItem("user"))
   // console.log(user.id)
@@ -27,7 +30,6 @@ function PostModal({ modalOpened, setModalOpened,post, setReRender }) {
     newData[event.target.name] = event.target.files[0]
     setPostData(newData)
     console.log(newData)
-  
   };
 
   
@@ -46,7 +48,13 @@ function PostModal({ modalOpened, setModalOpened,post, setReRender }) {
     console.log(formData.get('group_id'))
     PostService.updatePost(formData).then(function(res){
       console.log(res)
-      setReRender({render: true})
+      // setReRender({render: true})
+      if(location.pathname == '/'){
+        console.log('home')
+        setReRender({state: 'update'})
+      } else {
+        setAny({state:true})
+      }
       }) 
     console.log(postData)
     }

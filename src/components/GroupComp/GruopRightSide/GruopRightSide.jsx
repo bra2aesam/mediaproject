@@ -16,12 +16,16 @@ import { UilUser } from '@iconscout/react-unicons'
 import { UilUsersAlt } from '@iconscout/react-unicons'
 import { UilSignOutAlt } from '@iconscout/react-unicons'
 
-const GruopRightSide = ({friendsRequest, userStatus, setAny, group_member, member_request}) => {
+const GruopRightSide = ({friendsRequest, userStatus, setAny, group_member, member_request, groupForYou, setGroupRender}) => {
   // console.log(friendsRequest);
   const {id} = useParams()
   const [modalOpened, setModalOpened] = useState(false);
   const user = JSON.parse(localStorage.getItem("user"))
-  // console.log(id == user.id)
+  // if(group_member){
+  //   const isAdmin = group_member.find(e => e.user_id == user.id && e.user_status == 2)
+  //   console.log(isAdmin)
+  // }
+  
   return (
     <div className="RightSide">
       <div className="navIcons">
@@ -34,15 +38,15 @@ const GruopRightSide = ({friendsRequest, userStatus, setAny, group_member, membe
       </Link>  
       <Link to={user && `/group/${user.id}`}>
       <UilUsersAlt className="navIconss"/>
-      </Link>   
-      <Link><UilSignOutAlt className="navIconss"/></Link>
+      </Link>  
+      <Link to={'/login'}><UilSignOutAlt className="navIconss" /></Link>
       </div>
 
      {userStatus === 'myProfile' && id == user.id && <FollowersCard  />}
      
-      <GroupReqMember  member_request={member_request}  />
+      {userStatus === 'admin' && <GroupReqMember  member_request={member_request} setGroupRender={setGroupRender}  />}
       {/* it's for member not group */}
-      <GroupMember group_member={group_member} />
+      <GroupMember group_member={group_member} userStatus={userStatus} setGroupRender={setGroupRender} />
 
       {/* <button className="button r-button" onClick={() => setModalOpened(true)}>
         Share

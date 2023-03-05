@@ -11,7 +11,9 @@ const ProfileCard = ({user, timelinePosts, friends}) => {
     <div className="ProfileCard">
     <div className="ProfileImages">
       <img src={Cover} alt="" />
-      <img src={Profile} alt="" />
+      {user?.profile_img ?  <img src={'http://localhost/mediaproject/backend/upload/'+user.profile_img} alt="" /> : <img src={Profile} alt="" />}
+
+      
     </div>
 
     <div className="ProfileName">

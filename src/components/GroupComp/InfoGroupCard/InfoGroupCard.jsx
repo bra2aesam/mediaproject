@@ -3,22 +3,64 @@ import "./InfoGroupCard.css";
 import { UilPen } from "@iconscout/react-unicons";
 // import { UilSignout } from '@iconscout/react-unicons'
 import GroupModal from "../GroupModal/GroupModal";
+import GroupService from "../../../apis/GroupService";
+import { useNavigate, useParams } from "react-router-dom";
 
-const InfoGroupCard = ({group_info}) => {
+const InfoGroupCard = ({group_info , userStatus, isSent, setGroupRender}) => {
   const [modalOpened, setModalOpened] = useState(false);
+  const navigate = useNavigate()
+  const {id} = useParams()
+  const sendRequest = {
+    user_id: JSON.parse(localStorage.getItem('user')).id,
+    group_id: id
+  }
+  const leaveGroupReq = ()=>{
+      GroupService.rejectRequest(sendRequest).then(res =>{
+        console.log(res.data)
+        setGroupRender({state: 'leave'})
+        navigate('/')
+      })
+  }
+  const handelGroup = ()=>{
+    console.log('hello')
+    GroupService.sendRequest(sendRequest).then(res =>{
+      console.log(res)
+      console.log('hello')
+      // setGroupRender({state: 'send req'})
+    })
+  }
+  const handelGroupReq = ()=>{
+    const sendRequest = {
+      user_id: JSON.parse(localStorage.getItem('user')).id,
+      group_id: id
+    }
+    console.log(sendRequest)
+    console.log('hello')
+    GroupService.sendRequest(sendRequest).then(res =>{
+      console.log(res)
+      console.log('hello')
+
+      setGroupRender({state: 'send req'})
+    })
+  }
+//  console.log(isSent)
+//  console.log(userStatus)
+ 
+  
   return (
     <div className="InfoCard">
       <div className="infoHead ">
         <h3>Group Info</h3>
         <div>
-          <UilPen
+          {userStatus == 'admin' && <UilPen
             width="2rem"
             height="1.2rem"
             onClick={() => setModalOpened(true)}
-          />
+          />}
           <GroupModal
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}
+            setGroupRender={setGroupRender}
           />
         </div>
       </div>
@@ -34,7 +76,7 @@ const InfoGroupCard = ({group_info}) => {
         <span>
           <b>Admin : </b>
         </span>
-        <span>Mohammed</span>
+        <span>Zohde</span>
       </div>
 
       {/* <div className="info">
@@ -44,7 +86,10 @@ const InfoGroupCard = ({group_info}) => {
         <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, aliquam.</span>
       </div> */}
 
-      <button className="button logout-button">Join</button>
+      {/* {(userStatus == 'notMember' && !isSent) && <button className="button logout-button" onClick={handelGroup}>test</button>} */}
+      {(userStatus == 'notMember' && !isSent) && <button className="button logout-button" onClick={handelGroupReq}>Join</button>}
+      {userStatus == 'member' && <button className="button logout-button" onClick={leaveGroupReq}>Leave</button>}
+      {isSent && <button className="button logout-button" onClick={leaveGroupReq}>Cancel Requset</button>}
     </div>
   );
 };

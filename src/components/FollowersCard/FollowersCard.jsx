@@ -8,9 +8,10 @@ const FollowersCard = ({friendsRequest, setAny}) => {
     // console.log(friendsRequest);
     const handleAccept = (id)=>{
         // console.log(id)
+        // try to fix
         const sendRequest = {
-            source_id: JSON.parse(localStorage.getItem('user')).id,
-            target_id: id
+            source_id: id,
+            target_id: JSON.parse(localStorage.getItem('user')).id
           }
           // console.log(sendRequest)
           UserService.acceptRequest(sendRequest).then(res =>{

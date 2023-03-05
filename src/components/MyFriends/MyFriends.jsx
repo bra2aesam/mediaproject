@@ -17,7 +17,7 @@ const MyFriends = ({friends}) => {
           return (
             <div key={id} className="trend">
               <div>
-                <img src={TrendData[0].img} alt="" className="trendImage" />
+                <img src={e.profile_img ? 'http://localhost/mediaproject/backend/upload/'+e.profile_img: TrendData[0].img} alt="" className="trendImage" />
                 <div className="gname">
                   <span>{e.user_name}</span>
                   <span>friends</span>

@@ -25,8 +25,18 @@
     
 
     if($group->createGroup()){
-        echo json_encode("Group created.");
-
+        // echo json_encode("Group created.");
+        $stmt = $db->prepare('SELECT * FROM groups ORDER BY id DESC LIMIT 1;');
+        $stmt->execute();
+        $group= $stmt->fetch(PDO::FETCH_ASSOC);
+        $group_id= $group['id'];
+        $user_id = $_POST['user_id'];
+        $stmt = $db->prepare("INSERT INTO group_member SET user_id = $user_id , group_id = $group_id , user_status = 2");
+        if($stmt->execute()){
+            echo "you are a group member";
+        }else{
+            echo "something wen't wrong";
+        }
     } else{
         echo json_encode("Failed to create Group.");
     }
